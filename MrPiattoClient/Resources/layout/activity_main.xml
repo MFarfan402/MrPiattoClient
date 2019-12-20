@@ -11,6 +11,5 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:id="@+id/button1"
-        android:onClick = "consulta"
     />
 </RelativeLayout>

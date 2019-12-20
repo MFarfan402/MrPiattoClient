@@ -17,6 +17,11 @@ namespace MrPiattoClient
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+            Button button = FindViewById<Button>(Resource.Id.button1);
+            button.Click += delegate
+            {
+                consulta();
+            };
             
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
