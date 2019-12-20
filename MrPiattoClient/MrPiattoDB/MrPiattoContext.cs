@@ -39,7 +39,7 @@ namespace MrPiattoClient.MrPiattoDB
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.\\;Database=MrPiattoDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=192.168.100.207;Database=MrPiattoDB;Trusted_Connection=True;");
             }
         }
 

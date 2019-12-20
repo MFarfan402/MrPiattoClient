@@ -40,6 +40,7 @@ namespace MrPiattoClient
             using (var db = new MrPiattoContext())
             {
                 db.Restaurant.Add(restaurant);
+                db.SaveChanges();
             }
         }
     }
