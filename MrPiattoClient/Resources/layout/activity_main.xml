@@ -1,15 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:orientation="horizontal">
     <Button
-        android:text="Button"
+        android:text="Insertar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="25px"
         android:minHeight="25px"
         android:id="@+id/button1"
     />
-</RelativeLayout>
+<Button
+        android:text="Eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/button2"
+    />
+<Button
+        android:text="Actualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/button3"
+    />
+<Button
+        android:text="Leer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/button4"
+    />
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+    android:text="Label"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/label1"/>
+<TextView
+    android:text="Label"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/label2"/>
+<TextView
+    android:text="Label"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/label3"/>
+</LinearLayout>
+</LinearLayout>
