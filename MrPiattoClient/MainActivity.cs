@@ -4,6 +4,7 @@ using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
 using MrPiattoClient.MrPiattoDB;
+using MrPiattoClient.WebService;
 
 namespace MrPiattoClient
 {
@@ -33,15 +34,8 @@ namespace MrPiattoClient
 
         public void consulta()
         {
-            Restaurant restaurant = new Restaurant();
-            restaurant.Mail = "@mrpiatto.com";
-            restaurant.Password = "123";
-            restaurant.Confirmation = false;
-            using (var db = new MrPiattoContext())
-            {
-                db.Restaurant.Add(restaurant);
-                db.SaveChanges();
-            }
+            WebService1 webService = new WebService1();
+            webService.InsertRestaurant("aaaaaaa","bbbbbb", false);
         }
     }
 }
