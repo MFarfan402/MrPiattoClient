@@ -1,65 +1,197 @@
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    android:orientation="horizontal">
-    <Button
-        android:text="Insertar"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
+            app:title="Mr. Piatto Restaurant">
+
+            <ImageView
+                android:id="@+id/toolbarImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/restaurantimage"
+                app:layout_collapseMode="parallax"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin"/>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/button1"
-    />
-<Button
-        android:text="Eliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/button2"
-    />
-<Button
-        android:text="Actualizar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/button3"
-    />
-<Button
-        android:text="Leer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/button4"
-    />
-</LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TextView
-    android:text="Label"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/label1"/>
-<TextView
-    android:text="Label"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/label2"/>
-<TextView
-    android:text="Label"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/label3"/>
-</LinearLayout>
-</LinearLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        
+        <RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+            <!--Card: Information about the restaurant-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/restaurantInfoView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/mtrl_card_spacing"
+                android:layout_marginTop="@dimen/mtrl_card_spacing"
+                android:layout_marginRight="@dimen/mtrl_card_spacing">
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+        
+                    <TextView
+                        android:id="@+id/restaurantName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:lineSpacingExtra="8dp"
+                        android:text="Mr. Piatto Restaurant"
+                        android:textColor="#000"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/restaurantLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal."
+                        android:textColor="@color/locationText"
+                        android:textSize="14sp"
+                        android:paddingLeft="8dp"
+                        android:layout_below="@id/restaurantName"/>
+        
+                    <TextView
+                        android:id="@+id/restaurantCuisine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mexicana"
+                        android:textColor="@color/locationText"
+                        android:textAllCaps="true"
+                        android:textSize="12sp"
+                        android:padding="8dp"
+                        android:layout_below="@id/restaurantLocation"/>
+
+				    <RatingBar
+                        android:id="@+id/restaurantRating"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+                        android:rating="1.8"
+                        android:layout_marginTop="8dp"
+                        android:numStars="5"
+                        android:stepSize="0.1"
+                        android:isIndicator="true"
+                        style="@style/RatingBar"
+                        android:layout_below="@id/restaurantCuisine"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:id="@+id/totalOfReviews"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+                        android:text="135 opiniones MrPiatto"
+                        android:textSize="12sp"
+                        android:layout_below="@id/restaurantRating"
+                        android:layout_centerHorizontal="true"
+                    />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <!--Card: Restaurant Photos-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/restaurantPhotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/mtrl_card_spacing"
+                android:layout_marginTop="@dimen/mtrl_card_spacing"
+                android:layout_marginRight="@dimen/mtrl_card_spacing"
+                android:layout_below="@id/restaurantInfoView">
+                
+                <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textPhotos"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+                        android:text="Fotos"
+                        android:layout_margin="8dp"
+                        style="@style/SectionTitle"/>
+
+                    <GridLayout
+                        android:id="@+id/photoGrid"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+                        android:columnCount="3"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:layout_gravity="fill"
+                            android:layout_rowSpan="3"
+                            android:src="@drawable/grid1"
+                        />
+
+                        <ImageButton
+                            android:src="@drawable/grid2"
+                        />
+
+                        <ImageButton
+                            android:layout_gravity="fill"
+                            android:layout_rowSpan="2"
+                            android:src="@drawable/grid3"
+                        />
+
+                        <ImageButton
+                            android:layout_gravity="fill"
+                            android:layout_rowSpan="2"
+                            android:src="@drawable/grid4"
+                        />
+
+                        <ImageButton
+                            android:src="@drawable/grid5"
+                        />
+
+                    </GridLayout>
+
+                    <Button
+                        android:id="@+id/buttonSeeMorePhotos"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+                        android:text="VER TODAS LAS FOTOS"
+                        style="@style/SeeMoreButton"
+                        android:layout_below="@id/photoGrid"
+                    />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+       
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

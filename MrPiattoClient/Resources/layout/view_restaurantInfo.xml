@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="3"
+    android:orientation="horizontal">
+
+    <Button
+        android:layout_gravity="fill"
+        android:layout_rowSpan="3"
+        android:text="3" />
+
+    <Button android:text="1" />
+
+    <Button
+        android:layout_gravity="fill"
+        android:layout_rowSpan="2"
+        android:text="2" />
+
+    <Button
+        android:layout_gravity="fill"
+        android:layout_rowSpan="2"
+        android:text="4" />
+
+    <Button
+        android:text="5" />
+
+</GridLayout>
+        

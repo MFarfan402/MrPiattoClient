@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu 
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res/android">
+
+  <item
+      android:id="@+id/shareRestaurant"
+      android:icon="@drawable/baseline_favorite_white_24"
+      android:showAsAction="always"
+      android:title="Share"/>
+  <item
+      android:id="@+id/addToFavorite"
+      android:icon="@drawable/baseline_favorite_border_white_24"
+      android:showAsAction="always"
+      android:title="Favorite"/>
+</menu>
