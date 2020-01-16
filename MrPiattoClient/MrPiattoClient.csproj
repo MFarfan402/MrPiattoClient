@@ -218,7 +218,7 @@
     <AndroidResource Include="Resources\drawable\restaurantImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_restaurantInfo.xml">
+    <AndroidResource Include="Resources\layout\ratingSection.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

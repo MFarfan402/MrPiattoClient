@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Support.Design.Widget;
 using Android.Runtime;
 using MrPiattoClient.WebService;
 using Android.Views;
@@ -20,6 +21,12 @@ namespace MrPiattoClient
             SetContentView(Resource.Layout.activity_main);
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            CollapsingToolbarLayout collapsingToolbar = FindViewById<CollapsingToolbarLayout>(Resource.Id.collapsingToolbar);
+            AppBarLayout appBarLayout = FindViewById<AppBarLayout>(Resource.Id.appBar);
+
+            collapsingToolbar.SetTitle("Esta es la prueba");
+            collapsingToolbar.SetExpandedTitleColor(GetColor(Resource.Color.mtrl_btn_transparent_bg_color));
+            collapsingToolbar.SetCollapsedTitleTextColor(Android.Resource.Color.Black);
 
             SetSupportActionBar(toolbar);
             toolbar.InflateMenu(Resource.Menu.menu_restaurant);

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,7 +24,7 @@
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp"
-            app:title="Mr. Piatto Restaurant">
+            >
 
             <ImageView
                 android:id="@+id/toolbarImage"
@@ -54,7 +55,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
 
-            <!--Card: Information about the restaurant-->
+            <!--Card: Restaurant Main Info-->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/restaurantInfoView"
                 android:layout_width="match_parent"
@@ -101,7 +102,7 @@
                         android:id="@+id/restaurantRating"
 					    android:layout_width="wrap_content"
 					    android:layout_height="wrap_content"
-                        android:rating="1.8"
+                        android:rating="4.6"
                         android:layout_marginTop="8dp"
                         android:numStars="5"
                         android:stepSize="0.1"
@@ -143,55 +144,200 @@
                         android:layout_margin="8dp"
                         style="@style/SectionTitle"/>
 
-                    <GridLayout
-                        android:id="@+id/photoGrid"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-                        android:columnCount="3"
-                        android:orientation="horizontal">
+                    <ImageView
+		                android:id="@+id/restaurantPhotoSection1"
+		                android:layout_width="200dp"
+		                android:layout_height="200dp"
+		                android:layout_marginRight="1dp"
+		                android:src="@drawable/grid1"
+		                android:scaleType="centerCrop"
+		                android:layout_below="@id/textPhotos"/>
 
-                        <ImageButton
-                            android:layout_gravity="fill"
-                            android:layout_rowSpan="3"
-                            android:src="@drawable/grid1"
-                        />
+                    <ImageView
+                        android:id="@+id/restaurantPhotoSection2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="1dp"
+                        android:src="@drawable/grid2"
+                        android:scaleType="centerCrop"
+                        android:layout_alignTop="@id/restaurantPhotoSection1"
+                        android:layout_toRightOf="@id/restaurantPhotoSection1" />
 
-                        <ImageButton
-                            android:src="@drawable/grid2"
-                        />
+                    <ImageView
+                          android:id="@+id/restaurantPhotoSection3"
+                          android:layout_width="100dp"
+                          android:layout_height="100dp"
+                          android:src="@drawable/grid3"
+                          android:scaleType="centerCrop"
+                          android:layout_alignTop="@id/restaurantPhotoSection1"
+                          android:layout_toRightOf="@id/restaurantPhotoSection2" />
 
-                        <ImageButton
-                            android:layout_gravity="fill"
-                            android:layout_rowSpan="2"
-                            android:src="@drawable/grid3"
-                        />
+                    <ImageView
+                          android:id="@+id/restaurantPhotoSection4"
+                          android:layout_width="100dp"
+                          android:layout_height="100dp"
+                          android:layout_marginRight="1dp"
+                          android:layout_marginTop="1dp"
+                          android:src="@drawable/grid4"
+                          android:scaleType="centerCrop"
+                          android:layout_below="@id/restaurantPhotoSection2"
+                          android:layout_toRightOf="@id/restaurantPhotoSection1"/>
 
-                        <ImageButton
-                            android:layout_gravity="fill"
-                            android:layout_rowSpan="2"
-                            android:src="@drawable/grid4"
-                        />
-
-                        <ImageButton
-                            android:src="@drawable/grid5"
-                        />
-
-                    </GridLayout>
-
+                     <ImageView
+                          android:id="@+id/restaurantPhotoSection5"
+                          android:layout_width="100dp"
+                          android:layout_height="100dp"
+                          android:layout_marginTop="1dp"
+                          android:src="@drawable/grid5"
+                          android:scaleType="centerCrop"
+                          android:layout_below="@id/restaurantPhotoSection2"
+                          android:layout_toRightOf="@id/restaurantPhotoSection4"/>
+    
                     <Button
                         android:id="@+id/buttonSeeMorePhotos"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
                         android:text="VER TODAS LAS FOTOS"
                         style="@style/SeeMoreButton"
-                        android:layout_below="@id/photoGrid"
-                    />
+                        android:layout_below="@id/restaurantPhotoSection1"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <!--Card: Restaurant Ratings-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/restaurantRatings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/mtrl_card_spacing"
+                android:layout_marginTop="@dimen/mtrl_card_spacing"
+                android:layout_marginRight="@dimen/mtrl_card_spacing"
+                android:layout_below="@id/restaurantPhotos">
+               
+                <RelativeLayout
+                    android:id="@+id/RatingSection"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/textRatings"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+                        android:text="Calificaciones y reseñas"
+                        android:layout_margin="8dp"
+                        style="@style/SectionTitle"/>
+                    
+                    <RelativeLayout
+                        android:id="@+id/ratingGeneralSection"
+                        android:layout_height="130dp"
+                        android:layout_width="200dp"
+                        android:layout_below="@id/textRatings">
+
+                        <TextView
+                            android:id="@+id/textGeneral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="GENERAL"
+                            android:layout_centerHorizontal="true"
+                            android:layout_above="@id/generalRating" />
+                        <TextView
+                            android:id="@+id/generalRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.6"
+                            android:textSize="24sp"
+                            android:textColor="#000"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_centerInParent="true"/>
+                        <RatingBar
+                            android:id="@+id/restaurantRatingSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:rating="4.6"
+                            android:layout_marginTop="8dp"
+                            android:numStars="5"
+                            android:stepSize="0.1"
+                            android:isIndicator="true"
+                            style="@style/RatingBarSmall"
+                            android:layout_below="@id/generalRating"
+                            android:layout_centerHorizontal="true"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/ratingBars"
+                        android:layout_width="200dp"
+                        android:layout_height="130dp"
+                        android:layout_below="@id/textRatings"
+                        android:layout_toRightOf="@id/ratingGeneralSection">
+                        <TextView
+                              android:id="@+id/number5"
+                              style="@style/numberRatingBar"
+                              android:text="5"/>
+                        <TextView
+                              android:id="@+id/number4"
+                              style="@style/numberRatingBar"
+                              android:text="4"
+                              android:layout_below="@id/number5"/>
+                        <TextView
+                              android:id="@+id/number3"
+                              style="@style/numberRatingBar"
+                              android:text="3"
+                              android:layout_below="@id/number4"/>
+                        <TextView
+                              android:id="@+id/number2"
+                              style="@style/numberRatingBar"
+                              android:text="2"
+                              android:layout_below="@id/number3"/>
+                        <TextView
+                              android:id="@+id/number1"
+                              style="@style/numberRatingBar"
+                              android:text="1"
+                              android:layout_below="@id/number2"/>
+                        <ProgressBar
+                            android:id="@+id/pbar5"
+                            style="@style/ProgressBar"
+                            android:progress="60"
+                            android:layout_toRightOf="@id/number5"/>
+                        <ProgressBar
+                              android:id="@+id/pbar4"
+                              style="@style/ProgressBar"
+                              android:progress="20"
+                              android:layout_toRightOf="@id/number5"
+                              android:layout_below="@id/pbar5"/>
+                        <ProgressBar
+                              android:id="@+id/pbar3"
+                              style="@style/ProgressBar"
+                              android:progress="10"
+                              android:layout_toRightOf="@id/number5"
+                              android:layout_below="@id/pbar4"/>
+                        <ProgressBar
+                                android:id="@+id/pbar2"
+                                style="@style/ProgressBar"
+                                android:progress="5"
+                                android:layout_toRightOf="@id/number5"
+                                android:layout_below="@id/pbar3"/>
+                        <ProgressBar
+                              android:id="@+id/pbar1"
+                              style="@style/ProgressBar"
+                              android:progress="5"
+                              android:layout_toRightOf="@id/number5"
+                              android:layout_below="@id/pbar2"/>
+                    </RelativeLayout>
+
+                    <Button
+                        android:id="@+id/buttonSeeMorePhotos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="VER TODAS LAS RESEÑAS"
+                        style="@style/SeeMoreButton"
+                        android:layout_below="@id/ratingBars"/>
 
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
        
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -10,6 +10,11 @@
     <item name="android:progressTint">@color/colorPrimary</item>
     <item name="android:colorAccent">@color/colorPrimary</item>
   </style>
+  
+  <style name="RatingBarSmall" parent="Widget.AppCompat.RatingBar.Small">
+    <item name="android:progressTint">@color/colorPrimary</item>
+    <item name="android:colorAccent">@color/colorPrimary</item>
+  </style>
 
   <style name="SectionTitle">
     <item name="android:textColor">#000</item>
@@ -19,6 +24,24 @@
   <style name="SeeMoreButton" parent="Widget.MaterialComponents.Button.TextButton">
     <item name="android:textColor">@color/colorPrimary</item>
     <item name="android:textSize">14sp</item>
+  </style>
+  
+  <style name="numberRatingBar">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_margin">3dp</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textColor">#000</item>
+  </style>
+  
+  <style name="ProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+    <item name="android:indeterminate">false</item>
+    <item name="android:layout_width">150dp</item>
+    <item name="android:layout_height">8dp</item>
+    <item name="android:layout_margin">9dp</item>
+    <item name="android:progressTint">@color/colorPrimary</item>
+    <item name="android:max">80</item>
+  
   </style>
 
 </resources>
