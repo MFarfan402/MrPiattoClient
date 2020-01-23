@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -58,11 +58,7 @@
             <!--Card: Restaurant Main Info-->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/restaurantInfoView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/mtrl_card_spacing"
-                android:layout_marginTop="@dimen/mtrl_card_spacing"
-                android:layout_marginRight="@dimen/mtrl_card_spacing">
+                style="@style/CardStyle">
                 <RelativeLayout
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent">
@@ -125,11 +121,7 @@
             <!--Card: Restaurant Photos-->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/restaurantPhotos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/mtrl_card_spacing"
-                android:layout_marginTop="@dimen/mtrl_card_spacing"
-                android:layout_marginRight="@dimen/mtrl_card_spacing"
+                style="@style/CardStyle"
                 android:layout_below="@id/restaurantInfoView">
                 
                 <RelativeLayout
@@ -207,11 +199,7 @@
             <!--Card: Restaurant Ratings-->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/restaurantRatings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/mtrl_card_spacing"
-                android:layout_marginTop="@dimen/mtrl_card_spacing"
-                android:layout_marginRight="@dimen/mtrl_card_spacing"
+                style="@style/CardStyle"
                 android:layout_below="@id/restaurantPhotos">
                
                 <RelativeLayout
@@ -335,9 +323,204 @@
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
+            <!--Card: Restaurant complete information-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/restaurantCompleteInformation"
+                style="@style/CardStyle"
+                android:layout_below="@id/restaurantRatings">
+
+                <RelativeLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/textCompleteInfo"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+                        android:text="Información del restaurante"
+                        android:layout_margin="8dp"
+                        style="@style/SectionTitle"/>
+
+                    <RelativeLayout
+                        android:id="@+id/CompleteInfoSection"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+                        android:layout_below="@id/textCompleteInfo">
+                        <!--Call-->
+                        <ImageView
+                            android:id="@+id/iconCall"
+                            style="@style/IconStyle"
+                            android:src="@drawable/icon_call"/>
+                        <TextView
+                            android:id="@+id/textCall"
+                            android:text="Teléfono"
+                            style="@style/RestaurantInfoCategorie"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/iconCall"/>
+                        <Button
+                            android:id="@+id/buttonCall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12 3456 7890"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:textStyle="normal"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_toRightOf="@id/textCall"/>
+                        <!--Price-->
+                        <ImageView
+                            android:id="@+id/iconPrice"
+                            style="@style/IconStyle"
+                            android:src="@drawable/icon_price"
+                            android:layout_below="@id/iconCall"/>
+                        <TextView
+                            android:id="@+id/textPrice"
+                            android:text="Precio"
+                            style="@style/RestaurantInfoCategorie"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_below="@id/iconCall"
+                            android:layout_toRightOf="@id/iconPrice"/>
+                        <TextView
+                            android:id="@+id/informationPrice"
+                            style="@style/RestaurantInfoCategorie"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:text="$399 MXN o más"
+                            android:layout_toRightOf="@id/textPrice"
+                            android:layout_below="@id/iconCall"/>
+                        <!--Cuicine-->
+                        <ImageView
+                            android:id="@+id/iconFood"
+                            style="@style/IconStyle"
+                            android:src="@drawable/icon_food"
+                            android:layout_below="@id/iconPrice"/>
+                        <TextView
+                            android:id="@+id/textFood"
+                            android:text="Cocina"
+                            style="@style/RestaurantInfoCategorie"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_below="@id/iconPrice"
+                            android:layout_toRightOf="@id/iconFood"/>
+                        <TextView
+                            android:id="@+id/informationFood"
+                            style="@style/RestaurantInfoCategorie"
+                            android:text="Italiana"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_toRightOf="@id/textFood"
+                            android:layout_below="@id/iconPrice"/>
+                        <!--Hour-->
+                        <ImageView
+                            android:id="@+id/iconHour"
+                            style="@style/IconStyle"
+                            android:src="@drawable/icon_hour"
+                            android:layout_below="@id/iconFood"/>
+                        <TextView
+                            android:id="@+id/textHour"
+                            android:text="Horario"
+                            style="@style/RestaurantInfoCategorie"
+                            android:textStyle="bold"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_below="@id/iconFood"
+                            android:layout_toRightOf="@id/iconHour"/>
+                        <TextView
+                            android:id="@+id/informationHour"
+                            style="@style/RestaurantInfoCategorie"
+                            android:maxLines="7"
+                            android:text="Lunes: 00:00 - 23:59\nMartes: 00:00 - 23:59\nMiercoles: 00:00 - 23:59\nJueves: 00:00 - 23:59\nViernes: 00:00 - 23:59\nSábado: 00:00 - 23:59\nDomingo: 00:00 - 23:59\n"
+                            android:layout_toRightOf="@id/iconHour"
+                            android:layout_below="@id/textHour"/>
+                        <!--Payment-->
+                        <ImageView
+                            android:id="@+id/iconPayment"
+                            style="@style/IconStyle"
+                            android:src="@drawable/icon_payment"
+                            android:layout_below="@id/informationHour"/>
+                        <TextView
+                            android:id="@+id/textPayment"
+                            android:text="Opciones de pago"
+                            style="@style/RestaurantInfoCategorie"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:textStyle="bold"
+                            android:layout_below="@id/informationHour"
+                            android:layout_toRightOf="@id/iconPayment"/>
+                        <TextView
+                            android:id="@+id/informationPayment"
+                            style="@style/RestaurantInfoCategorie"
+                            android:text="Efectivo, Visa, MasterCard, AMEX"
+                            android:layout_toRightOf="@id/iconPayment"
+                            android:layout_below="@id/textPayment"/>
+                        <!--Dress-->
+                        <ImageView
+                            android:id="@+id/iconDress"
+                            style="@style/IconStyle"
+                            android:src="@drawable/icon_dress"
+                            android:layout_below="@id/informationPayment" />
+                        <TextView
+                            android:id="@+id/textDress"
+                            android:text="Código de etiqueta"
+                            style="@style/RestaurantInfoCategorie"
+                            android:textStyle="bold"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_below="@id/informationPayment"
+                            android:layout_toRightOf="@id/iconDress"/>
+                        <TextView
+                            android:id="@+id/informationDress"
+                            style="@style/RestaurantInfoCategorie"
+                            android:text="Elegante"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_toRightOf="@id/textDress"
+                            android:layout_below="@id/informationPayment"/>
+                        <!--Description-->
+                        <ImageView
+                            android:id="@+id/iconComment"
+                            style="@style/IconStyle"
+                            android:src="@drawable/icon_comment"
+                            android:layout_below="@id/iconDress"/>
+                        <TextView
+                            android:id="@+id/textComment"
+                            android:text="Descripción"
+                            style="@style/RestaurantInfoCategorie"
+                            android:layout_marginVertical="13dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:textStyle="bold"
+                            android:layout_below="@id/iconDress"
+                            android:layout_toRightOf="@id/iconComment"/>
+                        <TextView
+                            android:id="@+id/informationComment"
+                            style="@style/RestaurantInfoCategorie"
+                            android:layout_marginBottom="25dp"
+                            android:text="OBVIO MICROBIO QUE SI NOS VAMOS A GRADUAR. Lorem LoremLoremLoremLoremLoremLoremLorem LoremLoremLoremLorem Lorem LoremLorem LoremLorem Lorem"
+                            android:layout_toRightOf="@id/iconComment"
+                            android:layout_below="@id/textComment"/>
+
+                    </RelativeLayout>
+
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBookATable"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="RESERVA UNA MESA"
+                android:layout_below="@id/restaurantCompleteInformation"
+                app:backgroundTint="@color/colorPrimary"/>
 
         </RelativeLayout>
-
     </androidx.core.widget.NestedScrollView>
-       
+
+    
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

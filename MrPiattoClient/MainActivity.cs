@@ -7,6 +7,7 @@ using MrPiattoClient.WebService;
 using Android.Views;
 using Android.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Content;
 
 namespace MrPiattoClient
 {
@@ -19,6 +20,13 @@ namespace MrPiattoClient
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+
+            Button buttonSeeMorePhotos = FindViewById<Button>(Resource.Id.buttonSeeMorePhotos);
+            buttonSeeMorePhotos.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(RestaurantPhotosActivity));
+                StartActivity(intent);
+            };
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             CollapsingToolbarLayout collapsingToolbar = FindViewById<CollapsingToolbarLayout>(Resource.Id.collapsingToolbar);
@@ -34,6 +42,7 @@ namespace MrPiattoClient
             {
                 Toast.MakeText(this, e.Item.TitleFormatted, ToastLength.Long).Show();
             };
+            
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -41,6 +50,7 @@ namespace MrPiattoClient
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        /*
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -54,6 +64,6 @@ namespace MrPiattoClient
                 ToastLength.Short).Show();
             return base.OnOptionsItemSelected(item);
         }
-
+        */
     }
 }

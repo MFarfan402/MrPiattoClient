@@ -18,7 +18,7 @@
 
   <style name="SectionTitle">
     <item name="android:textColor">#000</item>
-    <item name="android:textSize">14sp</item>
+    <item name="android:textSize">16sp</item>
   </style>
   
   <style name="SeeMoreButton" parent="Widget.MaterialComponents.Button.TextButton">
@@ -41,7 +41,28 @@
     <item name="android:layout_margin">9dp</item>
     <item name="android:progressTint">@color/colorPrimary</item>
     <item name="android:max">80</item>
-  
   </style>
 
+  <style name="RestaurantInfoCategorie">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">12sp</item>
+    <item name="android:textColor">#000</item>
+  </style>
+
+  <style name="IconStyle">
+    <item name="android:layout_width">20dp</item>
+    <item name="android:layout_height">20dp</item>
+    <item name="android:scaleType">centerCrop</item>
+    <item name="android:layout_marginHorizontal">14dp</item>
+    <item name="android:layout_marginVertical">14dp</item>
+  </style>
+  
+  <style name="CardStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginLeft">@dimen/mtrl_card_spacing</item>
+    <item name="android:layout_marginTop">@dimen/mtrl_card_spacing</item>
+    <item name="android:layout_marginRight">@dimen/mtrl_card_spacing</item>
+  </style>
 </resources>
