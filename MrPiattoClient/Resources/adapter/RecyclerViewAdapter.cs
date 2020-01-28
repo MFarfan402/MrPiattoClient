@@ -11,7 +11,6 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Resources.utilities;
-using Square.Picasso;
 
 namespace MrPiattoClient.Resources.adapter
 {

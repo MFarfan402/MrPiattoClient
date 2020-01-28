@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarRatings"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ratingCard"
+            android:layout_marginTop="56dp"
+            style="@style/CardStyle">
+            <RelativeLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+                <include 
+                   android:id="@+id/includedCardLayout"
+                   layout="@layout/card_rating"/>
+                <TextView
+                    android:id="@+id/textRecomended"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+                    android:text="95% lo recomenaría a un amigo"
+                    android:textSize="14dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_below="@id/includedCardLayout"
+                    android:layout_centerHorizontal="true"/>
+                <!--Section 1 out of 3. Center section: Service section-->
+                <RelativeLayout
+                    android:id="@+id/RatingSectionService"
+			        android:layout_width="100dp"
+			        android:layout_height="wrap_content"
+                    android:layout_below="@id/textRecomended"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginHorizontal="4dp"
+                    >
+                    <TextView
+                        android:id="@+id/ratingServiceText"
+                        android:text="Servicio"
+                        style="@style/ratingText"
+                        android:layout_centerHorizontal="true"
+                    />
+                    <TextView
+                        android:id="@+id/ratingService"
+                        android:text="4.6"
+                        style="@style/ratingNumber"
+                        android:layout_below="@id/ratingServiceText"
+                        android:layout_centerHorizontal="true"
+                    />
+                </RelativeLayout>
+                <!--Section 2 out of 3. Left section: Food section-->
+                <RelativeLayout
+                    android:id="@+id/RatingSectionFood"
+			        android:layout_width="100dp"
+			        android:layout_height="wrap_content"
+                    android:layout_below="@id/textRecomended"
+                    android:layout_toLeftOf="@id/RatingSectionService"
+                    >
+                    <TextView
+                        android:id="@+id/ratingFoodText"
+                        android:text="Comida"
+                        style="@style/ratingText"
+                        android:layout_centerHorizontal="true"
+                    />
+                    <TextView
+                        android:id="@+id/ratingFood"
+                        android:text="4.6"
+                        style="@style/ratingNumber"
+                        android:layout_below="@id/ratingFoodText"
+                        android:layout_centerHorizontal="true"
+                    />
+                </RelativeLayout>
+                <!--Section 3 out of 3. Left section: Environment section-->
+                <RelativeLayout
+                    android:id="@+id/RatingSectionEnvironment"
+			        android:layout_width="100dp"
+			        android:layout_height="wrap_content"
+                    android:layout_below="@id/textRecomended"
+                    android:layout_toRightOf="@id/RatingSectionService"
+                    >
+                    <TextView
+                        android:id="@+id/ratingEnvironmentText"
+                        android:text="Ambiente"
+                        style="@style/ratingText"
+                        android:layout_centerHorizontal="true"
+                    />
+                    <TextView
+                        android:id="@+id/ratingEnvironment"
+                        android:text="4.6"
+                        style="@style/ratingNumber"
+                        android:layout_below="@id/ratingEnvironmentText"
+                        android:layout_centerHorizontal="true"
+                    />
+                </RelativeLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView		   
+                android:id="@+id/recyclerViewRatingComment"
+		        android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingCard"
+            />
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

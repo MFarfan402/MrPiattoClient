@@ -70,9 +70,11 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\adapter\RecyclerViewAdapter.cs" />
+    <Compile Include="Resources\adapter\RecyclerViewRatingComment.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Resources\utilities\ImageHelper.cs" />
     <Compile Include="RestaurantPhotosActivity.cs" />
+    <Compile Include="RestaurantRatingsActivity.cs" />
     <Compile Include="Web References\WebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -262,6 +264,24 @@
     <AndroidResource Include="Resources\layout\cardview_restaurantPhoto.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_ratings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\card_rating.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_review.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

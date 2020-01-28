@@ -18,13 +18,25 @@ namespace MrPiattoClient
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
             Button buttonSeeMorePhotos = FindViewById<Button>(Resource.Id.buttonSeeMorePhotos);
             buttonSeeMorePhotos.Click += delegate
             {
                 Intent intent = new Intent(this, typeof(RestaurantPhotosActivity));
+                StartActivity(intent);
+            };
+            Button buttonSeeMoreRatings = FindViewById<Button>(Resource.Id.buttonSeeMoreRatings);
+            buttonSeeMoreRatings.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(RestaurantRatingsActivity));
+                StartActivity(intent);
+            };
+            Button buttonCall = FindViewById<Button>(Resource.Id.buttonCall);
+            buttonCall.Click += delegate
+            {
+                Intent intent = new Intent(Intent.ActionDial);
+                intent.SetData(Android.Net.Uri.Parse("tel:" + buttonCall.Text));
                 StartActivity(intent);
             };
 
@@ -36,13 +48,16 @@ namespace MrPiattoClient
             collapsingToolbar.SetExpandedTitleColor(GetColor(Resource.Color.mtrl_btn_transparent_bg_color));
             collapsingToolbar.SetCollapsedTitleTextColor(Android.Resource.Color.Black);
 
+            /*
             SetSupportActionBar(toolbar);
+            
             toolbar.InflateMenu(Resource.Menu.menu_restaurant);
             toolbar.MenuItemClick += (sender, e) =>
             {
                 Toast.MakeText(this, e.Item.TitleFormatted, ToastLength.Long).Show();
             };
-            
+            */
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:layout_height="150dp">
+	android:layout_height="400dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,17 +11,9 @@
             android:id="@+id/imageView1"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-            android:src="@drawable/grid1"
             android:scaleType="centerCrop"
+            android:layout_marginBottom="1dp"
         />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#333333"
-            android:text="Prueba"
-            android:id="@+id/textView1"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="4dp" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
