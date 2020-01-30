@@ -227,11 +227,26 @@
                         android:layout_below="@id/includedCard"/>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
+            <!--Card: Restaurant Map-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/restaurantMap"
+                style="@style/CardStyle"
+                android:layout_below="@id/restaurantRatings">
+                <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/googleMap"
+						android:layout_width="match_parent"
+						android:layout_height="300dp"/>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
             <!--Card: Restaurant complete information-->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/restaurantCompleteInformation"
                 style="@style/CardStyle"
-                android:layout_below="@id/restaurantRatings">
+                android:layout_below="@id/restaurantMap">
 
                 <RelativeLayout
                     android:layout_height="wrap_content"
@@ -414,6 +429,8 @@
                 </RelativeLayout>
 
             </com.google.android.material.card.MaterialCardView>
+            
+                
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnBookATable"
 				android:layout_width="match_parent"
