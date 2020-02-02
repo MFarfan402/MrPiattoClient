@@ -4,4 +4,52 @@
   <string name="Lorem">
     Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. 
   </string>
+  <string-array name="AvailableHours">
+    <item>01:00</item>
+    <item>02:00</item>
+    <item>03:00</item>
+    <item>04:00</item>
+    <item>05:00</item>
+    <item>06:00</item>
+    <item>07:00</item>
+    <item>08:00</item>
+    <item>09:00</item>
+    <item>10:00</item>
+    <item>11:00</item>
+    <item>12:00</item>
+    <item>13:00</item>
+    <item>14:00</item>
+    <item>15:00</item>
+    <item>16:00</item>
+    <item>17:00</item>
+    <item>18:00</item>
+    <item>19:00</item>
+    <item>20:00</item>
+    <item>21:00</item>
+    <item>22:00</item>
+    <item>23:00</item>
+    <item>00:00</item>
+  </string-array>
+
+  <string-array name="QuantityGroup">
+    <item>1 persona</item>
+    <item>2 personas</item>
+    <item>3 personas</item>
+    <item>4 personas</item>
+    <item>5 personas</item>
+    <item>6 personas</item>
+    <item>7 personas</item>
+    <item>8 personas</item>
+    <item>9 personas</item>
+    <item>10 personas</item>
+    <item>11 personas</item>
+    <item>12 personas</item>
+    <item>13 personas</item>
+    <item>14 personas</item>
+    <item>15 personas</item>
+  </string-array>
+
+  <string name="PoliticsWarning">
+    Los apartados descritos a continuación son las políticas que el restaurante tiene sobre la cancelación y/o modificación de las reservaciones. En caso de infringir en alguna de estás, el usuario será penalizado con un strike.
+  </string>
 </resources>

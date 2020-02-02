@@ -55,27 +55,24 @@
 		        style="@style/bookingText"
                 android:text="Tamaño del grupo"
                 android:layout_below="@id/textBooking"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutSize"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_below="@id/textSizeBooking">
-
-                <EditText
-                    android:id="@+id/editTextQuantity"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-                    android:maxLines="1"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
+            
+            <Spinner
+                android:id="@+id/SpinnerQuantity"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/AvailableHours"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/textSizeBooking"
+            />
 
             <!--Second Data: When?-->
             <TextView
                 android:id="@+id/textDateBooking"
 		        style="@style/bookingText"
                 android:text="Fecha"
-                android:layout_below="@id/textInputLayoutSize"
+                android:layout_below="@id/SpinnerQuantity"
             />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutDate"
@@ -89,7 +86,8 @@
                 <EditText
                     android:id="@+id/editTextDate"
 			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
+			        android:layout_height="50dp"
+                    android:drawableRight="@drawable/calendar"
                     android:focusable="false"
                     android:maxLines="1"/>
 
@@ -100,25 +98,22 @@
                 android:id="@+id/textHourBooking"
 		        style="@style/bookingText"
                 android:text="Hora"
-                android:layout_below="@id/textInputLayoutSize"
+                android:layout_below="@id/SpinnerQuantity"
                 android:layout_toRightOf="@id/textInputLayoutDate"
             />
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutHour"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            <Spinner
+                android:id="@+id/SpinnerHour"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/AvailableHours"
+                android:background="@drawable/gradient_spinner"
+                android:layout_marginTop="4dp"
                 android:layout_below="@id/textHourBooking"
                 android:layout_toRightOf="@id/textInputLayoutDate"
-                >
-
-                <EditText
-                    android:id="@+id/editTextHour"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-                    android:maxLines="1"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
+                
+            />
 
             <TextView
                 android:id="@+id/politicsText"
@@ -150,7 +145,7 @@
                 android:text="BUSCAR MESA"
                 app:backgroundTint="@color/colorPrimary"
                 android:layout_marginTop="8dp"
-                android:layout_below="@id/textInputLayoutHour"
+                android:layout_below="@id/textInputLayoutDate"
             />
 
         </RelativeLayout>

@@ -17,16 +17,54 @@ namespace MrPiattoClient
     [Activity(Label = "BookingActivity")]
     public class BookingActivity : AppCompatActivity
     {
-        EditText editTextQuantity, editTextDate, editTextHour;
+        Dialog popupDialog;
+        EditText editTextDate;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_bookATable);
             InitToolbar();
+            InitDatePicker();
+            InitSpinners();
 
-            editTextQuantity = FindViewById<EditText>(Resource.Id.editTextQuantity);
+            TextView politicsButton = FindViewById<TextView>(Resource.Id.politicsText2);
+            politicsButton.Click += PopupPolitics;
+            
+        }
+
+        private void PopupPolitics(object sender, EventArgs e)
+        {
+            popupDialog = new Dialog(this);
+            popupDialog.SetContentView(Resource.Layout.fragment_politics);
+            popupDialog.Window.SetSoftInputMode(SoftInput.AdjustResize);
+
+            popupDialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
+            popupDialog.Show();
+
+            Button buttonOk = popupDialog.FindViewById<Button>(Resource.Id.buttonOkWarning);
+            buttonOk.Click += delegate
+            {
+                popupDialog.Dismiss();
+                popupDialog.Hide();
+            };
+
+        }
+
+        private void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
+        {
+            editTextDate.Text = e.Date.ToShortDateString();
+        }
+
+        private void InitToolbar()
+        {
+            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbarBooking);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.Title = "Haz tu reservación";
+        }
+        private void InitDatePicker()
+        {
             editTextDate = FindViewById<EditText>(Resource.Id.editTextDate);
-            editTextHour = FindViewById<EditText>(Resource.Id.editTextHour);
 
             editTextDate.Click += delegate
             {
@@ -36,18 +74,17 @@ namespace MrPiattoClient
                 dialog.Show();
             };
         }
-
-        private void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
+        private void InitSpinners()
         {
-            editTextDate.Text = e.Date.ToLongDateString();
-        }
+            Spinner spinner = FindViewById<Spinner>(Resource.Id.SpinnerHour);
+            var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.AvailableHours, Android.Resource.Layout.SimpleListItem1);
+            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = adapter;
 
-        private void InitToolbar()
-        {
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbarBooking);
-            SetSupportActionBar(toolbar);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.Title = "Haz tu reservación";
+            Spinner spinnerQuantity = FindViewById<Spinner>(Resource.Id.SpinnerQuantity);
+            var adapterQuantity = ArrayAdapter.CreateFromResource(this, Resource.Array.QuantityGroup, Android.Resource.Layout.SimpleListItem1);
+            adapterQuantity.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinnerQuantity.Adapter = adapterQuantity;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

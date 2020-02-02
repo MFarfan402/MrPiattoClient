@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+    android:padding="4dp"
+	>
+
+	 <TextView
+        android:id="@+id/titlePolitics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Políticas de Cancelación"
+        android:textColor="#000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_margin="8dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/warningContent"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+        android:text="@string/PoliticsWarning"
+        android:textSize="13sp"
+        android:layout_margin="4dp"
+        android:textColor="#000"
+        android:layout_below="@id/titlePolitics"
+    />
+
+    <TextView
+        android:id="@+id/warningA"
+        android:text="Tiempo máximo para generar reservación:"
+        style="@style/warningCategorie"
+        android:layout_below="@id/warningContent"
+		/>
+
+    <TextView
+        android:id="@+id/contentWarningA"
+        android:text="1 semana"
+        android:layout_marginLeft="4dp"
+        style="@style/RestaurantInfoCategorie"
+        android:layout_below="@id/warningA"
+		/>
+
+    <TextView
+        android:id="@+id/warningB"
+        android:text="Tiempo mínimo para generar reservación:"
+        style="@style/warningCategorie"
+        android:layout_below="@id/contentWarningA"
+		/>
+
+    <TextView
+        android:id="@+id/contentWarningB"
+        android:text="1 día"
+        android:layout_marginLeft="4dp"
+        style="@style/RestaurantInfoCategorie"
+        android:layout_below="@id/warningB"
+		/>
+
+    <TextView
+        android:id="@+id/warningC"
+        android:text="Tiempo de antelación para modificar reservación sin penalización:"
+        style="@style/warningCategorie"
+        android:layout_below="@id/contentWarningB"
+		/>
+
+    <TextView
+        android:id="@+id/contentWarningC"
+        android:text="1 día"
+        android:layout_marginLeft="4dp"
+        style="@style/RestaurantInfoCategorie"
+        android:layout_below="@id/warningC"
+		/>
+
+    <TextView
+        android:id="@+id/warningD"
+        android:text="Penalización impuesta:"
+        style="@style/warningCategorie"
+        android:layout_below="@id/contentWarningC"
+		/>
+
+    <TextView
+        android:id="@+id/contentWarningD"
+        android:text="Anulación del servicio por 3 semanas"
+        android:layout_marginLeft="4dp"
+        style="@style/RestaurantInfoCategorie"
+        android:layout_below="@id/warningD"
+		/>
+
+    <TextView
+        android:id="@+id/warningE"
+        android:text="Generación de strikes sobre usuario:"
+        style="@style/warningCategorie"
+        android:layout_below="@id/contentWarningD"
+		/>
+
+    <TextView
+        android:id="@+id/contentWarningE"
+        android:text="Activada"
+        android:layout_marginLeft="4dp"
+        style="@style/RestaurantInfoCategorie"
+        android:layout_below="@id/warningE"
+		/>
+
+    <TextView
+        android:id="@+id/warningF"
+        android:text="Tiempo de tolerancia:"
+        style="@style/warningCategorie"
+        android:layout_below="@id/contentWarningE"
+		/>
+
+    <TextView
+        android:id="@+id/contentWarningF"
+        android:text="20 minutos"
+        android:layout_marginLeft="4dp"
+        style="@style/RestaurantInfoCategorie"
+        android:layout_below="@id/warningF"
+		/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonOkWarning"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:text="ESTOY DE ACUERDO"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_margin="8dp"
+        android:layout_below="@id/contentWarningF"
+    />
+</RelativeLayout>
