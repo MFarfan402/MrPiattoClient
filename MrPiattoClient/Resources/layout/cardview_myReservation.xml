@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+>
+	<com.google.android.material.card.MaterialCardView
+		android:layout_marginVertical="8dp"
+        style="@style/CardStyle">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<ImageView
+				android:id="@+id/cardviewRestaurantImage"
+				android:layout_width="100dp"
+				android:layout_height="100dp"
+				android:src="@drawable/grid1"
+				android:scaleType="centerCrop"
+				android:layout_margin="8dp"
+				android:layout_centerVertical="true"		
+			/>
+
+			<TextView
+				android:id="@+id/cardviewReservationsName"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Mr. Piatto Restaurant"
+				android:textSize="24sp"
+				android:textColor="#000"
+				android:layout_centerHorizontal="true"
+				android:layout_toRightOf="@id/cardviewRestaurantImage"
+			/>
+			<!--LEFT part: Date-->
+			<ImageView
+				android:id="@+id/cardviewCalendarIcon"
+				style="@style/iconConfirmation"
+				android:src="@drawable/confirmation_calendar"
+				android:layout_below="@id/cardviewReservationsName"
+				android:layout_toRightOf="@id/cardviewRestaurantImage"/>
+			<TextView
+				android:id="@+id/cardviewDay"
+				style="@style/confirmationData"
+				android:layout_marginRight="8dp"
+				android:layout_toRightOf="@id/cardviewCalendarIcon"
+				android:layout_below="@id/cardviewReservationsName"
+			/>
+
+			<!--CENTER part: Hour-->
+			<ImageView
+				android:id="@+id/cardviewClockIcon"
+				style="@style/iconConfirmation"
+				android:src="@drawable/confirmation_clock"
+				android:layout_below="@id/cardviewReservationsName"
+				android:layout_toRightOf="@id/cardviewDay"/>
+			<TextView
+				android:id="@+id/cardviewHour"
+				style="@style/confirmationData"
+				android:layout_marginRight="8dp"
+				android:layout_toRightOf="@id/cardviewClockIcon"
+				android:layout_below="@id/cardviewReservationsName"
+			/>
+
+			<!--RIGHT part: Quantity-->
+			<ImageView
+				android:id="@+id/cardviewQuantityIcon"
+				style="@style/iconConfirmation"
+				android:src="@drawable/confirmation_user"
+				android:layout_below="@id/cardviewCalendarIcon"
+				android:layout_toRightOf="@id/cardviewRestaurantImage"/>
+			<TextView
+				android:id="@+id/cardviewQuantity"
+				style="@style/confirmationData"
+				android:layout_marginRight="8dp"
+				android:layout_toRightOf="@id/cardviewQuantityIcon"
+				android:layout_below="@id/cardviewCalendarIcon"
+			/>
+
+			<Button
+				android:id="@+id/buttonInfoMyReservation"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="VER MÁS"
+				android:layout_margin="8dp"
+				style="@style/OutlinedButton"
+				android:layout_below="@id/cardviewQuantityIcon"
+				android:layout_toRightOf="@id/cardviewRestaurantImage"
+				app:strokeColor="@color/colorPrimary"
+			/>
+
+			<Button
+				android:id="@+id/buttonModifyMyReservation"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="MODIFICAR"
+				android:layout_margin="8dp"
+				android:layout_alignParentRight="true"
+				style="@style/OutlinedButton"
+				app:strokeColor="@color/colorPrimary"
+				android:layout_below="@id/cardviewQuantityIcon"
+				android:layout_toRightOf="@id/buttonInfoMyReservation"
+			/>
+
+
+
+
+		</RelativeLayout>
+	</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

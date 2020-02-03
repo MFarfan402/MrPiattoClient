@@ -25,6 +25,11 @@
     <item name="android:textColor">@color/colorPrimary</item>
     <item name="android:textSize">14sp</item>
   </style>
+
+  <style name="OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <item name="android:textColor">@color/colorPrimary</item>
+    <item name="android:textSize">14sp</item>
+  </style>
   
   <style name="numberRatingBar">
     <item name="android:layout_width">wrap_content</item>
@@ -97,6 +102,18 @@
     <item name="android:textStyle">bold</item>
     <item name="android:layout_marginTop">4dp</item>
     <item name="android:layout_marginLeft">4dp</item>
+  </style>
+
+  <style name="iconConfirmation" parent="IconStyle">
+    <item name="android:layout_margin">8dp</item>
+  </style>
+
+  <style name="confirmationData">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">#000</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:layout_marginTop">8dp</item>
   </style>
 
 </resources>

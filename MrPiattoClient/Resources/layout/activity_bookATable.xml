@@ -59,7 +59,7 @@
             <Spinner
                 android:id="@+id/SpinnerQuantity"
 				android:layout_width="match_parent"
-				android:layout_height="50dp"
+				android:layout_height="55dp"
                 android:spinnerMode="dropdown"
                 android:background="@drawable/gradient_spinner"
                 android:entries="@array/AvailableHours"
@@ -86,7 +86,7 @@
                 <EditText
                     android:id="@+id/editTextDate"
 			        android:layout_width="match_parent"
-			        android:layout_height="50dp"
+			        android:layout_height="55dp"
                     android:drawableRight="@drawable/calendar"
                     android:focusable="false"
                     android:maxLines="1"/>
@@ -105,7 +105,7 @@
             <Spinner
                 android:id="@+id/SpinnerHour"
 				android:layout_width="match_parent"
-				android:layout_height="50dp"
+				android:layout_height="55dp"
                 android:spinnerMode="dropdown"
                 android:entries="@array/AvailableHours"
                 android:background="@drawable/gradient_spinner"

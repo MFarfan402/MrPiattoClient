@@ -19,6 +19,7 @@ namespace MrPiattoClient
     {
         Dialog popupDialog;
         EditText editTextDate;
+        Spinner spinner, spinnerQuantity;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,7 +30,41 @@ namespace MrPiattoClient
 
             TextView politicsButton = FindViewById<TextView>(Resource.Id.politicsText2);
             politicsButton.Click += PopupPolitics;
+
+            Button buttonSearch = FindViewById<Button>(Resource.Id.buttonBooking);
+            buttonSearch.Click += PopupConfirmation;
             
+        }
+
+        private void PopupConfirmation(object sender, EventArgs e)
+        {
+            popupDialog = new Dialog(this);
+            popupDialog.SetContentView(Resource.Layout.fragment_confirmation);
+            popupDialog.Window.SetSoftInputMode(SoftInput.AdjustResize);
+            popupDialog.Show();
+
+            TextView textDate = popupDialog.FindViewById<TextView>(Resource.Id.confirmationDay);
+            TextView textHour = popupDialog.FindViewById<TextView>(Resource.Id.confirmationHour);
+            TextView textQuantity = popupDialog.FindViewById<TextView>(Resource.Id.confirmationQuantity);
+            Button buttonOk = popupDialog.FindViewById<Button>(Resource.Id.buttonConfirmation);
+
+
+            textDate.Text = editTextDate.Text;
+            textHour.Text = spinner.SelectedItem.ToString();
+            textQuantity.Text = spinnerQuantity.SelectedItem.ToString();
+
+            buttonOk.Click += delegate
+            {
+                popupDialog.Dismiss();
+                popupDialog.Hide();
+                Intent intent = new Intent(this, typeof(MyReservationsActivity));
+                intent.PutExtra(MyReservationsActivity.keyDate, textDate.Text);
+                intent.PutExtra(MyReservationsActivity.keyHour, textHour.Text);
+                intent.PutExtra(MyReservationsActivity.keyQuantity, textQuantity.Text);
+                StartActivity(intent);
+            };
+
+
         }
 
         private void PopupPolitics(object sender, EventArgs e)
@@ -76,12 +111,12 @@ namespace MrPiattoClient
         }
         private void InitSpinners()
         {
-            Spinner spinner = FindViewById<Spinner>(Resource.Id.SpinnerHour);
+            spinner = FindViewById<Spinner>(Resource.Id.SpinnerHour);
             var adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.AvailableHours, Android.Resource.Layout.SimpleListItem1);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = adapter;
 
-            Spinner spinnerQuantity = FindViewById<Spinner>(Resource.Id.SpinnerQuantity);
+            spinnerQuantity = FindViewById<Spinner>(Resource.Id.SpinnerQuantity);
             var adapterQuantity = ArrayAdapter.CreateFromResource(this, Resource.Array.QuantityGroup, Android.Resource.Layout.SimpleListItem1);
             adapterQuantity.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinnerQuantity.Adapter = adapterQuantity;

@@ -1,0 +1,78 @@
+
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/titleConfirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirma tus datos"
+        android:textColor="#000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
+
+
+    <ImageView
+        android:id="@+id/confirmationCalendarIcon"
+        style="@style/iconConfirmation"
+        android:src="@drawable/confirmation_calendar"
+        android:layout_below="@id/titleConfirmation"
+    />
+
+    <TextView
+        android:id="@+id/confirmationDay"
+		style="@style/confirmationData"
+        android:layout_toRightOf="@id/confirmationCalendarIcon"
+        android:layout_below="@id/titleConfirmation"
+    />
+
+
+    <ImageView
+        android:id="@+id/confirmationClockIcon"
+        style="@style/iconConfirmation"
+        android:src="@drawable/confirmation_clock"
+        android:layout_below="@id/confirmationCalendarIcon"
+    />
+
+    <TextView
+        android:id="@+id/confirmationHour"
+		style="@style/confirmationData"
+        android:layout_toRightOf="@id/confirmationClockIcon"
+        android:layout_below="@id/confirmationCalendarIcon"
+    />
+
+
+
+    <ImageView
+        android:id="@+id/confirmationUserIcon"
+        style="@style/iconConfirmation"
+        android:src="@drawable/confirmation_user"
+        android:layout_below="@id/confirmationClockIcon"
+    />
+
+    <TextView
+        android:id="@+id/confirmationQuantity"
+		style="@style/confirmationData"
+        android:layout_toRightOf="@id/confirmationUserIcon"
+        android:layout_below="@id/confirmationClockIcon"
+    />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonConfirmation"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:text="CONFIRMAR DATOS"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_marginHorizontal="8dp"
+        android:layout_below="@id/confirmationUserIcon"
+    />
+
+
+</RelativeLayout>

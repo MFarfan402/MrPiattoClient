@@ -70,8 +70,10 @@
   <ItemGroup>
     <Compile Include="BookingActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MyReservationsActivity.cs" />
     <Compile Include="Resources\adapter\RecyclerViewAdapter.cs" />
     <Compile Include="Resources\adapter\RecyclerViewRatingComment.cs" />
+    <Compile Include="Resources\adapter\RecylcerViewReservation.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Resources\utilities\ImageHelper.cs" />
     <Compile Include="RestaurantPhotosActivity.cs" />
@@ -292,6 +294,30 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\fragment_politics.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_confirmation.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\confirmation_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\confirmation_clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\confirmation_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_myReservations.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_myReservation.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
