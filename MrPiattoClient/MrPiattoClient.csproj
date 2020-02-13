@@ -81,6 +81,7 @@
     <Compile Include="Resources\utilities\ImageHelper.cs" />
     <Compile Include="RestaurantPhotosActivity.cs" />
     <Compile Include="RestaurantRatingsActivity.cs" />
+    <Compile Include="SurveyActivity.cs" />
     <Compile Include="VisitedActivity.cs" />
     <Compile Include="Web References\WebService\Reference.cs">
       <AutoGen>True</AutoGen>

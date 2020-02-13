@@ -6,25 +6,189 @@
     android:layout_width="match_parent">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarSurvey"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbarSurvey"
-	        android:layout_width="match_parent"
-	        android:layout_height="@dimen/mtrl_toolbar_default_height"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarSurvey"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleMarginEnd="64dp"
+            >
+
+            <ImageView
+                android:id="@+id/surveyImage"
+		        android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/restaurantimage"
+                app:layout_collapseMode="parallax"
+                android:scaleType="centerCrop" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarSurvey"
+	            android:layout_width="match_parent"
+	            android:layout_height="@dimen/mtrl_toolbar_default_height"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin"/>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <RelativeLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            android:padding="8dp"
+            >
 
-        <!--Here goes the code of the form-->
+        
+            <!--Here goes the code of the form-->
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/textSurvey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Encuesta de satisfacción"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_margin="8dp"
+                android:layout_centerHorizontal="true"
+            />
+
+            <TextView
+                android:id="@+id/questionA"
+		        style="@style/bookingText"
+                android:text="¿Cuál es el nombre del mesero que lo atendió?"
+                android:layout_below="@id/textSurvey"/>
+
+            <Spinner
+                android:id="@+id/SpinnerA"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/WaitersName"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/questionA"
+            />
+
+            <TextView
+                android:id="@+id/questionB"
+		        style="@style/bookingText"
+                android:text="Del 1 al 10, ¿que calificación le darías al mesero?"
+                android:layout_below="@id/SpinnerA"/>
+
+            <Spinner
+                android:id="@+id/SpinnerB"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/WaitersName"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/questionB"
+            />
+
+            <TextView
+                android:id="@+id/questionC"
+		        style="@style/bookingText"
+                android:text="Del 1 al 10, ¿que calificación le darías a la comida?"
+                android:layout_below="@id/SpinnerB"/>
+
+            <Spinner
+                android:id="@+id/SpinnerC"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/WaitersName"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/questionC"
+            />
+
+            <TextView
+                android:id="@+id/questionD"
+		        style="@style/bookingText"
+                android:text="Del 1 al 10, ¿qué tan cómodo te sentiste en el restaurante?"
+                android:layout_below="@id/SpinnerC"/>
+
+            <Spinner
+                android:id="@+id/SpinnerD"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/WaitersName"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/questionD"
+            />
+
+            <TextView
+                android:id="@+id/questionE"
+		        style="@style/bookingText"
+                android:text="Del 1 al 10, ¿qué calificación le darías al servicio del restaurante?"
+                android:layout_below="@id/SpinnerD"/>
+
+            <Spinner
+                android:id="@+id/SpinnerE"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/WaitersName"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/questionE"
+            />
+
+            <TextView
+                android:id="@+id/questionF"
+		        style="@style/bookingText"
+                android:text="¿Cuál es el nombre del mesero que lo atendió?"
+                android:layout_below="@id/SpinnerE"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputComment"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_below="@id/questionF"
+                >
+
+                <EditText
+                    android:id="@+id/editTextComment"
+			        android:layout_width="match_parent"
+			        android:layout_height="150dp"
+                    android:maxLength="200"
+                    android:maxLines="5"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSurveyComplete"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+                    android:text="ENVIAR COMENTARIOS"
+                    app:backgroundTint="@color/colorPrimary"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/textInputComment"
+                />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -42,7 +42,7 @@ namespace MrPiattoClient
             recycler = FindViewById<RecyclerView>(Resource.Id.recyclerViewVisited);
             recycler.SetLayoutManager(new LinearLayoutManager(this));
             recycler.SetItemAnimator(new DefaultItemAnimator());
-            adapter = new RecyclerViewVisitedAdapter(restaurants);
+            adapter = new RecyclerViewVisitedAdapter(restaurants, this);
             recycler.SetAdapter(adapter);
 
         }

@@ -18,24 +18,26 @@ namespace MrPiattoClient.Resources.adapter
     {
         public TextView name, location, cuisine;
         public RatingBar ratingBar;
-        //public Button buttonRateMe, buttonComplaint;
+        public Button buttonRateMe, buttonComplaint;
         public RecyclerViewVisitedHolder(View itemView) : base(itemView)
         {
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantName);
             location = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedLocation);
             cuisine = ItemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantCuisine);
             ratingBar = itemView.FindViewById<RatingBar>(Resource.Id.cardviewVisitedRatingBar);
-            //buttonRateMe = itemView.FindViewById<Button>(Resource.Id.buttonVisitedReview);
+            buttonRateMe = itemView.FindViewById<Button>(Resource.Id.buttonVisitedReview);
             //buttonComplaint = itemView.FindViewById<Button>(Resource.Id.buttonVisitedComplaint);
         }
     }
 
     class RecyclerViewVisitedAdapter : RecyclerView.Adapter
     {
+        private Context context;
         private List<Restaurant> visitedRestaurant;
-        public RecyclerViewVisitedAdapter(List<Restaurant> visitedRestaurant)
+        public RecyclerViewVisitedAdapter(List<Restaurant> visitedRestaurant, Context context)
         {
             this.visitedRestaurant = visitedRestaurant;
+            this.context = context;
         }
 
         public override int ItemCount
@@ -50,7 +52,11 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.location.Text = visitedRestaurant[position].location;
             viewHolder.cuisine.Text = visitedRestaurant[position].cuisine;
             viewHolder.ratingBar.Rating = visitedRestaurant[position].rating;
-            //viewHolder.buttonRateMe.Click += StartActivityReview();
+            viewHolder.buttonRateMe.Click += (sender, e) =>
+            {
+                Intent intent = new Intent(context, typeof(SurveyActivity));
+                context.StartActivity(intent);
+            };
             //viewHolder.buttonComplaint.Click += StartActivityComplaint();
         }
 
@@ -60,15 +66,5 @@ namespace MrPiattoClient.Resources.adapter
             View itemView = inflater.Inflate(Resource.Layout.cardview_visited, parent, false);
             return new RecyclerViewVisitedHolder(itemView);
         }
-        /*
-        private EventHandler StartActivityReview()
-        {
-            throw new NotImplementedException();
-        }
-
-        private EventHandler StartActivityComplaint()
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }

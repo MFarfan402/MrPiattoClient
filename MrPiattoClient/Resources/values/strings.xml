@@ -55,6 +55,19 @@
     <item>Problemas relacionados con atención, servicio y comida</item>
   </string-array>
 
+  <string-array name="WaitersName">
+    <item>Desconocido</item>
+    <item>Juanito</item>
+    <item>Pedrito</item>
+    <item>Miguelito</item>
+    <item>Chuchito</item>
+  </string-array>
+
+  <string-array name="Rating">
+    <item>10</item> <item>9</item> <item>8</item> <item>7</item> <item>6</item>
+    <item>5</item> <item>4</item> <item>3</item> <item>2</item> <item>1</item>
+  </string-array>
+
   <string name="PoliticsWarning">
     Los apartados descritos a continuación son las políticas que el restaurante tiene sobre la cancelación y/o modificación de las reservaciones. En caso de infringir en alguna de estás, el usuario será penalizado con un strike.
   </string>
