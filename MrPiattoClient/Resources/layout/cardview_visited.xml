@@ -1,0 +1,95 @@
+
+<androidx.cardview.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+>
+	<com.google.android.material.card.MaterialCardView
+		android:layout_marginVertical="8dp"
+        style="@style/CardStyle">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<ImageView
+				android:id="@+id/cardviewVisitedImage"
+				android:layout_width="match_parent"
+				android:layout_height="250dp"
+				android:src="@drawable/grid3"			
+			/>
+
+			<TextView
+				android:id="@+id/cardviewVisitedRestaurantName"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Mr. Piatto Restaurant"
+				android:textColor="#000"
+				android:textStyle="bold"
+				android:textSize="24sp"
+				android:layout_margin="12dp"
+				android:layout_below="@id/cardviewVisitedImage"
+			/>
+
+			<TextView
+                android:id="@+id/cardviewVisitedLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal."
+                android:textColor="@color/locationText"
+                android:textSize="14sp"
+                android:paddingLeft="12dp"
+                android:layout_below="@id/cardviewVisitedRestaurantName"/>
+        
+            <TextView
+                android:id="@+id/cardviewVisitedRestaurantCuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mexicana"
+                android:textColor="@color/locationText"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:paddingTop="8dp"
+				android:paddingHorizontal="12dp"
+                android:layout_below="@id/cardviewVisitedLocation"/>
+
+			<RatingBar
+				android:id="@+id/cardviewVisitedRatingBar"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:numStars="5"
+				android:stepSize="0.1"
+				android:isIndicator="true"
+				android:layout_marginVertical="4dp"
+				android:layout_marginHorizontal="12dp"
+				style="@style/RatingBarSmall"
+				android:layout_below="@id/cardviewVisitedRestaurantCuisine"/>
+
+			<Button
+				android:id="@+id/buttonVisitedReview"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="RESEÑA"
+				android:layout_margin="8dp"
+				style="@style/OutlinedButton"
+				app:strokeColor="@color/colorPrimary"
+				android:layout_alignParentRight="true"
+				android:layout_below="@id/cardviewVisitedLocation"/>
+
+			<Button
+				android:id="@+id/buttonVisitedComplaint"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="QUEJA"
+				android:layout_margin="8dp"
+				style="@style/OutlinedButton"
+				app:strokeColor="@color/colorPrimary"
+				android:layout_toLeftOf="@id/buttonVisitedReview"
+				android:layout_below="@id/cardviewVisitedLocation"/>
+
+		</RelativeLayout>
+
+	</com.google.android.material.card.MaterialCardView>
+
+</androidx.cardview.widget.CardView>

@@ -10,6 +10,7 @@ using Android.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Content;
 using Android.Gms.Maps;
+using RestSharp;
 
 namespace MrPiattoClient
 {
@@ -83,7 +84,23 @@ namespace MrPiattoClient
         {
             Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
             ToastLength.Short).Show();
-            return base.OnOptionsItemSelected(item);
+            
+            switch(item.ItemId)
+            {
+                case Resource.Id.shareRestaurant:
+
+                    Intent intent = new Intent(this, typeof(FavoriteActivity));
+                    StartActivity(intent);
+                    return true;
+
+                case Resource.Id.addToFavorite:
+                    Intent intent2 = new Intent(this, typeof(VisitedActivity));
+                    StartActivity(intent2);
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
         
         public void OnMapReady(GoogleMap googleMap)
@@ -119,15 +136,6 @@ namespace MrPiattoClient
                 StartActivity(intent);
             };
         }
-        /*
-        private void ButtonBookATable_Click(object sender, System.EventArgs e)
-        {
-
-            Android.Support.V4.App.FragmentTransaction transaction = SupportFragmentManager.BeginTransaction();
-            BookingDialogFragment dialogFragment = new BookingDialogFragment();
-            dialogFragment.Show(transaction, "dialog fragment");
-        }
-        */
         public void InitMap(Bundle savedInstanceState)
         {
             Bundle mapViewBundle = null;

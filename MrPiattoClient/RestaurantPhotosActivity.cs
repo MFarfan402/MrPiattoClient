@@ -13,6 +13,7 @@ using MrPiattoClient.Resources.adapter;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using AndroidX.RecyclerView.Widget;
+using RestSharp;
 
 namespace MrPiattoClient
 {

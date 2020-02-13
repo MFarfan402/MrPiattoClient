@@ -48,6 +48,12 @@
     <item>14 personas</item>
     <item>15 personas</item>
   </string-array>
+  
+  <string-array name="Complaints">
+    <item>El restaurante no respeto la reservación</item>
+    <item>El restaurante estaba cerrado</item>
+    <item>Problemas relacionados con atención, servicio y comida</item>
+  </string-array>
 
   <string name="PoliticsWarning">
     Los apartados descritos a continuación son las políticas que el restaurante tiene sobre la cancelación y/o modificación de las reservaciones. En caso de infringir en alguna de estás, el usuario será penalizado con un strike.

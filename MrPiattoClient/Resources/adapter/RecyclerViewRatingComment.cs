@@ -32,19 +32,21 @@ namespace MrPiattoClient.Resources.adapter
     {
         public TextView name, date, comment;
         public RatingBar rating;
+        public Button buttonReport;
         public RecyclerViewRatingCommentHolder(View itemView) : base(itemView)
         {
             name = itemView.FindViewById<TextView>(Resource.Id.userNameText);
             date = itemView.FindViewById<TextView>(Resource.Id.ratingDate);
             comment = itemView.FindViewById<TextView>(Resource.Id.ratingComment);
             rating = itemView.FindViewById<RatingBar>(Resource.Id.ratingBarComment);
+
+            buttonReport = itemView.FindViewById<Button>(Resource.Id.reportButton);
         }
     }
 
     class RecyclerViewRatingCommentAdapter : RecyclerView.Adapter
     {
         private List<Comment> comments;
-
         public RecyclerViewRatingCommentAdapter(List<Comment> comments)
         {
             this.comments = comments;
@@ -62,6 +64,10 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.date.Text = comments[position].date;
             viewHolder.comment.Text = comments[position].comment;
             viewHolder.rating.Rating = comments[position].rating;
+            viewHolder.buttonReport.Click += delegate
+            {
+                Console.WriteLine(position);
+            };
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

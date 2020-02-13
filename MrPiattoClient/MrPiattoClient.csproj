@@ -69,15 +69,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingActivity.cs" />
+    <Compile Include="FavoriteActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyReservationsActivity.cs" />
     <Compile Include="Resources\adapter\RecyclerViewAdapter.cs" />
+    <Compile Include="Resources\adapter\RecyclerViewFavorite.cs" />
     <Compile Include="Resources\adapter\RecyclerViewRatingComment.cs" />
+    <Compile Include="Resources\adapter\RecyclerViewVisited.cs" />
     <Compile Include="Resources\adapter\RecylcerViewReservation.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Resources\utilities\ImageHelper.cs" />
     <Compile Include="RestaurantPhotosActivity.cs" />
     <Compile Include="RestaurantRatingsActivity.cs" />
+    <Compile Include="VisitedActivity.cs" />
     <Compile Include="Web References\WebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +140,9 @@
       <Version>3.1.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="RestSharp">
+      <Version>106.10.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
       <Version>28.0.0.3</Version>
@@ -318,6 +325,31 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\cardview_myReservation.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_favorite.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_favorite.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_survey.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_visited.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_visited.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

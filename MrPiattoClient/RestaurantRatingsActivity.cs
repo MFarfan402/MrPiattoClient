@@ -51,7 +51,6 @@ namespace MrPiattoClient
             adapter = new RecyclerViewRatingCommentAdapter(comments);
             recyclerView.SetAdapter(adapter);
         }
-
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
