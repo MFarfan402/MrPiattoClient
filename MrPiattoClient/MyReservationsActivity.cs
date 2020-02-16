@@ -47,7 +47,7 @@ namespace MrPiattoClient
             recycler.SetLayoutManager(new LinearLayoutManager(this));
             recycler.SetItemAnimator(new DefaultItemAnimator());
 
-            adapter = new RecyclerViewReservationAdapter(reservations);
+            adapter = new RecyclerViewReservationAdapter(reservations, this);
             recycler.SetAdapter(adapter);
         }
 

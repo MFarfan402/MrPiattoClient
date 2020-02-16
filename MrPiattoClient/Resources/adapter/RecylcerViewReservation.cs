@@ -33,6 +33,7 @@ namespace MrPiattoClient.Resources.adapter
     class RecyclerViewReservationHolder : RecyclerView.ViewHolder
     {
         public TextView date, hour, quantity, restaurantName;
+        public Button buttonModify;
         //public ImageView image;
         public RecyclerViewReservationHolder(View itemView) : base(itemView)
         {
@@ -41,16 +42,19 @@ namespace MrPiattoClient.Resources.adapter
             quantity = itemView.FindViewById<TextView>(Resource.Id.cardviewQuantity);
             restaurantName = itemView.FindViewById<TextView>(Resource.Id.cardviewReservationsName);
             //image = itemView.FindViewById<ImageView>(Resource.Id.cardviewRestaurantImage);
+            buttonModify = itemView.FindViewById<Button>(Resource.Id.buttonModifyMyReservation);
         }
     }
 
     class RecyclerViewReservationAdapter : RecyclerView.Adapter
     {
+        private Context context;
         public List<Reservation> reservations;
 
-        public RecyclerViewReservationAdapter(List<Reservation> reservations)
+        public RecyclerViewReservationAdapter(List<Reservation> reservations, Context context)
         {
             this.reservations = reservations;
+            this.context = context;
         }
 
         public override int ItemCount
@@ -66,6 +70,11 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.quantity.Text = reservations[position].Quantity;
             viewHolder.restaurantName.Text = reservations[position].RestaurantName;
             //viewHolder.image.SetImageResource(reservations.R);
+            viewHolder.buttonModify.Click += (sender, e) =>
+            {
+                Intent intent = new Intent(context, typeof(ModifyActivity));
+                context.StartActivity(intent);
+            };
 
         }
 

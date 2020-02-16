@@ -5,11 +5,13 @@
 
   <item
       android:id="@+id/shareRestaurant"
+      android:enabled="true"
       android:icon="@drawable/icon_share"
       android:showAsAction="always"
       android:title="Compartir"/>
   <item
       android:id="@+id/addToFavorite"
+      android:enabled="true"
       android:icon="@drawable/icon_heart"
       android:showAsAction="always"
       android:title="Agregar a favoritos"/>

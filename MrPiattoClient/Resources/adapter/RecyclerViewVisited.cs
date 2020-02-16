@@ -26,7 +26,7 @@ namespace MrPiattoClient.Resources.adapter
             cuisine = ItemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantCuisine);
             ratingBar = itemView.FindViewById<RatingBar>(Resource.Id.cardviewVisitedRatingBar);
             buttonRateMe = itemView.FindViewById<Button>(Resource.Id.buttonVisitedReview);
-            //buttonComplaint = itemView.FindViewById<Button>(Resource.Id.buttonVisitedComplaint);
+            buttonComplaint = itemView.FindViewById<Button>(Resource.Id.buttonVisitedComplaint);
         }
     }
 
@@ -57,7 +57,11 @@ namespace MrPiattoClient.Resources.adapter
                 Intent intent = new Intent(context, typeof(SurveyActivity));
                 context.StartActivity(intent);
             };
-            //viewHolder.buttonComplaint.Click += StartActivityComplaint();
+            viewHolder.buttonComplaint.Click += (sender, e) =>
+            {
+                Intent intent = new Intent(context, typeof(ComplaintActivity));
+                context.StartActivity(intent);
+            };
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

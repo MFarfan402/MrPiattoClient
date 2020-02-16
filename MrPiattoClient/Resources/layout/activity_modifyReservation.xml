@@ -1,0 +1,154 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarModify"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/modifyImage"
+		    android:layout_width="match_parent"
+	        android:layout_height="300dp"
+            android:src="@drawable/restaurantimage"
+            android:padding="0dp"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+	        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/modifyImage"
+            >
+
+            <TextView
+                android:id="@+id/textModify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modifique su reservación"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_margin="8dp"
+                android:layout_centerHorizontal="true"/>
+
+        <!--First Data: How many?-->
+            <TextView
+                android:id="@+id/textSizeModify"
+		        style="@style/bookingText"
+                android:text="Tamaño del grupo"
+                android:layout_below="@id/textModify"/>
+            
+            <Spinner
+                android:id="@+id/SpinnerQuantityModify"
+				android:layout_width="match_parent"
+				android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/AvailableHours"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/textSizeModify"
+            />
+
+            <!--Second Data: When?-->
+            <TextView
+                android:id="@+id/textDateModify"
+		        style="@style/bookingText"
+                android:text="Fecha"
+                android:layout_below="@id/SpinnerQuantityModify"
+            />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutDateModify"
+		        android:layout_width="200dp"
+		        android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginRight="8dp"
+                android:layout_below="@id/textDateModify"
+                >
+
+                <EditText
+                    android:id="@+id/editTextDateModify"
+			        android:layout_width="match_parent"
+			        android:layout_height="55dp"
+                    android:drawableRight="@drawable/calendar"
+                    android:focusable="false"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--Third Data: At?-->
+            <TextView
+                android:id="@+id/textHourModify"
+		        style="@style/bookingText"
+                android:text="Hora"
+                android:layout_below="@id/SpinnerQuantityModify"
+                android:layout_toRightOf="@id/textInputLayoutDateModify"
+            />
+
+            <Spinner
+                android:id="@+id/SpinnerHourModify"
+				android:layout_width="match_parent"
+				android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/AvailableHours"
+                android:background="@drawable/gradient_spinner"
+                android:layout_marginTop="4dp"
+                android:layout_below="@id/textHourModify"
+                android:layout_toRightOf="@id/textInputLayoutDateModify"
+                
+            />
+
+            <TextView
+                android:id="@+id/politicsTextModify"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+                android:text="Al BUSCAR MESA estás aceptando las"
+                android:layout_marginTop="4dp"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:layout_below="@id/buttonModify"
+            />
+
+
+            <TextView
+                android:id="@+id/politicsTextModify2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+                android:text=" Políticas de Modificación."
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="4dp"
+                android:textSize="12sp"
+                android:layout_below="@id/buttonModify"
+                android:layout_toRightOf="@id/politicsTextModify"
+            />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonModify"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+                android:text="BUSCAR MESA"
+                app:backgroundTint="@color/colorPrimary"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/textInputLayoutDateModify"
+            />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

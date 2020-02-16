@@ -50,9 +50,11 @@
   </string-array>
   
   <string-array name="Complaints">
-    <item>El restaurante no respeto la reservación</item>
-    <item>El restaurante estaba cerrado</item>
-    <item>Problemas relacionados con atención, servicio y comida</item>
+    <item>El restaurante no respeto la reservación.</item>
+    <item>El restaurante estaba cerrado.</item>
+    <item>Problemas relacionados con atención.</item>
+    <item>Problemas relacionados con velocidad.</item>
+    <item>Problemas relacionados con comida.</item>
   </string-array>
 
   <string-array name="WaitersName">

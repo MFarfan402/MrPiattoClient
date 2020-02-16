@@ -69,8 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingActivity.cs" />
+    <Compile Include="ComplaintActivity.cs" />
     <Compile Include="FavoriteActivity.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="HomeActivity.cs" />
+    <Compile Include="RestaurantActivity.cs" />
+    <Compile Include="ModifyActivity.cs" />
     <Compile Include="MyReservationsActivity.cs" />
     <Compile Include="Resources\adapter\RecyclerViewAdapter.cs" />
     <Compile Include="Resources\adapter\RecyclerViewFavorite.cs" />
@@ -351,6 +354,36 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_visited.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_complaint.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_modifyReservation.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_navigation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navbar_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navbar_heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navbar_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navbar_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_bottomNavigation.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -1,0 +1,100 @@
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarComplaint"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        >
+
+         <ImageView
+            android:id="@+id/complaintImage"
+		    android:layout_width="match_parent"
+	        android:layout_height="300dp"
+            android:src="@drawable/restaurantimage"
+            android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/textComplaint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buzón de quejas"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="8dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/complaintImage"
+        />
+        <TextView
+            android:id="@+id/complaintCategorieText"
+		    style="@style/bookingText"
+            android:text="Motivo de la queja."
+            android:layout_marginHorizontal="8dp"
+            android:layout_below="@id/textComplaint"/>
+        <Spinner
+            android:id="@+id/SpinnerComplaint"
+			android:layout_width="match_parent"
+			android:layout_height="55dp"
+            android:spinnerMode="dropdown"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/gradient_spinner"
+            android:entries="@array/Complaints"
+            style="@style/Widget.AppCompat.Spinner"
+            android:layout_below="@id/complaintCategorieText"
+        />
+        <TextView
+            android:id="@+id/complaintCommentText"
+		    style="@style/bookingText"
+            android:text="Describa su problema."
+            android:layout_marginHorizontal="8dp"
+            android:layout_below="@id/SpinnerComplaint"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputComplaint"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/complaintCommentText"
+            >
+
+                <EditText
+                    android:id="@+id/editTextComplaint"
+			        android:layout_width="match_parent"
+			        android:layout_height="150dp"
+                    android:maxLength="200"
+                    android:textSize="16sp"
+                    android:minLines="3"
+                    android:maxLines="5"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonComplaint"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            android:text="ENVIAR COMENTARIOS"
+            app:backgroundTint="@color/colorPrimary"
+            android:layout_margin="8dp"
+            android:layout_below="@id/textInputComplaint"
+            
+            />
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
