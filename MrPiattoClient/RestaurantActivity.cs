@@ -90,8 +90,6 @@ namespace MrPiattoClient
             {
                 case Resource.Id.shareRestaurant:
 
-                    Intent intent = new Intent(this, typeof(FavoriteActivity));
-                    StartActivity(intent);
                     return true;
 
                 case Resource.Id.addToFavorite:

@@ -61,6 +61,10 @@ namespace MrPiattoClient
                         .Commit();
                     break;
                 case Resource.Id.itemFavorite:
+                    fragment = FragmentFavorite.NewInstance();
+                    SupportFragmentManager.BeginTransaction()
+                        .Replace(Resource.Id.frameMainContent, fragment)
+                        .Commit();
                     break;
             }
 

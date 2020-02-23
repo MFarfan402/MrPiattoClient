@@ -9,15 +9,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V7.App;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
+using Fragment = Android.Support.V4.App.Fragment;
 using MrPiattoClient.Resources.adapter;
 using AndroidX.RecyclerView.Widget;
 
 namespace MrPiattoClient
 {
     [Activity(Label = "FavoriteActivity")]
-    public class FavoriteActivity : AppCompatActivity
+    public class FragmentFavorite : Fragment
     {
         List<Restaurant> restaurants = new List<Restaurant>()
         {
@@ -27,45 +26,29 @@ namespace MrPiattoClient
         };
         RecyclerView recycler;
         RecyclerViewFavoriteAdapter adapter;
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_favorite);
-
-            InitToolbar();
-            PutFavoriteRestaurants();
         }
 
-        private void PutFavoriteRestaurants()
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            //recyclerViewFavorite
-            recycler = FindViewById<RecyclerView>(Resource.Id.recyclerViewFavorite);
-            recycler.SetLayoutManager(new LinearLayoutManager(this));
+            View view = inflater.Inflate(Resource.Layout.fragment_favorite, container, false);
+            PutFavoriteRestaurants(view);
+            return view;
+        }
+
+        private void PutFavoriteRestaurants(View view)
+        {
+            recycler = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewFavorite);
+            recycler.SetLayoutManager(new LinearLayoutManager(view.Context));
             recycler.SetItemAnimator(new DefaultItemAnimator());
             adapter = new RecyclerViewFavoriteAdapter(restaurants);
             recycler.SetAdapter(adapter);
-            
         }
-
-        private void InitToolbar()
+        public static FragmentFavorite NewInstance()
         {
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbarFavorite);
-            SetSupportActionBar(toolbar);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.Title = "Favoritos";
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            switch (item.ItemId)
-            {
-                case Android.Resource.Id.Home:
-                    Finish();
-                    return true;
-
-                default:
-                    return base.OnOptionsItemSelected(item);
-            }
+            return new FragmentFavorite { Arguments = new Bundle() };
         }
     }
 }

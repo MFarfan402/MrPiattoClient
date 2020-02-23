@@ -71,7 +71,7 @@
     <Compile Include="AboutMeActivity.cs" />
     <Compile Include="BookingActivity.cs" />
     <Compile Include="ComplaintActivity.cs" />
-    <Compile Include="FavoriteActivity.cs" />
+    <Compile Include="FragmentFavorite.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="FragmentHome.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
@@ -342,7 +342,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_favorite.xml">
+    <AndroidResource Include="Resources\layout\fragment_favorite.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
