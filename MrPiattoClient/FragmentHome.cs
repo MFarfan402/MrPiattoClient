@@ -15,7 +15,7 @@ using AndroidX.RecyclerView.Widget;
 
 namespace MrPiattoClient
 {
-    public class HomeFragment : Android.Support.V4.App.Fragment
+    public class FragmentHome : Android.Support.V4.App.Fragment
     {
         List<Restaurant> main = new List<Restaurant>()
         {
@@ -71,9 +71,9 @@ namespace MrPiattoClient
         }
 
 
-        public static HomeFragment NewInstance()
+        public static FragmentHome NewInstance()
         {
-            return new HomeFragment { Arguments = new Bundle() };
+            return new FragmentHome { Arguments = new Bundle() };
         }
 
     }

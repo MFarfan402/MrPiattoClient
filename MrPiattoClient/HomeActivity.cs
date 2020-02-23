@@ -46,7 +46,7 @@ namespace MrPiattoClient
             switch (id)
             {
                 case Resource.Id.itemHome:
-                    fragment = HomeFragment.NewInstance();
+                    fragment = FragmentHome.NewInstance();
                     SupportFragmentManager.BeginTransaction()
                         .Replace(Resource.Id.frameMainContent, fragment)
                         .Commit();
@@ -55,6 +55,10 @@ namespace MrPiattoClient
                     
                     break;
                 case Resource.Id.itemReservations:
+                    fragment = FragmentMyReservations.NewInstance();
+                    SupportFragmentManager.BeginTransaction()
+                        .Replace(Resource.Id.frameMainContent, fragment)
+                        .Commit();
                     break;
                 case Resource.Id.itemFavorite:
                     break;

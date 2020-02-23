@@ -73,12 +73,12 @@
     <Compile Include="ComplaintActivity.cs" />
     <Compile Include="FavoriteActivity.cs" />
     <Compile Include="HomeActivity.cs" />
-    <Compile Include="HomeFragment.cs" />
+    <Compile Include="FragmentHome.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
     <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
     <Compile Include="RestaurantActivity.cs" />
     <Compile Include="ModifyActivity.cs" />
-    <Compile Include="MyReservationsActivity.cs" />
+    <Compile Include="FragmentMyReservations.cs" />
     <Compile Include="Resources\adapter\RecyclerViewAdapter.cs" />
     <Compile Include="Resources\adapter\RecyclerViewFavorite.cs" />
     <Compile Include="Resources\adapter\RecyclerViewRatingComment.cs" />
@@ -327,7 +327,7 @@
     <AndroidResource Include="Resources\drawable\confirmation_user.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_myReservations.xml">
+    <AndroidResource Include="Resources\layout\fragment_myReservations.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

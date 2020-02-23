@@ -57,11 +57,7 @@ namespace MrPiattoClient
             {
                 popupDialog.Dismiss();
                 popupDialog.Hide();
-                Intent intent = new Intent(this, typeof(MyReservationsActivity));
-                intent.PutExtra(MyReservationsActivity.keyDate, textDate.Text);
-                intent.PutExtra(MyReservationsActivity.keyHour, textHour.Text);
-                intent.PutExtra(MyReservationsActivity.keyQuantity, textQuantity.Text);
-                StartActivity(intent);
+                Finish();
             };
 
 
