@@ -73,4 +73,10 @@
   <string name="PoliticsWarning">
     Los apartados descritos a continuación son las políticas que el restaurante tiene sobre la cancelación y/o modificación de las reservaciones. En caso de infringir en alguna de estás, el usuario será penalizado con un strike.
   </string>
+
+  <string-array name="Gender">
+    <item>Hombre</item>
+    <item>Mujer</item>
+    <item>Otro</item>
+  </string-array>
 </resources>

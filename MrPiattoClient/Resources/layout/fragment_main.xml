@@ -1,0 +1,86 @@
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+  
+    >
+  <RelativeLayout
+	
+  android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:background="#FFF"
+>
+    <TextView
+      android:id="@+id/helloText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Buenos dias"
+      android:textColor="#000"
+      android:textStyle="bold"
+      android:textSize="26sp"
+      android:layout_margin="20dp"
+	/>
+    <TextView
+      android:id="@+id/textCategorieFavorite"
+      android:text="Tus Favoritos de Mr. Piatto"
+      style="@style/bookingText"
+      android:textSize="16sp"
+      android:layout_marginTop="20dp"
+      android:layout_marginBottom="8dp"
+      android:layout_below="@id/helloText"
+	/>
+    <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyclerViewMainFavorite"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="35dp"
+          android:layout_below="@id/textCategorieFavorite"
+    />
+    <TextView
+      android:id="@+id/textCategorieNear"
+      android:text="Cercanos a ti"
+      style="@style/bookingText"
+      android:textSize="16sp"
+      android:layout_marginBottom="8dp"
+      android:layout_below="@id/recyclerViewMainFavorite"
+	/>
+    <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/recyclerViewMainNear"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="35dp"
+         android:layout_below="@id/textCategorieNear"
+    />
+
+    <TextView
+      android:id="@+id/textCategorieCuisine"
+      android:text="Buscar por cocina"
+      style="@style/bookingText"
+      android:textSize="16sp"
+      android:layout_below="@id/recyclerViewMainNear"
+	/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMainCuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
+        android:layout_below="@id/textCategorieCuisine"
+	/>
+    
+    <ImageView
+      android:id="@+id/imageMainProfile"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:src="@drawable/user"
+      android:scaleType="centerCrop"
+      android:layout_marginTop="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_alignParentRight="true"
+      />
+
+
+  </RelativeLayout>
+  
+</ScrollView>
+

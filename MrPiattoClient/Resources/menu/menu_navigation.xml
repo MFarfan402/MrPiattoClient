@@ -19,7 +19,7 @@
       android:id="@+id/itemReservations"
       android:enabled="true"
       android:icon="@drawable/navbar_calendar"
-      android:title="Reservaciones"
+      android:title="Reservación"
       app:showAsAction="ifRoom" />
  
   <item

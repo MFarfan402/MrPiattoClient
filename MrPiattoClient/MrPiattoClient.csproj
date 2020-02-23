@@ -68,10 +68,14 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutMeActivity.cs" />
     <Compile Include="BookingActivity.cs" />
     <Compile Include="ComplaintActivity.cs" />
     <Compile Include="FavoriteActivity.cs" />
     <Compile Include="HomeActivity.cs" />
+    <Compile Include="HomeFragment.cs" />
+    <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
+    <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
     <Compile Include="RestaurantActivity.cs" />
     <Compile Include="ModifyActivity.cs" />
     <Compile Include="MyReservationsActivity.cs" />
@@ -386,6 +390,32 @@
     <AndroidResource Include="Resources\layout\activity_bottomNavigation.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_main.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_restaurantHome.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_cuisine.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_aboutMe.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\redStrike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\strike.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

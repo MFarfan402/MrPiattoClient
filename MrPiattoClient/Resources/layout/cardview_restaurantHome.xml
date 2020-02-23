@@ -1,0 +1,87 @@
+
+<com.google.android.material.card.MaterialCardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="220dp"
+	android:layout_height="wrap_content"
+	android:layout_marginLeft="@dimen/mtrl_card_spacing"
+	android:layout_marginTop="@dimen/mtrl_card_spacing"
+	android:layout_marginRight="@dimen/mtrl_card_spacing"
+	app:cardCornerRadius="10dp"
+	>
+		
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<ImageView
+			android:id="@+id/cardviewMainImage"
+			android:layout_width="match_parent"
+			android:layout_height="150dp"
+			android:src="@drawable/grid3"
+			android:scaleType="centerCrop"
+		/>
+
+		<TextView
+			android:id="@+id/cardviewMainName"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Sonora Grill Prime"
+			android:textSize="18dp"
+			android:textStyle="bold"
+			android:textColor="#000"
+			android:layout_marginHorizontal="8dp"
+			android:layout_marginTop="8dp"
+			android:layout_below="@id/cardviewMainImage"
+		/>
+		<TextView
+			android:id="@+id/cardviewMainCuisine"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Asador"
+			android:textSize="14dp"
+			android:textStyle="bold"
+			android:layout_marginTop="4dp"
+			android:layout_marginHorizontal="8dp"
+			android:layout_below="@id/cardviewMainName"
+		/>
+		<RatingBar
+			android:id="@+id/cardviewMainRatingBar"
+			android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:rating="1"
+			android:numStars="1"
+			android:isIndicator="true"
+			android:layout_marginTop="4dp"
+			style="@style/RatingBarSmall"
+			android:layout_below="@id/cardviewMainName"
+			android:layout_toRightOf="@id/cardviewMainCuisine"
+		/>
+		<TextView
+			android:id="@+id/cardviewMainRating"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="(128)"
+			android:textStyle="bold"
+			android:textSize="14dp"
+			android:layout_marginTop="4dp"
+			android:layout_below="@id/cardviewMainName"
+			android:layout_toRightOf="@id/cardviewMainRatingBar"
+				
+		/>
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnBookATableMain"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="RESERVA UNA MESA"
+			android:layout_margin="8dp"
+			style="@style/OutlinedButton"
+			app:strokeColor="@color/colorPrimary"
+			android:layout_below="@id/cardviewMainRating"
+			
+			/>
+
+		</RelativeLayout>
+
+	</com.google.android.material.card.MaterialCardView>

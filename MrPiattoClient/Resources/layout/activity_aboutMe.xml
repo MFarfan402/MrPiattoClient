@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+
+	<android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarAboutMe"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:layout_marginTop="56dp">
+
+        <ImageView
+            android:id="@+id/imageAboutMe"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+            android:src="@drawable/user"
+            android:scaleType="centerCrop"
+            android:layout_margin="20dp"
+        />
+
+        <View
+            android:id="@+id/lineView1"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+            android:background="@color/material_grey_300"
+            android:layout_margin="8dp"
+            android:layout_below="@id/imageAboutMe"
+        />
+
+        <TextView
+            android:id="@+id/textNameAboutMe"
+		    style="@style/bookingText"
+            android:text="Nombre y apellido"
+            android:layout_below="@id/lineView1"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputName"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="8dp"
+            android:layout_below="@id/textNameAboutMe"
+            >
+            <EditText
+                android:id="@+id/editTextName"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:inputType="text"
+                android:maxLines="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textNumberAboutMe"
+		    style="@style/bookingText"
+            android:text="Número de teléfono"
+            android:layout_below="@id/textInputName"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputNumber"
+		    android:layout_width="200dp"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="8dp"
+            android:layout_below="@id/textNumberAboutMe"
+            >
+
+            <EditText
+                android:id="@+id/editTextNumber"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:inputType="number"
+                android:maxLines="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textGenderAboutMe"
+		    style="@style/bookingText"
+            android:text="Género"
+            android:layout_below="@id/textInputName"
+            android:layout_toRightOf="@id/textInputNumber"
+        />
+
+        <Spinner
+            android:id="@+id/spinnerGender"
+			android:layout_width="200dp"
+			android:layout_height="55dp"
+            android:spinnerMode="dropdown"
+            android:entries="@array/Gender"
+            android:background="@drawable/gradient_spinner"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_below="@id/textGenderAboutMe"
+            android:layout_toRightOf="@id/textInputNumber"
+        />
+
+        <View
+            android:id="@+id/lineView2"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+            android:background="@color/material_grey_300"
+            android:layout_margin="14dp"
+            android:layout_below="@id/spinnerGender"
+        />
+        
+        <TextView
+            android:id="@+id/textStrikesAboutMe"
+		    style="@style/bookingText"
+            android:text="Tus strikes"
+            android:layout_below="@id/lineView2"
+        />
+
+        <ImageView
+            android:id="@+id/firstStrike"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/redStrike"
+            android:layout_below="@id/textStrikesAboutMe"
+            android:layout_toLeftOf="@id/secondStrike"
+        />
+        <ImageView
+            android:id="@+id/secondStrike"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/strike"
+            android:layout_below="@id/textStrikesAboutMe"
+            android:layout_centerHorizontal="true"
+        />
+        <ImageView
+            android:id="@+id/thirdStrike"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/strike"
+            android:layout_below="@id/textStrikesAboutMe"
+            android:layout_toRightOf="@id/secondStrike"
+        />
+        <View
+            android:id="@+id/lineView3"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+            android:background="@color/material_grey_300"
+            android:layout_margin="14dp"
+            android:layout_below="@id/firstStrike"
+        />
+        <Switch
+            android:id="@+id/allowPush"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_margin="8dp"
+            android:layout_below="@id/lineView3"
+        />
+        <TextView
+            android:id="@+id/textPushAboutMe"
+		    style="@style/bookingText"
+            android:text="Permitir notificaciones push"
+            android:layout_below="@id/lineView3"
+            android:layout_toRightOf="@id/allowPush"
+        />
+        <Switch
+            android:id="@+id/allowMail"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_margin="8dp"
+            android:layout_below="@id/allowPush"
+        />
+        <TextView
+            android:id="@+id/textMailAboutMe"
+		    style="@style/bookingText"
+            android:text="Permitir publicidad en correo electrónico"
+            android:layout_below="@id/allowPush"
+            android:layout_toRightOf="@id/allowMail"
+        />
+
+    </RelativeLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

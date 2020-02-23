@@ -15,7 +15,7 @@ using RestSharp;
 
 namespace MrPiattoClient
 {
-    [Activity(MainLauncher = true)]
+    [Activity(Label = "RestaurantActivity")]
     public class MainActivity : AppCompatActivity, IOnMapReadyCallback
     {
         private MapView mapView;
@@ -98,6 +98,12 @@ namespace MrPiattoClient
                     Intent intent2 = new Intent(this, typeof(VisitedActivity));
                     StartActivity(intent2);
                     return true;
+
+                case Resource.Id.helperItem:
+                    Intent intent3 = new Intent(this, typeof(HomeActivity));
+                    StartActivity(intent3);
+                    return true;
+
 
                 default:
                     return base.OnOptionsItemSelected(item);

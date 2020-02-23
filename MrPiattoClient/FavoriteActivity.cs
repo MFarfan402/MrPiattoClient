@@ -69,7 +69,3 @@ namespace MrPiattoClient
         }
     }
 }
-
-//MrPiattoRestaurant/adapters/
-//helper
-//expandable recyclerview
