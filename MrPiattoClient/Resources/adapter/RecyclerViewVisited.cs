@@ -23,7 +23,7 @@ namespace MrPiattoClient.Resources.adapter
         {
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantName);
             location = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedLocation);
-            cuisine = ItemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantCuisine);
+            cuisine = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantCuisine);
             ratingBar = itemView.FindViewById<RatingBar>(Resource.Id.cardviewVisitedRatingBar);
             buttonRateMe = itemView.FindViewById<Button>(Resource.Id.buttonVisitedReview);
             buttonComplaint = itemView.FindViewById<Button>(Resource.Id.buttonVisitedComplaint);

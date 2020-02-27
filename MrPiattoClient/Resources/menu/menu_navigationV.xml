@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+      android:id="@+id/itemAdd"
+      android:enabled="true"
+      android:icon="@drawable/navbar_add"
+      android:title="Añadir"
+      app:showAsAction="ifRoom" />
+
+  <item
+      android:id="@+id/itemTracking"
+      android:enabled="true"
+      android:icon="@drawable/navbar_warning"
+      android:title="Seguimiento"
+      app:showAsAction="ifRoom" />
+
+  <item
+      android:id="@+id/itemBadWords"
+      android:enabled="true"
+      android:icon="@drawable/navbar_comment"
+      android:title="Reseñas"
+      app:showAsAction="ifRoom" />
+
+</menu>

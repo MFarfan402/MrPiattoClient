@@ -62,8 +62,13 @@ namespace MrPiattoClient
             ImageView profilePic = rootView.FindViewById<ImageView>(Resource.Id.imageMainProfile);
             profilePic.Click += delegate
             {
-                Intent intent = new Intent(rootView.Context, typeof(AboutMeActivity));
+                //Intent intent = new Intent(rootView.Context, typeof(AboutMeActivity));
+                
+                Intent intent = new Intent(rootView.Context, typeof(ActivityVerifierMain));
                 StartActivity(intent);
+
+                
+
             };
 
 

@@ -69,13 +69,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutMeActivity.cs" />
+    <Compile Include="ActivityVerifierMain.cs" />
     <Compile Include="BookingActivity.cs" />
     <Compile Include="ComplaintActivity.cs" />
     <Compile Include="FragmentFavorite.cs" />
+    <Compile Include="FragmentVerifierNewRestaurant.cs" />
     <Compile Include="HomeActivity.cs" />
     <Compile Include="FragmentHome.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
     <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
+    <Compile Include="Resources\adapter\RecyclerViewNewRestaurant.cs" />
     <Compile Include="RestaurantActivity.cs" />
     <Compile Include="ModifyActivity.cs" />
     <Compile Include="FragmentMyReservations.cs" />
@@ -112,6 +115,10 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_main.xml">
       <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\menu_navigationV.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
@@ -416,6 +423,30 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\strike.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_mainVerifier.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_addRestaurant.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navbar_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navbar_comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\navbar_warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_newRestaurant.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

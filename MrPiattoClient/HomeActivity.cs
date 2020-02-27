@@ -26,12 +26,7 @@ namespace MrPiattoClient
             BottomNavigationView bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottomNavMain);
             bottomNavigation.NavigationItemSelected += FragmentListener;
 
-            InitFragments();
             LoadFragment(Resource.Id.itemHome);
-        }
-
-        private void InitFragments()
-        {
         }
 
         private void FragmentListener(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
@@ -70,8 +65,6 @@ namespace MrPiattoClient
 
             if (fragment == null)
             return;
-
-            
         }
     }
 }
