@@ -16,7 +16,7 @@ using RestSharp;
 namespace MrPiattoClient
 {
     [Activity(Label = "RestaurantActivity")]
-    public class MainActivity : AppCompatActivity, IOnMapReadyCallback
+    public class RestaurantActivity : AppCompatActivity, IOnMapReadyCallback
     {
         private MapView mapView;
         protected override void OnCreate(Bundle savedInstanceState)

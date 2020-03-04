@@ -17,8 +17,10 @@ namespace MrPiattoClient.Resources.adapter
     class RecyclerViewMainHolder : RecyclerView.ViewHolder
     {
         public TextView name, cuisine, rating;
+        public Button reservation;
         public RecyclerViewMainHolder(View itemView) : base(itemView)
         {
+            reservation = itemView.FindViewById<Button>(Resource.Id.btnBookATableMain);
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewMainName);
             cuisine = itemView.FindViewById<TextView>(Resource.Id.cardviewMainCuisine);
             rating = itemView.FindViewById<TextView>(Resource.Id.cardviewMainRating);
@@ -28,9 +30,11 @@ namespace MrPiattoClient.Resources.adapter
     class RecyclerViewMainAdapter : RecyclerView.Adapter
     {
         private List<Restaurant> restaurants;
-        public RecyclerViewMainAdapter(List<Restaurant> restaurants)
+        private Context context;
+        public RecyclerViewMainAdapter(List<Restaurant> restaurants, Context context)
         {
             this.restaurants = restaurants;
+            this.context = context;
         }
         public override int ItemCount
         {
@@ -42,7 +46,12 @@ namespace MrPiattoClient.Resources.adapter
             RecyclerViewMainHolder viewHolder = holder as RecyclerViewMainHolder;
             viewHolder.name.Text = restaurants[position].name;
             viewHolder.cuisine.Text = restaurants[position].cuisine;
-            viewHolder.rating.Text = restaurants[position].rating.ToString(); ;
+            viewHolder.rating.Text = restaurants[position].rating.ToString();
+            viewHolder.reservation.Click += (sender, e) =>
+            {
+                Intent intent = new Intent(context, typeof(RestaurantActivity));
+                context.StartActivity(intent);
+            };
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

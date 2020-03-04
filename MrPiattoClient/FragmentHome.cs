@@ -17,6 +17,7 @@ namespace MrPiattoClient
 {
     public class FragmentHome : Android.Support.V4.App.Fragment
     {
+        public Context contextFragment;
         List<Restaurant> main = new List<Restaurant>()
         {
             new Restaurant(5, "Mr. Piatto Restaurant", "Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal.", "TAILANDESA"),
@@ -53,7 +54,7 @@ namespace MrPiattoClient
             recyclerCuisine.SetLayoutManager(new LinearLayoutManager(rootView.Context, LinearLayoutManager.Horizontal, false));
             recyclerCuisine.SetItemAnimator(new DefaultItemAnimator());
 
-            adapter = new RecyclerViewMainAdapter(main);
+            adapter = new RecyclerViewMainAdapter(main, rootView.Context);
             adapterCuisine = new RecyclerViewCuisineAdapter(cuisines);
             recycler.SetAdapter(adapter);
             recyclerNear.SetAdapter(adapter);
@@ -66,9 +67,6 @@ namespace MrPiattoClient
                 
                 Intent intent = new Intent(rootView.Context, typeof(ActivityVerifierMain));
                 StartActivity(intent);
-
-                
-
             };
 
 
@@ -76,7 +74,7 @@ namespace MrPiattoClient
         }
 
 
-        public static FragmentHome NewInstance()
+        public static FragmentHome NewInstance(Context context)
         {
             return new FragmentHome { Arguments = new Bundle() };
         }

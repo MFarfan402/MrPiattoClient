@@ -48,11 +48,13 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.name.Text = restaurants[position].name;
             viewHolder.cuisine.Text = restaurants[position].cuisine;
             viewHolder.location.Text = restaurants[position].location;
-            /*
+            
             viewHolder.buttonAdd.Click += (sender, e) =>
             {
-
+                Intent intent = new Intent(context, typeof(ActivityAddRestaurant));
+                context.StartActivity(intent);
             };
+            /*
             viewHolder.buttonDeny.Click += (sender, e) =>
             {
 

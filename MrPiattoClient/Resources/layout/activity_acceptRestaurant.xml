@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarAcceptRestaurant"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:padding="8dp"
+        >
+
+        <TextView
+            android:id="@+id/tittleAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirme sus datos"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_margin="8dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/textInitHourAccept"
+		    style="@style/bookingText"
+            android:text="Hora de apertura"
+            android:layout_below="@id/tittleAccept"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputInitTime"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginRight="8dp"
+                android:layout_below="@id/textInitHourAccept"
+                >
+
+                <EditText
+                    android:id="@+id/editTextInitHour"
+			        android:layout_width="match_parent"
+			        android:layout_height="55dp"
+                    android:focusable="false"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/textFinalHourAccept"
+		    style="@style/bookingText"
+            android:text="Hora de apertura"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/textInputInitTime"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputFinalTime"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginRight="8dp"
+                android:layout_below="@id/textFinalHourAccept"
+                >
+
+                <EditText
+                    android:id="@+id/editTextFinalHour"
+			        android:layout_width="match_parent"
+			        android:layout_height="55dp"
+                    android:focusable="false"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            
+        <TextView
+            android:id="@+id/textPriceAccept"
+		    style="@style/bookingText"
+            android:text="Precio estimado"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/textInputFinalTime"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputPriceAccept"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginRight="8dp"
+            android:layout_below="@id/textPriceAccept"
+            >
+
+            <EditText
+                android:id="@+id/editTextPriceAccept"
+			    android:layout_width="match_parent"
+			    android:layout_height="55dp"
+                android:inputType="number"
+                android:maxLines="1"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/textCategoriesAccept"
+		    style="@style/bookingText"
+            android:text="Seleccione máximo 3 categorías"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/textInputPriceAccept"/>
+
+        <Spinner
+                android:id="@+id/SpinnerCategorieFirst"
+				android:layout_width="match_parent"
+				android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+            android:layout_marginTop="4dp"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/Cuisines"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/textCategoriesAccept"
+            />
+        <Spinner
+                android:id="@+id/SpinnerCategorieSecond"
+				android:layout_width="match_parent"
+				android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+            android:layout_marginTop="4dp"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/Cuisines"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/SpinnerCategorieFirst"
+            />
+        <Spinner
+                android:id="@+id/SpinnerCategorieThird"
+				android:layout_width="match_parent"
+				android:layout_height="55dp"
+                android:spinnerMode="dropdown"
+            android:layout_marginTop="4dp"
+                android:background="@drawable/gradient_spinner"
+                android:entries="@array/Cuisines"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_below="@id/SpinnerCategorieSecond"
+            />
+
+
+        <TextView
+            android:id="@+id/textPaymentOptionsAccept"
+		    style="@style/bookingText"
+            android:text="Hora de apertura"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/SpinnerCategorieThird"/>
+
+        <CheckBox
+            android:id="@+id/checkPO1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:text="Efectivo"
+            android:layout_below="@id/textPaymentOptionsAccept"
+        />
+        <CheckBox
+            android:id="@+id/checkPO2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:text="Tarjetas de crédito/débito"
+            android:layout_below="@id/checkPO1"
+        />
+        <CheckBox
+            android:id="@+id/checkPO3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:text="AMEX"
+            android:layout_below="@id/checkPO2"
+        />
+        <CheckBox
+            android:id="@+id/checkPO4"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:text="Cheques"
+            android:layout_below="@id/checkPO3"
+        />
+        <CheckBox
+            android:id="@+id/checkPO5"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:text="Transferencia electrónica"
+            android:layout_below="@id/checkPO4"
+        />
+
+
+        <TextView
+            android:id="@+id/textDressAccept"
+		    style="@style/bookingText"
+            android:text="Hora de apertura"
+            android:layout_marginTop="80dp"
+            android:layout_below="@id/checkPO5"/>
+        <Spinner
+            android:id="@+id/SpinnerDressAccept"
+			android:layout_width="match_parent"
+			android:layout_height="55dp"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/gradient_spinner"
+            android:entries="@array/Dress"
+            style="@style/Widget.AppCompat.Spinner"
+            android:layout_below="@id/textDressAccept"
+        />
+
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendRestaurantData"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="ENVIAR DATOS"
+            style="@style/OutlinedButton"
+                android:layout_below="@id/SpinnerDressAccept"
+                app:strokeColor="@color/colorPrimary"/>
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

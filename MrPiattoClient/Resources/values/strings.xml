@@ -79,4 +79,17 @@
     <item>Mujer</item>
     <item>Otro</item>
   </string-array>
+<string-array name="Dress">
+    <item>Informal</item>
+    <item>Formal</item>
+  </string-array>
+<string-array name="Cuisines">
+  <item>N/A</item>
+  <item>Mexicana</item>
+<item>Italiana</item>
+<item>Francesa</item>
+<item>Tailandesa</item>
+<item>Asador</item>
+<item>Mariscos</item>
+</string-array>
 </resources>

@@ -22,6 +22,7 @@ namespace MrPiattoClient
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_mainVerifier);
             BottomNavigationView bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottomNavMainVerifier);
+            bottomNavigation.InflateMenu(Resource.Menu.menu_navigationV);
             bottomNavigation.NavigationItemSelected += FragmentListener;
 
             LoadFragment(Resource.Id.itemAdd);
@@ -37,6 +38,10 @@ namespace MrPiattoClient
                     SupportFragmentManager.BeginTransaction()
                         .Replace(Resource.Id.frameMainContentVerifier, fragment)
                         .Commit();
+                    break;
+                case Resource.Id.itemTracking:
+                    break;
+                case Resource.Id.itemBadWords:
                     break;
             }
             if (fragment == null)
