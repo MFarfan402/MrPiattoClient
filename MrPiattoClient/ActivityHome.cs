@@ -14,9 +14,8 @@ using Android.Widget;
 
 namespace MrPiattoClient
 {
-    
-    [Activity(MainLauncher = true)]
-    public class HomeActivity : FragmentActivity
+    [Activity(Label = "ActivityHome")]
+    public class ActivityHome : FragmentActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -42,27 +41,20 @@ namespace MrPiattoClient
             {
                 case Resource.Id.itemHome:
                     fragment = FragmentHome.NewInstance(this);
-                    SupportFragmentManager.BeginTransaction()
-                        .Replace(Resource.Id.frameMainContent, fragment)
-                        .Commit();
                     break;
                 case Resource.Id.itemSearch:
-                    
+                    fragment = FragmentSearch.NewInstance();
                     break;
                 case Resource.Id.itemReservations:
                     fragment = FragmentMyReservations.NewInstance();
-                    SupportFragmentManager.BeginTransaction()
-                        .Replace(Resource.Id.frameMainContent, fragment)
-                        .Commit();
                     break;
                 case Resource.Id.itemFavorite:
                     fragment = FragmentFavorite.NewInstance();
-                    SupportFragmentManager.BeginTransaction()
-                        .Replace(Resource.Id.frameMainContent, fragment)
-                        .Commit();
                     break;
             }
-
+            SupportFragmentManager.BeginTransaction()
+                .Replace(Resource.Id.frameMainContent, fragment)
+                .Commit();
             if (fragment == null)
             return;
         }

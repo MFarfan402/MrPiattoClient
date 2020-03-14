@@ -1,5 +1,4 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.Support.V4.App;
 using Android.OS;
 using Android.Support.V7.App;
@@ -98,7 +97,7 @@ namespace MrPiattoClient
                     return true;
 
                 case Resource.Id.helperItem:
-                    Intent intent3 = new Intent(this, typeof(HomeActivity));
+                    Intent intent3 = new Intent(this, typeof(ActivityHome));
                     StartActivity(intent3);
                     return true;
 

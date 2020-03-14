@@ -70,13 +70,18 @@
   <ItemGroup>
     <Compile Include="AboutMeActivity.cs" />
     <Compile Include="ActivityAddRestaurant.cs" />
+    <Compile Include="ActivityLogIn.cs" />
     <Compile Include="ActivityVerifierMain.cs" />
     <Compile Include="BookingActivity.cs" />
     <Compile Include="ComplaintActivity.cs" />
+    <Compile Include="FragmentCommentVerifier.cs" />
     <Compile Include="FragmentFavorite.cs" />
+    <Compile Include="FragmentSearch.cs" />
+    <Compile Include="FragmentSearchVerifier.cs" />
     <Compile Include="FragmentVerifierNewRestaurant.cs" />
-    <Compile Include="HomeActivity.cs" />
+    <Compile Include="ActivityHome.cs" />
     <Compile Include="FragmentHome.cs" />
+    <Compile Include="Resources\adapter\RecyclerViewCommentVerifier.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
     <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
     <Compile Include="Resources\adapter\RecyclerViewNewRestaurant.cs" />
@@ -301,11 +306,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gradient_spinner.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\spinner_arrow.png" />
   </ItemGroup>
   <ItemGroup>
@@ -452,6 +452,45 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_acceptRestaurant.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_reviewsVerifier.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_reviewVerifier.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_searchVerifier.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\fragment_search.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_logIn.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\FacebookLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\GoogleLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\LogoAPP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\gradient_spinner.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

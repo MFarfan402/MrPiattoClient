@@ -65,7 +65,7 @@ namespace MrPiattoClient
             {
                 //Intent intent = new Intent(rootView.Context, typeof(AboutMeActivity));
                 
-                Intent intent = new Intent(rootView.Context, typeof(ActivityVerifierMain));
+                Intent intent = new Intent(rootView.Context, typeof(AboutMeActivity));
                 StartActivity(intent);
             };
 

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:paddingHorizontal="50dp"
+>
+	
+	<ImageView
+		android:id="@+id/logoLogin"
+		android:layout_width="90dp"
+		android:layout_height="90dp"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="100dp"
+		android:layout_marginBottom="20dp"
+		android:src="@drawable/logoapp"
+		android:scaleType="centerCrop"
+	/>
+
+	<TextView
+		android:id="@+id/logEmail"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Email"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:textColor="#000"
+		android:layout_marginTop="20dp"
+		android:layout_marginBottom="4dp"
+		android:layout_below="@id/logoLogin"
+	/>
+	<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputEmail"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_below="@id/logEmail"
+        >
+
+        <EditText
+            android:id="@+id/editTextEmail"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:inputType="textEmailAddress"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+	<TextView
+		android:id="@+id/logPassword"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Contraseña"
+		android:textColor="#000"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:layout_marginTop="20dp"
+		android:layout_marginBottom="4dp"
+		android:layout_below="@id/textInputEmail"
+	/>
+	<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPassword"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_below="@id/logPassword"
+        >
+
+        <EditText
+            android:id="@+id/editTextPassword"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+	<TextView
+		android:id="@+id/logForgotPassword"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="¿Olvidaste tu contraseña?"
+		android:textStyle="bold"
+		android:textColor="#000"
+		android:textSize="14sp"
+		android:layout_alignParentRight="true"
+		android:layout_below="@id/textInputPassword"
+	/>
+	<com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogIn"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:text="INGRESA"
+		android:layout_marginVertical="40dp"
+        android:layout_below="@id/logForgotPassword"
+        app:backgroundTint="@color/colorPrimary"/>
+	<TextView
+		android:id="@+id/logAnotherWay"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Inicia sesión con"
+		android:layout_centerHorizontal="true"
+		android:layout_below="@id/btnLogIn"
+	/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/logAnotherWay"
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:layout_marginTop="40dp"
+		>
+		<ImageView
+			android:id="@+id/facebookLogIn"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:src="@drawable/facebooklogo"
+			android:layout_marginHorizontal="15dp"
+			android:scaleType="centerCrop"
+		/>
+		
+		<ImageView
+			android:id="@+id/googleLogIn"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
+			android:src="@drawable/googlelogo"
+			android:layout_marginHorizontal="8dp"
+			android:scaleType="centerCrop"
+		/>
+	</LinearLayout>
+	<TextView
+		android:id="@+id/noAccount"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="¿No tienes cuenta?"
+		android:layout_marginBottom="16dp"
+		android:layout_alignParentBottom="true"
+		android:layout_marginRight="4dp"
+		android:layout_toLeftOf="@id/createAccount"
+	/>
+	<TextView
+		android:id="@+id/createAccount"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Registrate"
+		android:textStyle="bold"
+		android:layout_marginBottom="16dp"
+		android:textColor="#000"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+	/>
+</RelativeLayout>

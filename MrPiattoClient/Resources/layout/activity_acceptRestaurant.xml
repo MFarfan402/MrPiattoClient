@@ -66,7 +66,7 @@
         <TextView
             android:id="@+id/textFinalHourAccept"
 		    style="@style/bookingText"
-            android:text="Hora de apertura"
+            android:text="Hora de cierre"
             android:layout_marginTop="8dp"
             android:layout_below="@id/textInputInitTime"/>
 
@@ -160,7 +160,7 @@
         <TextView
             android:id="@+id/textPaymentOptionsAccept"
 		    style="@style/bookingText"
-            android:text="Hora de apertura"
+            android:text="Método de pago"
             android:layout_marginTop="8dp"
             android:layout_below="@id/SpinnerCategorieThird"/>
 
@@ -204,7 +204,7 @@
         <TextView
             android:id="@+id/textDressAccept"
 		    style="@style/bookingText"
-            android:text="Hora de apertura"
+            android:text="Vestimenta recomendada"
             android:layout_marginTop="80dp"
             android:layout_below="@id/checkPO5"/>
         <Spinner
@@ -225,8 +225,9 @@
                 android:layout_marginHorizontal="8dp"
                 android:text="ENVIAR DATOS"
             style="@style/OutlinedButton"
-                android:layout_below="@id/SpinnerDressAccept"
-                app:strokeColor="@color/colorPrimary"/>
+                app:strokeColor="@color/colorPrimary"
+            android:layout_below="@id/SpinnerDressAccept"
+        />
 
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -35,15 +35,17 @@ namespace MrPiattoClient
             {
                 case Resource.Id.itemAdd:
                     fragment = FragmentVerifierNewRestaurant.NewInstance();
-                    SupportFragmentManager.BeginTransaction()
-                        .Replace(Resource.Id.frameMainContentVerifier, fragment)
-                        .Commit();
                     break;
                 case Resource.Id.itemTracking:
+                    fragment = FragmentSearchVerifier.NewInstance();
                     break;
                 case Resource.Id.itemBadWords:
+                    fragment = FragmentCommentVerifier.NewInstance();
                     break;
             }
+            SupportFragmentManager.BeginTransaction()
+                .Replace(Resource.Id.frameMainContentVerifier, fragment)
+                .Commit();
             if (fragment == null)
                 return;
         }

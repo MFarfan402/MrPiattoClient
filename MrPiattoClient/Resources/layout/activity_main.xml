@@ -439,14 +439,6 @@
                 android:text="RESERVA UNA MESA"
                 android:layout_below="@id/restaurantCompleteInformation"
                 app:backgroundTint="@color/colorPrimary"/>
-
-            <ImageView
-                android:id="@+id/qrcode"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-                android:layout_below="@id/btnBookATable"
-            />
-
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
