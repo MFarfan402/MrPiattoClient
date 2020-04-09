@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using MrPiattoClient.Models;
 
 namespace MrPiattoClient.Resources.adapter
 {

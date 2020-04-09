@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using MrPiattoClient.Models;
 
 
 namespace MrPiattoClient.Resources.adapter
@@ -48,10 +49,10 @@ namespace MrPiattoClient.Resources.adapter
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewVisitedHolder viewHolder = holder as RecyclerViewVisitedHolder;
-            viewHolder.name.Text = visitedRestaurant[position].name;
-            viewHolder.location.Text = visitedRestaurant[position].location;
-            viewHolder.cuisine.Text = visitedRestaurant[position].cuisine;
-            viewHolder.ratingBar.Rating = visitedRestaurant[position].rating;
+            viewHolder.name.Text = visitedRestaurant[position].Name;
+            viewHolder.location.Text = visitedRestaurant[position].Address;
+            viewHolder.cuisine.Text = visitedRestaurant[position].Categories;
+            viewHolder.ratingBar.Rating = visitedRestaurant[position].Rating;
             viewHolder.buttonRateMe.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(SurveyActivity));

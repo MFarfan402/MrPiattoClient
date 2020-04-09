@@ -4,13 +4,15 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Runtime;
-using MrPiattoClient.WebService;
 using Android.Views;
 using Android.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Content;
 using Android.Gms.Maps;
 using RestSharp;
+using System;
+using System.Threading.Tasks;
+
 
 namespace MrPiattoClient
 {
@@ -18,16 +20,17 @@ namespace MrPiattoClient
     public class RestaurantActivity : AppCompatActivity, IOnMapReadyCallback
     {
         private MapView mapView;
-        protected override void OnCreate(Bundle savedInstanceState)
+        public int IDRestaurant = 7;
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
-
             InitListeners();
-            InitMap(savedInstanceState);
             InitToolbar();
+            InitMap(savedInstanceState);
         }
+
         protected override void OnResume()
         {
             base.OnResume();
@@ -109,7 +112,7 @@ namespace MrPiattoClient
         
         public void OnMapReady(GoogleMap googleMap)
         {
-            googleMap.AddMarker(new Android.Gms.Maps.Model.MarkerOptions().SetPosition(new Android.Gms.Maps.Model.LatLng(0, 0)));
+            //googleMap.AddMarker(new Android.Gms.Maps.Model.MarkerOptions().SetPosition(new Android.Gms.Maps.Model.LatLng(0, 0)));
         }
 
         public void InitListeners()

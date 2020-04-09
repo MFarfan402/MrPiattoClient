@@ -81,10 +81,13 @@
     <Compile Include="FragmentVerifierNewRestaurant.cs" />
     <Compile Include="ActivityHome.cs" />
     <Compile Include="FragmentHome.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCommentVerifier.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
     <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
     <Compile Include="Resources\adapter\RecyclerViewNewRestaurant.cs" />
+    <Compile Include="Resources\utilities\APICaller.cs" />
     <Compile Include="RestaurantActivity.cs" />
     <Compile Include="ModifyActivity.cs" />
     <Compile Include="FragmentMyReservations.cs" />
@@ -99,24 +102,11 @@
     <Compile Include="RestaurantRatingsActivity.cs" />
     <Compile Include="SurveyActivity.cs" />
     <Compile Include="VisitedActivity.cs" />
-    <Compile Include="Web References\WebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
-    <None Include="Web References\WebService\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\WebService\Restaurant.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\WebService\WebService1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_main.xml">
@@ -158,6 +148,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
     <PackageReference Include="RestSharp">
       <Version>106.10.1</Version>
     </PackageReference>
@@ -195,27 +188,6 @@
     <PackageReference Include="Xamarin.Google.Android.Material">
       <Version>1.1.0-preview06</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.100.207/WebSite/WebService1.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WebService\</RelPath>
-      <UpdateFromURL>http://192.168.100.207/WebSite/WebService1.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>
-      </CachedAppSettingsObjectName>
-      <CachedSettingsPropName>
-      </CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\WebService\WebService1.disco" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\menu_restaurant.xml">
@@ -493,6 +465,9 @@
     <AndroidResource Include="Resources\drawable\gradient_spinner.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

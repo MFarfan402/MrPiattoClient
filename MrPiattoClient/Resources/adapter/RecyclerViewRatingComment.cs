@@ -10,24 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using MrPiattoClient.Models;
 
 namespace MrPiattoClient.Resources.adapter
 {
-    public class Comment
-    {
-        public int rating { get; set; }
-        public string name { get; set; }
-        public string date { get; set; }
-        public string comment { get; set; }
-        public Comment(int rating, string name, string date, string comment)
-        {
-            this.rating = rating;
-            this.name = name;
-            this.date = date;
-            this.comment = comment;
-        }
-    }
-
+    
     class RecyclerViewRatingCommentHolder : RecyclerView.ViewHolder
     {
         public TextView name, date, comment;

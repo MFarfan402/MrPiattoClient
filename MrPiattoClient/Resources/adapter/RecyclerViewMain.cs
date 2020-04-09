@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using MrPiattoClient.Models;
 
 
 namespace MrPiattoClient.Resources.adapter
@@ -44,9 +45,9 @@ namespace MrPiattoClient.Resources.adapter
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewMainHolder viewHolder = holder as RecyclerViewMainHolder;
-            viewHolder.name.Text = restaurants[position].name;
-            viewHolder.cuisine.Text = restaurants[position].cuisine;
-            viewHolder.rating.Text = restaurants[position].rating.ToString();
+            viewHolder.name.Text = restaurants[position].Name;
+            viewHolder.cuisine.Text = restaurants[position].Categories;
+            viewHolder.rating.Text = restaurants[position].Rating.ToString();
             viewHolder.reservation.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(RestaurantActivity));
