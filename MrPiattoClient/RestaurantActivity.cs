@@ -12,6 +12,8 @@ using Android.Gms.Maps;
 using RestSharp;
 using System;
 using System.Threading.Tasks;
+using MrPiattoClient.Resources.utilities;
+using MrPiattoClient.Models;
 
 
 namespace MrPiattoClient
@@ -19,6 +21,7 @@ namespace MrPiattoClient
     [Activity(Label = "RestaurantActivity")]
     public class RestaurantActivity : AppCompatActivity, IOnMapReadyCallback
     {
+        APICaller API = new APICaller();
         private MapView mapView;
         public int IDRestaurant = 7;
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -29,6 +32,22 @@ namespace MrPiattoClient
             InitListeners();
             InitToolbar();
             InitMap(savedInstanceState);
+            InflateMainData();
+        }
+
+        private void InflateMainData()
+        {
+            CompleteRestaurant restaurant = API.GetRestaurantMainInfo(1);
+
+            TextView restaurantName = FindViewById<TextView>(Resource.Id.restaurantName);
+            restaurantName.Text = restaurant.name;
+            TextView restaurantLocation = FindViewById<TextView>(Resource.Id.restaurantLocation);
+            restaurantLocation.Text = restaurant.address;
+            TextView restaurantCuisine = FindViewById<TextView>(Resource.Id.restaurantCuisine);
+            restaurantCuisine.Text = restaurant.idcategoriesNavigation.category;
+            RatingBar ratingBar = FindViewById<RatingBar>(Resource.Id.restaurantRating);
+            ratingBar.Rating = restaurant.score;
+
         }
 
         protected override void OnResume()

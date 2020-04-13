@@ -15644,88 +15644,85 @@ namespace MrPiattoClient
 			public const int topPanel = 2131296783;
 			
 			// aapt resource value: 0x7F090210
-			public const int totalOfReviews = 2131296784;
+			public const int touch_outside = 2131296784;
 			
 			// aapt resource value: 0x7F090211
-			public const int touch_outside = 2131296785;
+			public const int transition_current_scene = 2131296785;
 			
 			// aapt resource value: 0x7F090212
-			public const int transition_current_scene = 2131296786;
+			public const int transition_layout_save = 2131296786;
 			
 			// aapt resource value: 0x7F090213
-			public const int transition_layout_save = 2131296787;
+			public const int transition_position = 2131296787;
 			
 			// aapt resource value: 0x7F090214
-			public const int transition_position = 2131296788;
+			public const int transition_scene_layoutid_cache = 2131296788;
 			
 			// aapt resource value: 0x7F090215
-			public const int transition_scene_layoutid_cache = 2131296789;
+			public const int transition_transform = 2131296789;
 			
 			// aapt resource value: 0x7F090216
-			public const int transition_transform = 2131296790;
+			public const int @unchecked = 2131296790;
 			
 			// aapt resource value: 0x7F090217
-			public const int @unchecked = 2131296791;
+			public const int uniform = 2131296791;
 			
 			// aapt resource value: 0x7F090218
-			public const int uniform = 2131296792;
+			public const int unlabeled = 2131296792;
 			
 			// aapt resource value: 0x7F090219
-			public const int unlabeled = 2131296793;
+			public const int up = 2131296793;
 			
 			// aapt resource value: 0x7F09021A
-			public const int up = 2131296794;
+			public const int useLogo = 2131296794;
 			
 			// aapt resource value: 0x7F09021B
-			public const int useLogo = 2131296795;
+			public const int userImage = 2131296795;
 			
 			// aapt resource value: 0x7F09021C
-			public const int userImage = 2131296796;
+			public const int userImageVerifier = 2131296796;
 			
 			// aapt resource value: 0x7F09021D
-			public const int userImageVerifier = 2131296797;
+			public const int userNameText = 2131296797;
 			
 			// aapt resource value: 0x7F09021E
-			public const int userNameText = 2131296798;
+			public const int userNameTextVerifier = 2131296798;
 			
 			// aapt resource value: 0x7F09021F
-			public const int userNameTextVerifier = 2131296799;
+			public const int view_offset_helper = 2131296799;
 			
 			// aapt resource value: 0x7F090220
-			public const int view_offset_helper = 2131296800;
+			public const int visible = 2131296800;
 			
 			// aapt resource value: 0x7F090221
-			public const int visible = 2131296801;
+			public const int warningA = 2131296801;
 			
 			// aapt resource value: 0x7F090222
-			public const int warningA = 2131296802;
+			public const int warningB = 2131296802;
 			
 			// aapt resource value: 0x7F090223
-			public const int warningB = 2131296803;
+			public const int warningC = 2131296803;
 			
 			// aapt resource value: 0x7F090224
-			public const int warningC = 2131296804;
+			public const int warningContent = 2131296804;
 			
 			// aapt resource value: 0x7F090225
-			public const int warningContent = 2131296805;
+			public const int warningD = 2131296805;
 			
 			// aapt resource value: 0x7F090226
-			public const int warningD = 2131296806;
+			public const int warningE = 2131296806;
 			
 			// aapt resource value: 0x7F090227
-			public const int warningE = 2131296807;
+			public const int warningF = 2131296807;
 			
 			// aapt resource value: 0x7F090228
-			public const int warningF = 2131296808;
+			public const int wide = 2131296808;
 			
 			// aapt resource value: 0x7F090229
-			public const int wide = 2131296809;
+			public const int withText = 2131296809;
 			
 			// aapt resource value: 0x7F09022A
-			public const int withText = 2131296810;
-			
-			// aapt resource value: 0x7F09022B
-			public const int wrap_content = 2131296811;
+			public const int wrap_content = 2131296810;
 			
 			static Id()
 			{
