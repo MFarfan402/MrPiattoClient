@@ -47,12 +47,16 @@ namespace MrPiattoClient.Resources.utilities
             }
 
         }
-        
+
+        /*
+         * CALLBACKS FOR USER
+         */
+
+        //RestaurantActivity
         public CompleteRestaurant GetRestaurantMainInfo(int idRestaurant)
         {
             CompleteRestaurant restaurant;
-            string creation = $"{url}Restaurants/{idRestaurant}";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(creation);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Restaurants/{idRestaurant}");
             try
             {
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
@@ -63,6 +67,24 @@ namespace MrPiattoClient.Resources.utilities
                     restaurant = JsonConvert.DeserializeObject<CompleteRestaurant>(json);
                 }
                 return restaurant;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public string GetSchedule(int idRestaurant)
+        {
+            string schedule;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Schedules/{idRestaurant}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                    schedule = reader.ReadToEnd();
+
+                return schedule;
             }
             catch (Exception)
             {

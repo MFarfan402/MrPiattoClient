@@ -37,16 +37,34 @@ namespace MrPiattoClient
 
         private void InflateMainData()
         {
-            CompleteRestaurant restaurant = API.GetRestaurantMainInfo(1);
+            int idRestaurant = 1;
+            CompleteRestaurant restaurant = API.GetRestaurantMainInfo(idRestaurant);
 
             TextView restaurantName = FindViewById<TextView>(Resource.Id.restaurantName);
-            restaurantName.Text = restaurant.name;
             TextView restaurantLocation = FindViewById<TextView>(Resource.Id.restaurantLocation);
-            restaurantLocation.Text = restaurant.address;
             TextView restaurantCuisine = FindViewById<TextView>(Resource.Id.restaurantCuisine);
-            restaurantCuisine.Text = restaurant.idcategoriesNavigation.category;
             RatingBar ratingBar = FindViewById<RatingBar>(Resource.Id.restaurantRating);
+            restaurantName.Text = restaurant.name;
+            restaurantLocation.Text = restaurant.address;
+            restaurantCuisine.Text = restaurant.idcategoriesNavigation.category;
             ratingBar.Rating = restaurant.score;
+
+            Button call = FindViewById<Button>(Resource.Id.buttonCall);
+            TextView informationPrice = FindViewById<TextView>(Resource.Id.informationPrice);
+            TextView informationView = FindViewById<TextView>(Resource.Id.informationFood);
+            TextView informationPayment = FindViewById<TextView>(Resource.Id.informationPayment);
+            TextView informationDress = FindViewById<TextView>(Resource.Id.informationDress);
+            TextView description = FindViewById<TextView>(Resource.Id.informationComment);
+            call.Text = restaurant.phone;
+            informationPrice.Text = $"${restaurant.price} MXN o más";
+            informationView.Text = restaurant.idcategoriesNavigation.category;
+            informationPayment.Text = restaurant.idpaymentNavigation.paymentOption;
+            informationDress.Text = restaurant.dress;
+            description.Text = restaurant.description;
+
+            TextView schedule = FindViewById<TextView>(Resource.Id.informationHour);
+            schedule.Text = API.GetSchedule(idRestaurant);
+
 
         }
 
@@ -131,7 +149,7 @@ namespace MrPiattoClient
         
         public void OnMapReady(GoogleMap googleMap)
         {
-            //googleMap.AddMarker(new Android.Gms.Maps.Model.MarkerOptions().SetPosition(new Android.Gms.Maps.Model.LatLng(0, 0)));
+            googleMap.AddMarker(new Android.Gms.Maps.Model.MarkerOptions().SetPosition(new Android.Gms.Maps.Model.LatLng(0, 0)));
         }
 
         public void InitListeners()
