@@ -52,7 +52,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.name.Text = visitedRestaurant[position].Name;
             viewHolder.location.Text = visitedRestaurant[position].Address;
             viewHolder.cuisine.Text = visitedRestaurant[position].Categories;
-            viewHolder.ratingBar.Rating = visitedRestaurant[position].Rating;
+            viewHolder.ratingBar.Rating = (float)visitedRestaurant[position].Rating;
             viewHolder.buttonRateMe.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(SurveyActivity));

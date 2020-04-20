@@ -15,10 +15,4 @@
       android:icon="@drawable/icon_heart"
       android:showAsAction="always"
       android:title="Agregar a favoritos"/>
-  <item
-      android:id="@+id/helperItem"
-      android:enabled="true"
-      android:icon="@drawable/icon_heart"
-      android:showAsAction="always"
-      android:title="helper"/>
 </menu>

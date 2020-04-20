@@ -14,7 +14,8 @@ using System;
 using System.Threading.Tasks;
 using MrPiattoClient.Resources.utilities;
 using MrPiattoClient.Models;
-
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace MrPiattoClient
 {
@@ -23,21 +24,21 @@ namespace MrPiattoClient
     {
         APICaller API = new APICaller();
         private MapView mapView;
-        public int IDRestaurant = 7;
+        int idRestaurant = 1;
+        List<int> bars;
+        List<float> ratings;
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             InitListeners();
-            InitToolbar();
             InitMap(savedInstanceState);
             InflateMainData();
         }
 
         private void InflateMainData()
         {
-            int idRestaurant = 1;
             CompleteRestaurant restaurant = API.GetRestaurantMainInfo(idRestaurant);
 
             TextView restaurantName = FindViewById<TextView>(Resource.Id.restaurantName);
@@ -65,6 +66,24 @@ namespace MrPiattoClient
             TextView schedule = FindViewById<TextView>(Resource.Id.informationHour);
             schedule.Text = API.GetSchedule(idRestaurant);
 
+            InitToolbar(restaurant.name);
+
+            bars = API.GetBars(idRestaurant);
+            ratings = API.GetRatings(idRestaurant);
+            TextView generalRating = FindViewById<TextView>(Resource.Id.generalRating);
+            RatingBar rating = FindViewById<RatingBar>(Resource.Id.restaurantRatingSmall);
+            ProgressBar pbar1 = FindViewById<ProgressBar>(Resource.Id.pbar1);
+            ProgressBar pbar2 = FindViewById<ProgressBar>(Resource.Id.pbar2);
+            ProgressBar pbar3 = FindViewById<ProgressBar>(Resource.Id.pbar3);
+            ProgressBar pbar4 = FindViewById<ProgressBar>(Resource.Id.pbar4);
+            ProgressBar pbar5 = FindViewById<ProgressBar>(Resource.Id.pbar5);
+            rating.Rating = ratings[3];
+            generalRating.Text = ratings[3].ToString();
+            pbar1.Progress = bars[0];
+            pbar2.Progress = bars[1];
+            pbar3.Progress = bars[2];
+            pbar4.Progress = bars[3];
+            pbar5.Progress = bars[4];
 
         }
 
@@ -128,19 +147,12 @@ namespace MrPiattoClient
             switch(item.ItemId)
             {
                 case Resource.Id.shareRestaurant:
-
                     return true;
 
                 case Resource.Id.addToFavorite:
                     Intent intent2 = new Intent(this, typeof(VisitedActivity));
                     StartActivity(intent2);
                     return true;
-
-                case Resource.Id.helperItem:
-                    Intent intent3 = new Intent(this, typeof(ActivityHome));
-                    StartActivity(intent3);
-                    return true;
-
 
                 default:
                     return base.OnOptionsItemSelected(item);
@@ -163,7 +175,10 @@ namespace MrPiattoClient
             Button buttonSeeMoreRatings = FindViewById<Button>(Resource.Id.buttonSeeMoreRatings);
             buttonSeeMoreRatings.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(RestaurantRatingsActivity));
+                Intent intent = new Intent(this, typeof(ActivityRestaurantRatings));
+                intent.PutExtra("idRestaurant", idRestaurant);
+                intent.PutExtra("bars", JsonConvert.SerializeObject(bars));
+                intent.PutExtra("ratings", JsonConvert.SerializeObject(ratings));
                 StartActivity(intent);
             };
             Button buttonCall = FindViewById<Button>(Resource.Id.buttonCall);
@@ -177,6 +192,7 @@ namespace MrPiattoClient
             buttonBookATable.Click += delegate
             {
                 Intent intent = new Intent(this, typeof(BookingActivity));
+                intent.PutExtra("idRestaurant", idRestaurant);
                 StartActivity(intent);
             };
         }
@@ -191,7 +207,7 @@ namespace MrPiattoClient
             mapView.OnCreate(mapViewBundle);
             mapView.GetMapAsync(this);
         }
-        public void InitToolbar()
+        public void InitToolbar(string name)
         {
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
 
@@ -208,7 +224,7 @@ namespace MrPiattoClient
                     scrollRange = appBarLayout.TotalScrollRange;
                 if (scrollRange + args.VerticalOffset == 0)
                 {
-                    collapsingToolbar.Title = "Mr. Piatto Restaurant";
+                    collapsingToolbar.Title = name;
                     isShow = true;
                 }
                 else if (isShow)

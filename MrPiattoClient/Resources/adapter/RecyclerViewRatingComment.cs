@@ -50,7 +50,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.name.Text = comments[position].name;
             viewHolder.date.Text = comments[position].date;
             viewHolder.comment.Text = comments[position].comment;
-            viewHolder.rating.Rating = comments[position].rating;
+            viewHolder.rating.Rating = (float)comments[position].rating;
             viewHolder.buttonReport.Click += delegate
             {
                 Console.WriteLine(position);

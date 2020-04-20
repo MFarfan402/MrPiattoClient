@@ -49,7 +49,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.userName.Text = comments[position].name;
             viewHolder.date.Text = comments[position].date;
             viewHolder.comment.Text = comments[position].comment;
-            viewHolder.ratingBar.NumStars = comments[position].rating;
+            viewHolder.ratingBar.Rating = (float)comments[position].rating;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

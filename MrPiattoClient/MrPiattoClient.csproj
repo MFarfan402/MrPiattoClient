@@ -83,7 +83,10 @@
     <Compile Include="FragmentHome.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CompleteRestaurant.cs" />
+    <Compile Include="Models\Policies.cs" />
     <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\Survey.cs" />
+    <Compile Include="Models\UserRestaurant.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCommentVerifier.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
     <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
@@ -100,7 +103,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Resources\utilities\ImageHelper.cs" />
     <Compile Include="RestaurantPhotosActivity.cs" />
-    <Compile Include="RestaurantRatingsActivity.cs" />
+    <Compile Include="ActivityRestaurantRatings.cs" />
     <Compile Include="SurveyActivity.cs" />
     <Compile Include="VisitedActivity.cs" />
   </ItemGroup>

@@ -91,5 +91,103 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
+        public List<int> GetBars(int idRestaurant)
+        {
+            List<int> bar;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Surveys/Bars/{idRestaurant}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var bars = reader.ReadToEnd();
+                    bar = JsonConvert.DeserializeObject<List<int>>(bars);
+                }
+                return bar;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<float> GetRatings(int idRestaurant)
+        {
+            List<float> ratings;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Surveys/{idRestaurant}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var rating = reader.ReadToEnd();
+                    ratings = JsonConvert.DeserializeObject<List<float>>(rating);
+                }
+                return ratings;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<Survey> GetRatingAndComments(int idRestaurant)
+        {
+            List<Survey> commentsRating;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Surveys/Comments/{idRestaurant}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var rating = reader.ReadToEnd();
+                    commentsRating = JsonConvert.DeserializeObject<List<Survey>>(rating);
+                }
+                return commentsRating;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public Policies GetPolicies (int idRestaurant)
+        {
+            Policies policies;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Policies/{idRestaurant}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    policies = JsonConvert.DeserializeObject<Policies>(reader.ReadToEnd());
+                }
+                return policies;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<UserRestaurant> GetFavorites(int idUser)
+        {
+            List<UserRestaurant> favorites;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}UserRestaurants/{idUser}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    favorites = JsonConvert.DeserializeObject<List<UserRestaurant>>(reader.ReadToEnd());
+                }
+                return favorites;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

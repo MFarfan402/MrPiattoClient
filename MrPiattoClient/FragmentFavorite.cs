@@ -13,20 +13,18 @@ using Fragment = Android.Support.V4.App.Fragment;
 using MrPiattoClient.Resources.adapter;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient
 {
     [Activity(Label = "FavoriteActivity")]
     public class FragmentFavorite : Fragment
     {
-        List<Restaurant> restaurants = new List<Restaurant>()
-        {
-            new Restaurant(5, "Mr. Piatto Restaurant", "Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal.", "TAILANDESA"),
-            new Restaurant(5, "Tacos de DonPerro", "Nueva Escocia 12641, Afuera del CETI, 45608, Gudalajara, Jal.", "DESCONOCIDO"),
-            new Restaurant(4, "Fonda de doña chona", "Vista a la Campina 5414, Cerro del Tesoro, 45608", "MEXICANA")
-        };
+        APICaller API = new APICaller();
+        List<Restaurant> restaurants = new List<Restaurant>();
         RecyclerView recycler;
         RecyclerViewFavoriteAdapter adapter;
+        int idUser = 3;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,8 +33,19 @@ namespace MrPiattoClient
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.fragment_favorite, container, false);
+            GetRestaurants(idUser);
             PutFavoriteRestaurants(view);
             return view;
+        }
+
+        private void GetRestaurants(int idUser)
+        {
+            List<UserRestaurant> favorites = API.GetFavorites(idUser);
+            foreach (var f in favorites)
+            {
+                restaurants.Add(new Restaurant(f.idrestaurantNavigation.score, f.idrestaurantNavigation.name,
+                    f.idrestaurantNavigation.address, f.idrestaurantNavigation.phone));
+            }
         }
 
         private void PutFavoriteRestaurants(View view)

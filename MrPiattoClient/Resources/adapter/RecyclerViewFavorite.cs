@@ -46,7 +46,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.name.Text = favoriteRestaurant[position].Name;
             viewHolder.location.Text = favoriteRestaurant[position].Address;
             viewHolder.cuisine.Text = favoriteRestaurant[position].Categories;
-            viewHolder.ratingBar.Rating = favoriteRestaurant[position].Rating;
+            viewHolder.ratingBar.Rating = (float)favoriteRestaurant[position].Rating;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

@@ -34,22 +34,12 @@
                 <include 
                    android:id="@+id/includedCardLayout"
                    layout="@layout/card_rating"/>
-                <TextView
-                    android:id="@+id/textRecomended"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-                    android:text="95% lo recomenaría a un amigo"
-                    android:textSize="14dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_below="@id/includedCardLayout"
-                    android:layout_centerHorizontal="true"/>
                 <!--Section 1 out of 3. Center section: Service section-->
                 <RelativeLayout
                     android:id="@+id/RatingSectionService"
 			        android:layout_width="100dp"
 			        android:layout_height="wrap_content"
-                    android:layout_below="@id/textRecomended"
+                    android:layout_below="@id/includedCardLayout"
                     android:layout_centerHorizontal="true"
                     android:layout_marginHorizontal="4dp"
                     >
@@ -62,6 +52,7 @@
                     <TextView
                         android:id="@+id/ratingService"
                         android:text="4.6"
+                        android:maxLength="3"
                         style="@style/ratingNumber"
                         android:layout_below="@id/ratingServiceText"
                         android:layout_centerHorizontal="true"
@@ -72,7 +63,7 @@
                     android:id="@+id/RatingSectionFood"
 			        android:layout_width="100dp"
 			        android:layout_height="wrap_content"
-                    android:layout_below="@id/textRecomended"
+                    android:layout_below="@id/includedCardLayout"
                     android:layout_toLeftOf="@id/RatingSectionService"
                     >
                     <TextView
@@ -84,6 +75,7 @@
                     <TextView
                         android:id="@+id/ratingFood"
                         android:text="4.6"
+                        android:maxLength="3"
                         style="@style/ratingNumber"
                         android:layout_below="@id/ratingFoodText"
                         android:layout_centerHorizontal="true"
@@ -94,7 +86,7 @@
                     android:id="@+id/RatingSectionEnvironment"
 			        android:layout_width="100dp"
 			        android:layout_height="wrap_content"
-                    android:layout_below="@id/textRecomended"
+                    android:layout_below="@id/includedCardLayout"
                     android:layout_toRightOf="@id/RatingSectionService"
                     >
                     <TextView
@@ -106,6 +98,7 @@
                     <TextView
                         android:id="@+id/ratingEnvironment"
                         android:text="4.6"
+                        android:maxLength="3"
                         style="@style/ratingNumber"
                         android:layout_below="@id/ratingEnvironmentText"
                         android:layout_centerHorizontal="true"
