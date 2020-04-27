@@ -13,6 +13,7 @@ using Android.Views;
 using Android.Widget;
 using MrPiattoClient.Resources.utilities;
 using MrPiattoClient.Models;
+using System.Text.RegularExpressions;
 
 namespace MrPiattoClient
 {
@@ -24,13 +25,14 @@ namespace MrPiattoClient
         Dialog popupDialog;
         EditText editTextDate;
         Spinner spinner, spinnerQuantity;
-        int idRestaurant;
+        int idRestaurant, idUser;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_bookATable);
             
             idRestaurant = Intent.GetIntExtra("idRestaurant", 0);
+            idUser = Intent.GetIntExtra("idUser", 0);
             InitToolbar();
             InitDatePicker();
             InitSpinners();
@@ -66,11 +68,15 @@ namespace MrPiattoClient
             textHour.Text = spinner.SelectedItem.ToString();
             textQuantity.Text = spinnerQuantity.SelectedItem.ToString();
 
-            buttonOk.Click += delegate
+            buttonOk.Click += async delegate
             {
                 popupDialog.Dismiss();
                 popupDialog.Hide();
-                Finish();
+                DateTime dateTime = Convert.ToDateTime($"{textDate.Text} {textHour.Text}:00");
+                Match match = Regex.Match(textQuantity.Text, "([0-9][0-9])");
+                
+                var response = await API.NewReservation(idRestaurant, idUser, dateTime, int.Parse(match.Value));
+                Toast.MakeText(this, response, ToastLength.Long).Show();
             };
 
 
@@ -89,7 +95,7 @@ namespace MrPiattoClient
             TextView warningB = popupDialog.FindViewById<TextView>(Resource.Id.contentWarningB);
             warningB.Text = $"{policies.minTimeRes} horas";
             TextView warningC = popupDialog.FindViewById<TextView>(Resource.Id.contentWarningC);
-            warningC.Text = $"{policies.modTime} horas";
+            warningC.Text = $"{policies.modTimeHours} horas";
             TextView warningE = popupDialog.FindViewById<TextView>(Resource.Id.contentWarningE);
             warningE.Text = (policies.strikes == true) ? "Activada" : "Desactivada";
             TextView warningF = popupDialog.FindViewById<TextView>(Resource.Id.contentWarningF);
@@ -107,7 +113,7 @@ namespace MrPiattoClient
 
         private void OnDateSet(object sender, DatePickerDialog.DateSetEventArgs e)
         {
-            editTextDate.Text = e.Date.ToShortDateString();
+            editTextDate.Text = e.Date.ToString("yyyy-MM-dd");
         }
 
         private void InitToolbar()
@@ -120,14 +126,15 @@ namespace MrPiattoClient
         private void InitDatePicker()
         {
             editTextDate = FindViewById<EditText>(Resource.Id.editTextDate);
-            editTextDate.Text = DateTime.Now.ToShortDateString();
+            editTextDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             
             editTextDate.Click += delegate
             {
                 DateTime today = DateTime.Today;
                 DatePickerDialog dialog = new DatePickerDialog(this, OnDateSet, today.Year, today.Month - 1, today.Day);
-                double minDate = (DateTime.Today - new DateTime(1970, 1, 1)).TotalMilliseconds;
-                double maxDate = (new DateTime(today.Year, today.Month, today.Day + 7) - new DateTime(1970, 1, 1)).TotalMilliseconds;
+                double minDate = (DateTime.Today + new TimeSpan(1, 0, 0, 0) - new DateTime(1970, 1, 1)).TotalMilliseconds;
+                double maxDate = (new DateTime(today.Year, today.Month, today.Day) - new DateTime(1970, 1, 1) + new TimeSpan(7,0,0,0))
+                .TotalMilliseconds;
                 dialog.DatePicker.MaxDate = (long)maxDate;
                 dialog.DatePicker.MinDate = (long)minDate;
                 dialog.Show();

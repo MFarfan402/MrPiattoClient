@@ -25,9 +25,10 @@ namespace MrPiattoClient
         APICaller API = new APICaller();
         private MapView mapView;
         int idRestaurant = 1;
+        int idUser = 3;
         List<int> bars;
         List<float> ratings;
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -193,6 +194,7 @@ namespace MrPiattoClient
             {
                 Intent intent = new Intent(this, typeof(BookingActivity));
                 intent.PutExtra("idRestaurant", idRestaurant);
+                intent.PutExtra("idUser", idUser);
                 StartActivity(intent);
             };
         }

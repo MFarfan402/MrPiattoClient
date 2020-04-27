@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -18,8 +19,8 @@ namespace MrPiattoClient.Resources.utilities
 {
     public class APICaller
     {
-        //private static readonly string url = "http://200.23.157.109/api/";
-        private static readonly string url = "http://192.168.100.207/api/";
+        private static readonly string url = "http://200.23.157.109/api/";
+        //private static readonly string url = "http://192.168.100.207/api/";
         public APICaller() { }
         
         /*
@@ -188,6 +189,29 @@ namespace MrPiattoClient.Resources.utilities
             {
                 return null;
             }
+        }
+
+        public async Task<string> NewReservation(int idRestaurant, int idUser, DateTime date, int amount)
+        {
+            Reservation reservation = new Reservation();
+            reservation.iduser = idUser;
+            reservation.idtable = idRestaurant;
+            reservation.date = date;
+            reservation.amountOfPeople = amount;
+            reservation.url = "..";
+
+            HttpClient client = new HttpClient();
+
+            client.BaseAddress = new Uri($"{url}");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = JsonConvert.SerializeObject(reservation);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("Reservations", byteContent).Result;
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }
