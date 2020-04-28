@@ -1,0 +1,141 @@
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+
+	<android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarMyData"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        android:layout_marginTop="66dp"
+        android:paddingHorizontal="30dp"
+        >
+
+        <TextView
+            android="@+id/mainPersonalInfo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:text="Actualiza tus datos personales."
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"
+        />
+
+        <TextView
+		    android:id="@+id/tagName"
+            android:text="Nombre"
+            style="@style/personalData"
+		    android:layout_below="@id/mainPersonalInfo"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputName"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagName">
+            <EditText
+                android:id="@+id/editInputName"
+			    android:inputType="text"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+		    android:id="@+id/tagLastName"
+            android:text="Apellidos"
+            style="@style/personalData"
+		    android:layout_below="@id/inputName"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLastName"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagLastName">
+            <EditText
+                android:id="@+id/editInputLastName"
+			    android:inputType="text"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+         <TextView
+		    android:id="@+id/tagEmail"
+            android:text="Email"
+            style="@style/personalData"
+		    android:layout_below="@id/inputLastName"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEmail"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagEmail">
+            <EditText
+                android:id="@+id/editInputEmail"
+			    android:inputType="text"
+                android:enabled="false"
+                android:text="123"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+		    android:id="@+id/tagPhone"
+            android:text="Teléfono"
+            style="@style/personalData"
+		    android:layout_below="@id/inputEmail"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputPhone"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagPhone">
+            <EditText
+                android:id="@+id/editInputPhone"
+			    android:inputType="textPhonetic"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+		    android:id="@+id/tagGender"
+            android:text="Teléfono"
+            style="@style/personalData"
+		    android:layout_below="@id/inputPhone"/>
+        <Spinner
+            android:id="@+id/spinnerGender2"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+            android:spinnerMode="dropdown"
+            android:entries="@array/Gender"
+            android:background="@drawable/gradient_spinner"
+            android:layout_below="@id/tagGender"
+        />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSavePersonalData"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            android:text="GUARDAR CAMBIOS"
+		    android:layout_marginVertical="30dp"
+            android:layout_below="@id/spinnerGender2"
+            app:backgroundTint="@color/colorPrimary"/>
+
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

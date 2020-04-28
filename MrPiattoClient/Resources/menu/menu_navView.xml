@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+      android:id="@+id/itemVisited"
+      android:enabled="true"
+      android:title="Visitados"/>
+
+  <item
+      android:id="@+id/itemPersonalData"
+      android:enabled="true"
+      android:title="Datos personales"/>
+
+  <item
+      android:id="@+id/itemStrikes"
+      android:enabled="true"
+      android:title="Strikes"/>
+
+  <item
+      android:id="@+id/itemNotifications"
+      android:enabled="true"
+      android:title="Notificaciones"/>
+  
+<item
+      android:id="@+id/itemRegisterRestaurant"
+      android:enabled="true"
+      android:title="Quiero ser Mr.Piatto"/>
+  
+  <item
+      android:id="@+id/itemLogOut"
+      android:enabled="true"
+      android:title="Cerrar sesión"/>
+  
+
+</menu>

@@ -26,6 +26,35 @@ namespace MrPiattoClient
             bottomNavigation.NavigationItemSelected += FragmentListener;
 
             LoadFragment(Resource.Id.itemHome);
+
+            NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.sideMenu);
+            navigationView.NavigationItemSelected += ActivityCallback;
+        }
+
+        private void ActivityCallback(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        {
+            InitActivity(e.MenuItem.ItemId);
+        }
+
+        private void InitActivity(int itemId)
+        {
+            Intent intent;
+            switch (itemId)
+            {
+                case Resource.Id.itemVisited:
+                    intent = new Intent(this, typeof(VisitedActivity));
+                    StartActivity(intent);
+                    break;
+                case Resource.Id.itemPersonalData:
+                    intent = new Intent(this, typeof(ActivityMyProfile));
+                    StartActivity(intent);
+                    break;
+                case Resource.Id.itemStrikes:
+                    intent = new Intent(this, typeof(ActivityStrikes));
+                    StartActivity(intent);
+                    break;
+
+            }
         }
 
         private void FragmentListener(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)

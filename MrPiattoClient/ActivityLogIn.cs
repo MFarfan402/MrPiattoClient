@@ -29,7 +29,7 @@ namespace MrPiattoClient
             facebook = FindViewById<ImageView>(Resource.Id.facebookLogIn);
             google = FindViewById<ImageView>(Resource.Id.googleLogIn);
             signIn = FindViewById<Button>(Resource.Id.btnLogIn);
-
+            
             TextView signUp = FindViewById<TextView>(Resource.Id.createAccount);
             signUp.Click += delegate
             {
@@ -37,16 +37,24 @@ namespace MrPiattoClient
                 StartActivity(intent);
             };
 
+            TextView forgotPassword = FindViewById<TextView>(Resource.Id.logForgotPassword);
+            forgotPassword.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(ActivityForgot));
+                StartActivity(intent);
+            };
 
             signIn.Click += delegate
             {
                 Intent intent = new Intent(this, typeof(ActivityHome));
+                intent.SetFlags(ActivityFlags.ClearTask);
                 StartActivity(intent);
                 Finish();
             };
             signIn.LongClick += delegate
             {
                 Intent intent = new Intent(this, typeof(ActivityVerifierMain));
+                intent.SetFlags(ActivityFlags.ClearTask);
                 StartActivity(intent);
                 Finish();
             };

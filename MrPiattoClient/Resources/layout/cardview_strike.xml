@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_marginVertical="8dp"
+    style="@style/CardStyle">
+
+	<RelativeLayout
+		android:layout_width="300dp"
+		android:layout_height="wrap_content">
+
+		<ImageView
+			android:id="@+id/cardStrikeImage"
+			android:layout_width="70dp"
+			android:layout_height="70dp"
+			android:scaleType="centerCrop"
+			android:src="@drawable/redStrike"
+			android:layout_centerVertical="true"
+		/>
+		<TextView
+			android:id="@+id/cardTagRestaurant"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Restaurante: "
+			android:textSize="18sp"
+			android:textStyle="bold"
+			android:textColor="#000"
+			android:layout_marginTop="8dp"
+			android:layout_toRightOf="@id/cardStrikeImage"
+		/>
+		<TextView
+			android:id="@+id/cardTagRestaurantInfo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="MrPiattoRestaurant"
+			android:textSize="18sp"
+			android:layout_marginTop="8dp"
+			android:layout_toRightOf="@id/cardTagRestaurant"
+		/>
+		<TextView
+			android:id="@+id/cardTagDate"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Fecha: "
+			android:textSize="18sp"
+			android:textStyle="bold"
+			android:textColor="#000"
+			android:layout_marginTop="8dp"
+			android:layout_toRightOf="@id/cardStrikeImage"
+			android:layout_below="@id/cardTagRestaurant"
+		/>
+		<TextView
+			android:id="@+id/cardTagDateInfo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="2020-04-22"
+			android:textSize="18sp"
+			android:layout_marginTop="8dp"
+			android:layout_toRightOf="@id/cardTagDate"
+		/>
+		<TextView
+			android:id="@+id/cardTagReason"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Motivo: "
+			android:textSize="18sp"
+			android:textStyle="bold"
+			android:textColor="#000"
+			android:layout_marginTop="8dp"
+			android:layout_toRightOf="@id/cardStrikeImage"
+			android:layout_below="@id/cardTagDate"
+		/>
+		<TextView
+			android:id="@+id/cardTagReasonInfo"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Modifico la reservación."
+			android:textSize="18sp"
+			android:layout_marginTop="8dp"
+			android:layout_toRightOf="@id/cardTagReason"
+		/>
+	</RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

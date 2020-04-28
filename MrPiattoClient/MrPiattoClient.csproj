@@ -70,9 +70,12 @@
   <ItemGroup>
     <Compile Include="AboutMeActivity.cs" />
     <Compile Include="ActivityAddRestaurant.cs" />
+    <Compile Include="ActivityForgot.cs" />
     <Compile Include="ActivityLogIn.cs" />
+    <Compile Include="ActivityMyProfile.cs" />
     <Compile Include="ActivityPersonalData.cs" />
     <Compile Include="ActivitySignUp.cs" />
+    <Compile Include="ActivityStrikes.cs" />
     <Compile Include="ActivityVerifierMain.cs" />
     <Compile Include="BookingActivity.cs" />
     <Compile Include="ComplaintActivity.cs" />
@@ -88,12 +91,14 @@
     <Compile Include="Models\Policies.cs" />
     <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\Strike.cs" />
     <Compile Include="Models\Survey.cs" />
     <Compile Include="Models\UserRestaurant.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCommentVerifier.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
     <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
     <Compile Include="Resources\adapter\RecyclerViewNewRestaurant.cs" />
+    <Compile Include="Resources\adapter\RVStrikes.cs" />
     <Compile Include="Resources\utilities\APICaller.cs" />
     <Compile Include="RestaurantActivity.cs" />
     <Compile Include="ModifyActivity.cs" />
@@ -164,7 +169,13 @@
     <PackageReference Include="System.Net.Http">
       <Version>4.3.4</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v4">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView">
       <Version>28.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.AppCompat">
@@ -486,6 +497,37 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_personalData.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_forgotPassword.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\navigationHeader.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_navview.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\layout_personalData.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_strikes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_strike.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -151,8 +151,6 @@ namespace MrPiattoClient
                     return true;
 
                 case Resource.Id.addToFavorite:
-                    Intent intent2 = new Intent(this, typeof(VisitedActivity));
-                    StartActivity(intent2);
                     return true;
 
                 default:

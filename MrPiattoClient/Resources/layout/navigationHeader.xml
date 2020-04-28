@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:paddingHorizontal="10dp"
+    android:background="@drawable/background"
+    >
+    
+    <TextView
+        android:id="@+id/hiText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+        android:text="Hola"
+        android:textSize="22sp"
+        android:textColor="@color/background"
+        android:layout_above="@id/navNameText"
+    />
+    <TextView
+        android:id="@+id/navNameText"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+        android:text="Mauricio"
+        android:textColor="@color/background"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+    />
+</RelativeLayout>

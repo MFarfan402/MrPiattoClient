@@ -38,6 +38,7 @@ namespace MrPiattoClient
                     string email = Intent.GetStringExtra("email");
                     string password = Intent.GetStringExtra("password");
                     Intent intent = new Intent(this, typeof(ActivityHome));
+                    intent.SetFlags(ActivityFlags.ClearTask);
                     StartActivity(intent);
                     Finish();
                 }
