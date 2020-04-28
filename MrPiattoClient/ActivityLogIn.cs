@@ -17,7 +17,6 @@ namespace MrPiattoClient
     {
         ImageView facebook, google;
         Button signIn;
-        TextView signUp;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,16 +29,29 @@ namespace MrPiattoClient
             facebook = FindViewById<ImageView>(Resource.Id.facebookLogIn);
             google = FindViewById<ImageView>(Resource.Id.googleLogIn);
             signIn = FindViewById<Button>(Resource.Id.btnLogIn);
+
+            TextView signUp = FindViewById<TextView>(Resource.Id.createAccount);
+            signUp.Click += delegate
+            {
+                Intent intent = new Intent(this, typeof(ActivitySignUp));
+                StartActivity(intent);
+            };
+
+
             signIn.Click += delegate
             {
                 Intent intent = new Intent(this, typeof(ActivityHome));
                 StartActivity(intent);
+                Finish();
             };
             signIn.LongClick += delegate
             {
                 Intent intent = new Intent(this, typeof(ActivityVerifierMain));
                 StartActivity(intent);
+                Finish();
             };
+            
+            
 
         }
     }

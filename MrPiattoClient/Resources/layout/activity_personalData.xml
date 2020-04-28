@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent"
+	android:paddingHorizontal="50dp"
+>
+	<ImageView
+		android:id="@+id/logoPersonalData"
+		android:layout_width="90dp"
+		android:layout_height="90dp"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="100dp"
+		android:layout_marginBottom="20dp"
+		android:src="@drawable/logoapp"
+		android:scaleType="centerCrop"
+	/>
+
+	<TextView
+		android:id="@+id/personalNames"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Nombre(s)"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:textColor="#000"
+		android:layout_marginTop="20dp"
+		android:layout_marginBottom="4dp"
+		android:layout_below="@id/logoPersonalData"
+	/>
+	<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPersonalName"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_below="@id/personalNames"
+        >
+
+        <EditText
+            android:id="@+id/editTextPersonalName"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:inputType="text"
+            android:maxLines="1"
+		/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+	<TextView
+		android:id="@+id/personalLastName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Apellidos"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:textColor="#000"
+		android:layout_marginTop="20dp"
+		android:layout_marginBottom="4dp"
+		android:layout_below="@id/textInputPersonalName"
+	/>
+	<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPersonalLastName"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_below="@id/personalLastName"
+        >
+
+        <EditText
+            android:id="@+id/editTextPersonalLastName"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:inputType="text"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+	<TextView
+		android:id="@+id/personalPhone"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Teléfono"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:textColor="#000"
+		android:layout_marginTop="20dp"
+		android:layout_marginBottom="4dp"
+		android:layout_below="@id/textInputPersonalLastName"
+	/>
+	<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPersonalPhone"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_below="@id/personalPhone"
+        >
+
+        <EditText
+            android:id="@+id/editTextPersonalPhone"
+			android:layout_width="match_parent"
+			android:layout_height="56dp"
+			android:inputType="phone"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+	<com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEndSign"
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+        android:text="FINALIZAR REGISTRO"
+		android:layout_marginVertical="40dp"
+        android:layout_below="@id/textInputPersonalPhone"
+        app:backgroundTint="@color/colorPrimary"/>
+
+
+
+</RelativeLayout>
