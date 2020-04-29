@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+
+	<android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarWorkWithUs"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+		 android:layout_width="match_parent"
+		 android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:paddingHorizontal="30dp"
+        
+        >
+        <TextView
+            android:id="@+id/stringWork"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:text="Rellena este formulario y nos pondremos en contacto contigo."
+            android:layout_marginBottom="20dp"
+        />
+
+         <TextView
+		    android:id="@+id/tagJoinName"
+            android:text="Nombre del restaurante"
+            style="@style/personalData"
+		    android:layout_below="@id/stringWork"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputJoinName"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagJoinName">
+            <EditText
+                android:id="@+id/editJoinName"
+			    android:inputType="text"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+		    android:id="@+id/tagJoinAddress"
+            android:text="Dirección del restaurante"
+            style="@style/personalData"
+		    android:layout_below="@id/inputJoinName"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputJoinAddress"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagJoinAddress">
+            <EditText
+                android:id="@+id/editJoinAddress"
+			    android:inputType="text"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+		    android:id="@+id/tagJoinPhone"
+            android:text="Teléfono de contacto"
+            style="@style/personalData"
+		    android:layout_below="@id/inputJoinAddress"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputJoinPhone"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagJoinPhone">
+            <EditText
+                android:id="@+id/editJoinPhone"
+			    android:inputType="textPhonetic"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+		    android:id="@+id/tagJoinMail"
+            android:text="Email"
+            style="@style/personalData"
+		    android:layout_below="@id/inputJoinPhone"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputJoinMail"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_below="@id/tagJoinMail">
+            <EditText
+                android:id="@+id/editJoinMail"
+			    android:inputType="text"
+                android:maxLines="1"
+                style="@style/editTextStyleNew"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNewRestaurant"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+            android:text="REGÍSTRATE"
+		    android:layout_marginVertical="30dp"
+            android:layout_below="@id/inputJoinMail"
+            app:backgroundTint="@color/colorPrimary"/>
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

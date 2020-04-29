@@ -46,7 +46,7 @@ namespace MrPiattoClient
 
             signIn.Click += delegate
             {
-                Intent intent = new Intent(this, typeof(ActivityHome));
+                Intent intent = new Intent(this, typeof(ActivityLoading));
                 intent.SetFlags(ActivityFlags.ClearTask);
                 StartActivity(intent);
                 Finish();

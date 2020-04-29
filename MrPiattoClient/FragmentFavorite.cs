@@ -14,6 +14,8 @@ using MrPiattoClient.Resources.adapter;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
 using MrPiattoClient.Resources.utilities;
+using Newtonsoft.Json;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient
 {
@@ -40,12 +42,17 @@ namespace MrPiattoClient
 
         private void GetRestaurants(int idUser)
         {
-            List<UserRestaurant> favorites = API.GetFavorites(idUser);
+            //List<UserRestaurant> favorites = API.GetFavorites(idUser);
+            List<UserRestaurant> favorites = JsonConvert.DeserializeObject<List<UserRestaurant>>
+                (Preferences.Get("JSONFavorite", null));
+
             foreach (var f in favorites)
             {
                 restaurants.Add(new Restaurant(f.idrestaurantNavigation.score, f.idrestaurantNavigation.name,
                     f.idrestaurantNavigation.address, f.idrestaurantNavigation.phone));
             }
+            
+
         }
 
         private void PutFavoriteRestaurants(View view)

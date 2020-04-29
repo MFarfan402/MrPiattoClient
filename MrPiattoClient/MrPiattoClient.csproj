@@ -69,10 +69,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutMeActivity.cs" />
+    <Compile Include="ActivityJoinUs.cs" />
     <Compile Include="ActivityAddRestaurant.cs" />
     <Compile Include="ActivityForgot.cs" />
+    <Compile Include="ActivityLoading.cs" />
     <Compile Include="ActivityLogIn.cs" />
     <Compile Include="ActivityMyProfile.cs" />
+    <Compile Include="ActivityNotification.cs" />
     <Compile Include="ActivityPersonalData.cs" />
     <Compile Include="ActivitySignUp.cs" />
     <Compile Include="ActivityStrikes.cs" />
@@ -528,6 +531,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\cardview_strike.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_notifications.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_workWithUs.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_loading.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

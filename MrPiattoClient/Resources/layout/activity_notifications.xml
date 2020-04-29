@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+
+	<android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarNotifications"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/mtrl_toolbar_default_height"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+		 android:layout_width="match_parent"
+		 android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:paddingHorizontal="30dp"
+        
+        >
+        <TextView
+            android:id="@+id/stringNotifications"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:text="@string/Notification"
+            android:layout_marginBottom="20dp"
+        />
+
+        <Switch
+            android:id="@+id/allowPushNew"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_margin="8dp"
+            android:layout_below="@id/stringNotifications"
+        />
+        <TextView
+            android:id="@+id/textPushAboutMeNew"
+		    style="@style/bookingText"
+            android:text="Notificaciones push"
+            android:layout_below="@id/stringNotifications"
+            android:layout_toRightOf="@id/allowPushNew"
+        />
+        <Switch
+            android:id="@+id/allowMailNew"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_margin="8dp"
+            android:layout_below="@id/allowPushNew"
+        />
+        <TextView
+            android:id="@+id/textMailAboutMeNew"
+		    style="@style/bookingText"
+            android:text="Permitir publicidad en correo electrónico"
+            android:layout_below="@id/allowPushNew"
+            android:layout_toRightOf="@id/allowMailNew"
+        />
+
+        <Button
+			android:id="@+id/buttonNotificationSave"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="GUARDAR"
+			android:layout_margin="20dp"
+			style="@style/OutlinedButton"
+			app:strokeColor="@color/colorPrimary"
+			android:layout_below="@id/textMailAboutMeNew"/>
+
+
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,7 +14,7 @@ using MrPiattoClient.Models;
 
 namespace MrPiattoClient.Resources.adapter
 {
-    class RVStrikesHolder : RecyclerView.ViewHolder
+    public class RVStrikesHolder : RecyclerView.ViewHolder
     {
         public TextView name, date, reason;
         public RVStrikesHolder(View itemView) : base(itemView)
@@ -34,7 +34,10 @@ namespace MrPiattoClient.Resources.adapter
             this.strikes = strikes;
         }
 
-        public override int ItemCount => strikes.Count();
+        public override int ItemCount
+        {
+            get { return strikes.Count(); }
+        }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
@@ -48,7 +51,7 @@ namespace MrPiattoClient.Resources.adapter
         {
             LayoutInflater inflater = LayoutInflater.From(parent.Context);
             View itemView = inflater.Inflate(Resource.Layout.cardview_strike, parent, false);
-            return new RecyclerViewFavoriteHolder(itemView);
+            return new RVStrikesHolder(itemView);
         }
     }
 }

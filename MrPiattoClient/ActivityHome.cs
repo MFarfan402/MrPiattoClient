@@ -53,6 +53,14 @@ namespace MrPiattoClient
                     intent = new Intent(this, typeof(ActivityStrikes));
                     StartActivity(intent);
                     break;
+                case Resource.Id.itemNotifications:
+                    intent = new Intent(this, typeof(ActivityNotification));
+                    StartActivity(intent);
+                    break;
+                case Resource.Id.itemRegisterRestaurant:
+                    intent = new Intent(this, typeof(ActivityJoinUs));
+                    StartActivity(intent);
+                    break;
 
             }
         }

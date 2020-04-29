@@ -37,7 +37,7 @@ namespace MrPiattoClient
 
         private void InitRV()
         {
-            recycler = FindViewById<RecyclerView>(Resource.Id.recyclerViewStrikes);
+            recycler = FindViewById<RecyclerView>(Resource.Id.recyclerViewStrikesAc);
             recycler.SetLayoutManager(new LinearLayoutManager(this));
             recycler.SetItemAnimator(new DefaultItemAnimator());
             adapter = new RVStrikesAdapter(strikes);

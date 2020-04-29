@@ -25,21 +25,23 @@
 		 android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:paddingHorizontal="30dp"
+        
         >
-
         <TextView
+            android:id="@+id/stringStrikes"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
             android:textColor="#000"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:text="@string/strikeText"
             android:layout_marginBottom="20dp"
         />
-
         <androidx.recyclerview.widget.RecyclerView		   
-            android:id="@+id/recyclerViewStrikes"
+            android:id="@+id/recyclerViewStrikesAc"
 		    android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/stringStrikes"
+            
         />
 
     </RelativeLayout>

@@ -191,6 +191,26 @@ namespace MrPiattoClient.Resources.utilities
             }
         }
 
+        public string GetFavoritesJSON(int idUser)
+        {
+            string favorites;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}UserRestaurants/{idUser}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    favorites = reader.ReadToEnd().ToString();
+                }
+                return favorites;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<string> NewReservation(int idRestaurant, int idUser, DateTime date, int amount)
         {
             Reservation reservation = new Reservation();
