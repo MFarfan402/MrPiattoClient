@@ -15,7 +15,6 @@ namespace MrPiattoClient
     [Activity(Label = "ActivitySignUp")]
     public class ActivitySignUp : Activity
     {
-        EditText password, password2;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

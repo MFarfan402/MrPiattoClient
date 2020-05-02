@@ -77,7 +77,7 @@ namespace MrPiattoClient
             switch (id)
             {
                 case Resource.Id.itemHome:
-                    fragment = FragmentHome.NewInstance(this);
+                        fragment = FragmentHome.NewInstance(this);
                     break;
                 case Resource.Id.itemSearch:
                     fragment = FragmentSearch.NewInstance();

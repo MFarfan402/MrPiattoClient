@@ -15,7 +15,7 @@
       android:id="@+id/helloText"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Buenos dias"
+      android:text="Saludos Mauricio"
       android:textColor="#000"
       android:textStyle="bold"
       android:textSize="26sp"
@@ -39,7 +39,7 @@
     />
     <TextView
       android:id="@+id/textCategorieNear"
-      android:text="Cercanos a ti"
+      android:text="Recomendación de Mr. Piatto"
       style="@style/bookingText"
       android:textSize="16sp"
       android:layout_marginBottom="8dp"
@@ -67,20 +67,6 @@
         android:layout_marginBottom="35dp"
         android:layout_below="@id/textCategorieCuisine"
 	/>
-    
-    <ImageView
-      android:id="@+id/imageMainProfile"
-      android:layout_width="50dp"
-      android:layout_height="50dp"
-      android:src="@drawable/user"
-      android:scaleType="centerCrop"
-      android:layout_marginTop="20dp"
-      android:layout_marginRight="20dp"
-      android:layout_alignParentRight="true"
-      />
-
-
   </RelativeLayout>
   
 </ScrollView>
-

@@ -22,9 +22,9 @@ namespace MrPiattoClient
     {
         List<Restaurant> restaurants = new List<Restaurant>()
         {
-            new Restaurant(1, "Mr. Piatto Restaurant", "Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal.", "TAILANDESA"),
-            new Restaurant(2, "Tacos de DonPerro", "Nueva Escocia 12641, Afuera del CETI, 45608, Gudalajara, Jal.", "DESCONOCIDO"),
-            new Restaurant(2, "Fonda de doña chona", "Vista a la Campina 5414, Cerro del Tesoro, 45608", "MEXICANA")
+            new Restaurant(1, 1, "Mr. Piatto Restaurant", "Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal.", "TAILANDESA"),
+            new Restaurant(2, 2, "Tacos de DonPerro", "Nueva Escocia 12641, Afuera del CETI, 45608, Gudalajara, Jal.", "DESCONOCIDO"),
+            new Restaurant(3, 2, "Fonda de doña chona", "Vista a la Campina 5414, Cerro del Tesoro, 45608", "MEXICANA")
         };
         RecyclerView recycler;
         RecyclerViewVisitedAdapter adapter;

@@ -19,6 +19,7 @@ namespace MrPiattoClient.Models
         public string address { get; set; }
         public string phone { get; set; }
         public double score { get; set; }
+        public IdcategoriesNavigation idcategoriesNavigation { get; set; }
     }
 
     public class UserRestaurant

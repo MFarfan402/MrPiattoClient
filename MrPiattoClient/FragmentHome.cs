@@ -13,27 +13,20 @@ using Android.Widget;
 using MrPiattoClient.Resources.adapter;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
+using Newtonsoft.Json;
+using Xamarin.Essentials;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient
 {
     public class FragmentHome : Android.Support.V4.App.Fragment
     {
         public Context contextFragment;
-        List<Restaurant> main = new List<Restaurant>()
-        {
-            new Restaurant(5, "Mr. Piatto Restaurant", "Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal.", "TAILANDESA"),
-            new Restaurant(5, "Tacos de DonPerro", "Nueva Escocia 12641, Afuera del CETI, 45608, Gudalajara, Jal.", "DESCONOCIDO"),
-            new Restaurant(4, "Fonda de doña chona", "Vista a la Campina 5414, Cerro del Tesoro, 45608", "MEXICANA")
-        };
-        List<Cuisine> cuisines = new List<Cuisine>()
-        {
-            new Cuisine("Mexicana"),
-            new Cuisine("Francesa"),
-            new Cuisine("Italiana"),
-            new Cuisine("Comida rápida")
-        };
+        APICaller API = new APICaller();
+        List<Restaurant> main = new List<Restaurant>();
+        List<Restaurant> fav = new List<Restaurant>();
         RecyclerView recycler, recyclerNear, recyclerCuisine;
-        RecyclerViewMainAdapter adapter;
+        RecyclerViewMainAdapter adapter, adapterNear;
         RecyclerViewCuisineAdapter adapterCuisine;
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -42,7 +35,25 @@ namespace MrPiattoClient
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            List<CompleteRestaurant> favorites = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
+                (Preferences.Get("JSONFavorite", null));
+
+            foreach (var f in favorites)
+            {
+                fav.Add(new Restaurant(f.idrestaurant, f.score, f.name, f.address, f.idcategoriesNavigation.category));
+            }
+
+            List<CompleteRestaurant> mainR = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
+                (Preferences.Get("JSONRes", null));
+            foreach (var r in mainR)
+            {
+                main.Add(new Restaurant(r.idrestaurant, r.score, r.name, r.address, r.idcategoriesNavigation.category));
+            }
+
+            List<IdcategoriesNavigation> categories = API.GetCategories();
+
             View rootView = inflater.Inflate(Resource.Layout.fragment_main, container, false);
+
             recycler = rootView.FindViewById<RecyclerView>(Resource.Id.recyclerViewMainFavorite);
             recycler.SetLayoutManager(new LinearLayoutManager(rootView.Context, LinearLayoutManager.Horizontal, false));
             recycler.SetItemAnimator(new DefaultItemAnimator());
@@ -55,21 +66,12 @@ namespace MrPiattoClient
             recyclerCuisine.SetLayoutManager(new LinearLayoutManager(rootView.Context, LinearLayoutManager.Horizontal, false));
             recyclerCuisine.SetItemAnimator(new DefaultItemAnimator());
 
-            adapter = new RecyclerViewMainAdapter(main, rootView.Context);
-            adapterCuisine = new RecyclerViewCuisineAdapter(cuisines);
+            adapter = new RecyclerViewMainAdapter(fav, rootView.Context);
+            adapterNear = new RecyclerViewMainAdapter(main, rootView.Context);
+            adapterCuisine = new RecyclerViewCuisineAdapter(categories);
             recycler.SetAdapter(adapter);
-            recyclerNear.SetAdapter(adapter);
+            recyclerNear.SetAdapter(adapterNear);
             recyclerCuisine.SetAdapter(adapterCuisine);
-
-            ImageView profilePic = rootView.FindViewById<ImageView>(Resource.Id.imageMainProfile);
-            profilePic.Click += delegate
-            {
-                //Intent intent = new Intent(rootView.Context, typeof(AboutMeActivity));
-                
-                Intent intent = new Intent(rootView.Context, typeof(AboutMeActivity));
-                StartActivity(intent);
-            };
-
 
             return rootView;
         }

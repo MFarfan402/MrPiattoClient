@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
-
+using MrPiattoClient.Models;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -25,9 +25,9 @@ namespace MrPiattoClient.Resources.adapter
 
     class RecyclerViewCuisineAdapter : RecyclerView.Adapter
     {
-        private List<Cuisine> cuisines;
+        private List<IdcategoriesNavigation> cuisines;
 
-        public RecyclerViewCuisineAdapter(List<Cuisine> cuisines)
+        public RecyclerViewCuisineAdapter(List<IdcategoriesNavigation> cuisines)
         {
             this.cuisines = cuisines;
         }
@@ -40,7 +40,7 @@ namespace MrPiattoClient.Resources.adapter
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewCuisineHolder viewHolder = holder as RecyclerViewCuisineHolder;
-            viewHolder.name.Text = cuisines[position].name;
+            viewHolder.name.Text = cuisines[position].category;
 
         }
 
@@ -49,15 +49,6 @@ namespace MrPiattoClient.Resources.adapter
             LayoutInflater inflater = LayoutInflater.From(parent.Context);
             View itemView = inflater.Inflate(Resource.Layout.cardview_cuisine, parent, false);
             return new RecyclerViewCuisineHolder(itemView);
-        }
-    }
-
-    public class Cuisine
-    {
-        public string name { get; set; }
-        public Cuisine(string name)
-        {
-            this.name = name;
         }
     }
 }

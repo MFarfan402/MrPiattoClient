@@ -33,6 +33,7 @@ namespace MrPiattoClient
         private void SimulateStartupAsync()
         {
             NeedToLoadFavorite();
+            Preferences.Set("JSONRes", API.GetMainRestaurantsJSON());
             StartActivity(new Intent(Application.Context, typeof(ActivityHome)));
         }
 

@@ -20,8 +20,9 @@ namespace MrPiattoClient.Models
         public string Address { get; set; }
         public string Categories { get; set; }
 
-        public Restaurant(double rating, string name, string address, string categorie)
+        public Restaurant(int id, double rating, string name, string address, string categorie)
         {
+            IDRestaurant = id;
             Rating = rating;
             Name = name;
             Address = address;

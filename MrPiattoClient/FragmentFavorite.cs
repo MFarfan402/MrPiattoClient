@@ -35,21 +35,19 @@ namespace MrPiattoClient
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.fragment_favorite, container, false);
-            GetRestaurants(idUser);
+            GetRestaurants();
             PutFavoriteRestaurants(view);
             return view;
         }
 
-        private void GetRestaurants(int idUser)
+        private void GetRestaurants()
         {
-            //List<UserRestaurant> favorites = API.GetFavorites(idUser);
-            List<UserRestaurant> favorites = JsonConvert.DeserializeObject<List<UserRestaurant>>
+            List<CompleteRestaurant> favorites = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
                 (Preferences.Get("JSONFavorite", null));
 
             foreach (var f in favorites)
             {
-                restaurants.Add(new Restaurant(f.idrestaurantNavigation.score, f.idrestaurantNavigation.name,
-                    f.idrestaurantNavigation.address, f.idrestaurantNavigation.phone));
+                restaurants.Add(new Restaurant(f.idrestaurant, f.score, f.name, f.address, f.idcategoriesNavigation.category));
             }
             
 

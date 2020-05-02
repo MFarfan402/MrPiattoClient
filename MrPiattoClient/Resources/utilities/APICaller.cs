@@ -14,18 +14,27 @@ using Android.Views;
 using Android.Widget;
 using MrPiattoClient.Models;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient.Resources.utilities
 {
     public class APICaller
     {
-        private static readonly string url = "http://200.23.157.109/api/";
-        //private static readonly string url = "http://192.168.100.207/api/";
+        //private static readonly string url = "http://200.23.157.109/api/";
+        private static readonly string url = "http://192.168.100.207/api/";
         public APICaller() { }
         
         /*
          * CALLBACKS FOR THE VERIFIER
          */
+        public HttpClient BaseClient(HttpClient client)
+        {
+            client.BaseAddress = new Uri($"{url}");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            return client;
+        }
         public List<Comment> GetCommentsVerifier()
         {
             List<Comment> comments;
@@ -171,19 +180,20 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-        public List<UserRestaurant> GetFavorites(int idUser)
+
+        public List<IdcategoriesNavigation> GetCategories()
         {
-            List<UserRestaurant> favorites;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}UserRestaurants/{idUser}");
+            List<IdcategoriesNavigation> categories;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Categories");
             try
             {
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 using (Stream stream = response.GetResponseStream())
                 using (StreamReader reader = new StreamReader(stream))
                 {
-                    favorites = JsonConvert.DeserializeObject<List<UserRestaurant>>(reader.ReadToEnd());
+                    categories = JsonConvert.DeserializeObject<List<IdcategoriesNavigation>>(reader.ReadToEnd());
                 }
-                return favorites;
+                return categories;
             }
             catch (Exception)
             {
@@ -210,6 +220,25 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
+        public string GetMainRestaurantsJSON()
+        {
+            string main;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Restaurants/MainPage");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    main = reader.ReadToEnd().ToString();
+                }
+                return main;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         public async Task<string> NewReservation(int idRestaurant, int idUser, DateTime date, int amount)
         {
@@ -221,11 +250,7 @@ namespace MrPiattoClient.Resources.utilities
             reservation.url = "..";
 
             HttpClient client = new HttpClient();
-
-            client.BaseAddress = new Uri($"{url}");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client = BaseClient(client);
 
             var content = JsonConvert.SerializeObject(reservation);
             var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
@@ -233,5 +258,29 @@ namespace MrPiattoClient.Resources.utilities
             var response = client.PostAsync("Reservations", byteContent).Result;
             return await response.Content.ReadAsStringAsync();
         }
+
+        /*
+        public bool LogInUser(string mail, string password)
+        {
+            User user = new User(mail, password);
+            HttpClient client = new HttpClient();
+            client = BaseClient(client);
+
+            var content = JsonConvert.SerializeObject(user);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("Users", byteContent).Result;
+
+            user = JsonConvert.DeserializeObject<User>(response.Content.ToString());
+            if (user.Mail == mail)
+            {
+                Preferences.Set("boolUser", true);
+                Preferences.Set("JSONUser", JsonConvert.SerializeObject(user));
+                return true;
+            }
+            else
+                return false;
+        }
+        */
     }
 }

@@ -68,7 +68,6 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutMeActivity.cs" />
     <Compile Include="ActivityJoinUs.cs" />
     <Compile Include="ActivityAddRestaurant.cs" />
     <Compile Include="ActivityForgot.cs" />
@@ -96,6 +95,7 @@
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Strike.cs" />
     <Compile Include="Models\Survey.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRestaurant.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCommentVerifier.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
