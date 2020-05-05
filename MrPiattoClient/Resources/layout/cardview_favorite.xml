@@ -15,7 +15,8 @@
 			<ImageView
 				android:id="@+id/cardviewFavoriteImage"
 				android:layout_width="match_parent"
-				android:layout_height="250dp"
+				android:layout_height="150dp"
+				android:scaleType="centerCrop"
 				android:src="@drawable/grid4"			
 			/>
 
@@ -23,7 +24,6 @@
 				android:id="@+id/cardviewFavoriteRestaurantName"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Mr. Piatto Restaurant"
 				android:textColor="#000"
 				android:textStyle="bold"
 				android:textSize="24sp"
@@ -35,7 +35,6 @@
                 android:id="@+id/cardviewFavoriteLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal."
                 android:textColor="@color/locationText"
                 android:textSize="14sp"
                 android:paddingLeft="12dp"
@@ -49,14 +48,13 @@
                 android:textColor="@color/locationText"
                 android:textAllCaps="true"
                 android:textSize="12sp"
-                android:padding="8dp"
+                android:padding="12dp"
                 android:layout_below="@id/cardviewFavoriteLocation"/>
 
 			<RatingBar
 				android:id="@+id/cardviewFavoriteRatingBar"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:rating="4.6"
 				android:numStars="5"
 				android:stepSize="0.1"
 				android:isIndicator="true"

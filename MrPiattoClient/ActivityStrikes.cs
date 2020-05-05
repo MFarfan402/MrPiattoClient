@@ -14,17 +14,15 @@ using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using MrPiattoClient.Models;
 using MrPiattoClient.Resources.adapter;
+using MrPiattoClient.Resources.utilities;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient
 {
     [Activity(Label = "ActivityStrikes")]
     public class ActivityStrikes : AppCompatActivity
     {
-        List<Strike> strikes = new List<Strike>()
-        {
-            new Strike(1, "MrPiattoRestaurant", "2020-04-20", "No asistió a la reservación"),
-            new Strike(2, "MrPiattoRestaurant", "2020-04-20", "No le gusto la comida")
-        };
+        APICaller API = new APICaller();
         RecyclerView recycler;
         RVStrikesAdapter adapter;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -37,6 +35,7 @@ namespace MrPiattoClient
 
         private void InitRV()
         {
+            List<Strike> strikes = API.GetStrikes(Preferences.Get("idUser", 0));
             recycler = FindViewById<RecyclerView>(Resource.Id.recyclerViewStrikesAc);
             recycler.SetLayoutManager(new LinearLayoutManager(this));
             recycler.SetItemAnimator(new DefaultItemAnimator());

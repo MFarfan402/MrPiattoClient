@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -18,12 +19,14 @@ namespace MrPiattoClient.Resources.adapter
     {
         public TextView name, location, cuisine;
         public RatingBar ratingBar;
+        public ImageView image;
         public RecyclerViewFavoriteHolder(View itemView) : base(itemView)
         {
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewFavoriteRestaurantName);
             location = itemView.FindViewById<TextView>(Resource.Id.cardviewFavoriteLocation);
             cuisine = itemView.FindViewById<TextView>(Resource.Id.cardviewFavoriteRestaurantCuisine);
             ratingBar = itemView.FindViewById<RatingBar>(Resource.Id.cardviewFavoriteRatingBar);
+            image = itemView.FindViewById<ImageView>(Resource.Id.cardviewFavoriteImage);
         }
     }
     class RecyclerViewFavoriteAdapter : RecyclerView.Adapter
@@ -47,6 +50,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.location.Text = favoriteRestaurant[position].Address;
             viewHolder.cuisine.Text = favoriteRestaurant[position].Categories;
             viewHolder.ratingBar.Rating = (float)favoriteRestaurant[position].Rating;
+            viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(favoriteRestaurant[position].UrlMainFoto));
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

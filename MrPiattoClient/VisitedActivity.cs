@@ -14,18 +14,15 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 using MrPiattoClient.Resources.adapter;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
+using Xamarin.Essentials;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient
 {
     [Activity(Label = "VisitedActivity")]
     public class VisitedActivity : AppCompatActivity
     {
-        List<Restaurant> restaurants = new List<Restaurant>()
-        {
-            new Restaurant(1, 1, "Mr. Piatto Restaurant", "Vista a la Campina 5414, Cerro del Tesoro, 45608, Tlaquepaque, Jal.", "TAILANDESA"),
-            new Restaurant(2, 2, "Tacos de DonPerro", "Nueva Escocia 12641, Afuera del CETI, 45608, Gudalajara, Jal.", "DESCONOCIDO"),
-            new Restaurant(3, 2, "Fonda de doña chona", "Vista a la Campina 5414, Cerro del Tesoro, 45608", "MEXICANA")
-        };
+        APICaller API = new APICaller();
         RecyclerView recycler;
         RecyclerViewVisitedAdapter adapter;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -38,7 +35,10 @@ namespace MrPiattoClient
         }
         private void PutFavoriteRestaurants()
         {
-            //recyclerViewFavorite
+            List<CompleteRestaurant> completeRestaurants = API.GetVisitedRestaurants(Preferences.Get("idUser", 0));
+            List<Restaurant> restaurants = new List<Restaurant>();
+            foreach(var r in completeRestaurants)
+                restaurants.Add(new Restaurant(r.idrestaurant, r.score, r.name, r.address, r.idcategoriesNavigation.category));
             recycler = FindViewById<RecyclerView>(Resource.Id.recyclerViewVisited);
             recycler.SetLayoutManager(new LinearLayoutManager(this));
             recycler.SetItemAnimator(new DefaultItemAnimator());

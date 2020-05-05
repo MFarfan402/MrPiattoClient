@@ -11,15 +11,18 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Resources.adapter
 {
     class RecyclerViewCuisineHolder : RecyclerView.ViewHolder
     {
         public TextView name;
+        public ImageView image;
         public RecyclerViewCuisineHolder(View itemView) : base(itemView)
         {
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewCuisineName);
+            image = itemView.FindViewById<ImageView>(Resource.Id.cardviewCuisineImage);
         }
     }
 
@@ -41,6 +44,7 @@ namespace MrPiattoClient.Resources.adapter
         {
             RecyclerViewCuisineHolder viewHolder = holder as RecyclerViewCuisineHolder;
             viewHolder.name.Text = cuisines[position].category;
+            viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(cuisines[position].urlPhoto));
 
         }
 

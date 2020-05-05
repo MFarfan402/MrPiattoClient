@@ -14,6 +14,7 @@ using Android.Widget;
 using MrPiattoClient.Resources.utilities;
 using MrPiattoClient.Models;
 using System.Text.RegularExpressions;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient
 {
@@ -25,14 +26,13 @@ namespace MrPiattoClient
         Dialog popupDialog;
         EditText editTextDate;
         Spinner spinner, spinnerQuantity;
-        int idRestaurant, idUser;
+        int idRestaurant;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_bookATable);
             
             idRestaurant = Intent.GetIntExtra("idRestaurant", 0);
-            idUser = Intent.GetIntExtra("idUser", 0);
             InitToolbar();
             InitDatePicker();
             InitSpinners();
@@ -75,7 +75,7 @@ namespace MrPiattoClient
                 DateTime dateTime = Convert.ToDateTime($"{textDate.Text} {textHour.Text}:00");
                 Match match = Regex.Match(textQuantity.Text, "([0-9][0-9])");
                 
-                var response = await API.NewReservation(idRestaurant, idUser, dateTime, int.Parse(match.Value));
+                var response = await API.NewReservation(idRestaurant, Preferences.Get("idUser", 0), dateTime, int.Parse(match.Value));
                 Toast.MakeText(this, response, ToastLength.Long).Show();
             };
 

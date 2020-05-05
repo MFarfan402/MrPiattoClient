@@ -20,6 +20,7 @@ namespace MrPiattoClient
     public class ActivityLoading : AppCompatActivity
     {
         APICaller API = new APICaller();
+        int idUser = 3;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -33,8 +34,30 @@ namespace MrPiattoClient
         private void SimulateStartupAsync()
         {
             NeedToLoadFavorite();
+            NeedToLoadReservations();
             Preferences.Set("JSONRes", API.GetMainRestaurantsJSON());
-            StartActivity(new Intent(Application.Context, typeof(ActivityHome)));
+            Intent intent = new Intent(Application.Context, typeof(ActivityHome));
+            intent.PutExtra("idUser", idUser);
+            StartActivity(intent);
+        }
+
+        private void NeedToLoadReservations()
+        {
+            if (Preferences.ContainsKey("boolReservation"))
+            {
+                if (Preferences.Get("boolReservation", false))
+                    return;
+                else
+                {
+                    Preferences.Set("JSONReservation", API.GetReservationsJSON(idUser));
+                    Preferences.Set("boolReservation", true);
+                }
+            }
+            else
+            {
+                Preferences.Set("JSONReservation", API.GetReservationsJSON(idUser));
+                Preferences.Set("boolReservation", true);
+            }
         }
 
         private void NeedToLoadFavorite()
@@ -45,13 +68,13 @@ namespace MrPiattoClient
                     return;
                 else
                 {
-                    Preferences.Set("JSONFavorite", API.GetFavoritesJSON(3));
+                    Preferences.Set("JSONFavorite", API.GetFavoritesJSON(idUser));
                     Preferences.Set("boolFavorite", true);
                 }
             }
             else
             {
-                Preferences.Set("JSONFavorite", API.GetFavoritesJSON(3));
+                Preferences.Set("JSONFavorite", API.GetFavoritesJSON(idUser));
                 Preferences.Set("boolFavorite", true);
             }
         }

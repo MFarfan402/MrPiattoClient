@@ -11,16 +11,33 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
+using Xamarin.Essentials;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient
 {
     [Activity(Label = "ActivityHome")]
     public class ActivityHome : FragmentActivity
     {
+        APICaller API = new APICaller();
+        int idUser;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_bottomNavigation);
+            idUser = Intent.GetIntExtra("idUser", 0);
+
+            if (!Preferences.Get("boolFavorite", false))
+            {
+                Preferences.Set("JSONFavorite", API.GetFavoritesJSON(idUser));
+                Preferences.Set("boolFavorite", true);
+            }
+
+            if (!Preferences.Get("boolReservation", false))
+            {
+                Preferences.Set("JSONReservation", API.GetFavoritesJSON(idUser));
+                Preferences.Set("boolReservation", true);
+            }
 
             BottomNavigationView bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottomNavMain);
             bottomNavigation.NavigationItemSelected += FragmentListener;
@@ -51,6 +68,7 @@ namespace MrPiattoClient
                     break;
                 case Resource.Id.itemStrikes:
                     intent = new Intent(this, typeof(ActivityStrikes));
+                    intent.PutExtra("idUser", idUser);
                     StartActivity(intent);
                     break;
                 case Resource.Id.itemNotifications:

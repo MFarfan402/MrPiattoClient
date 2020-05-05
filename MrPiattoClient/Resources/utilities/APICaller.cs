@@ -22,6 +22,7 @@ namespace MrPiattoClient.Resources.utilities
     {
         //private static readonly string url = "http://200.23.157.109/api/";
         private static readonly string url = "http://192.168.100.207/api/";
+        private static readonly string urlPhotos = "http://192.168.100.207/images/";
         public APICaller() { }
         
         /*
@@ -193,6 +194,8 @@ namespace MrPiattoClient.Resources.utilities
                 {
                     categories = JsonConvert.DeserializeObject<List<IdcategoriesNavigation>>(reader.ReadToEnd());
                 }
+                foreach (var c in categories)
+                    c.urlPhoto = $"{urlPhotos}categories/{c.idcategory}/categorie.jpg";
                 return categories;
             }
             catch (Exception)
@@ -257,6 +260,65 @@ namespace MrPiattoClient.Resources.utilities
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var response = client.PostAsync("Reservations", byteContent).Result;
             return await response.Content.ReadAsStringAsync();
+        }
+
+        public string GetReservationsJSON(int idUser)
+        {
+            string reservation;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Reservations/{idUser}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    reservation = reader.ReadToEnd().ToString();
+                }
+                return reservation;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public List<Strike> GetStrikes(int idUser)
+        {
+            List<Strike> strikes;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}UserStrikes/{idUser}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    strikes = JsonConvert.DeserializeObject<List<Strike>>(reader.ReadToEnd());
+                }
+                return strikes;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<CompleteRestaurant> GetVisitedRestaurants(int idUser)
+        {
+            List<CompleteRestaurant> visited;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}UserRestaurants/Visited/{idUser}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    visited = JsonConvert.DeserializeObject<List<CompleteRestaurant>>(reader.ReadToEnd());
+                }
+                return visited;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         /*

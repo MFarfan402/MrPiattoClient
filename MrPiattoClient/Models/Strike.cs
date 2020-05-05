@@ -14,17 +14,9 @@ namespace MrPiattoClient.Models
 {
     public class Strike
     {
-        public int idStrike { get; set; }
-        public string RestaurantName { get; set; }
-        public string StrikeDate { get; set; }
-        public string Reason { get; set; }
-
-        public Strike(int idStrike, string restaurantName, string strikeDate, string reason)
-        {
-            this.idStrike = idStrike;
-            RestaurantName = restaurantName;
-            StrikeDate = strikeDate;
-            Reason = reason;
-        }
+        public int iduserStrikes { get; set; }
+        public int iduser { get; set; }
+        public DateTime date { get; set; }
+        public string reason { get; set; }
     }
 }

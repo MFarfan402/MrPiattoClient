@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Models
 {
@@ -19,6 +20,7 @@ namespace MrPiattoClient.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string Categories { get; set; }
+        public string UrlMainFoto { get; set; }
 
         public Restaurant(int id, double rating, string name, string address, string categorie)
         {
@@ -27,6 +29,7 @@ namespace MrPiattoClient.Models
             Name = name;
             Address = address;
             Categories = categorie;
+            UrlMainFoto = $"http://192.168.100.207/images/{IDRestaurant}/main.jpg";
         }
     }
 }

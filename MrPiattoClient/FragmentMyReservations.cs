@@ -12,6 +12,9 @@ using Android.Views;
 using Android.Widget;
 using MrPiattoClient.Resources.adapter;
 using AndroidX.RecyclerView.Widget;
+using MrPiattoClient.Models;
+using Newtonsoft.Json;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient
 {
@@ -20,11 +23,7 @@ namespace MrPiattoClient
     {
         RecyclerView recycler;
         RecyclerViewReservationAdapter adapter;
-        List<Reservation> reservations = new List<Reservation>()
-        {
-            new Reservation("03/02/2020", "13:00", "3 personas", "Mr. Piatto Restaurant"),
-            new Reservation("05/02/2020", "19:00", "6 personas", "Fonda de Doña Chona")
-        };
+        
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -39,6 +38,11 @@ namespace MrPiattoClient
 
         private void ReservationsOnScreen(View view)
         {
+
+            List<Reservation> reservations = JsonConvert.DeserializeObject<List<Reservation>>
+                (Preferences.Get("JSONReservation", null));
+            
+
             recycler = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewMyReservations);
             recycler.SetLayoutManager(new LinearLayoutManager(view.Context));
             recycler.SetItemAnimator(new DefaultItemAnimator());

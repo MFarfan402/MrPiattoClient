@@ -11,7 +11,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
-
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -19,12 +19,14 @@ namespace MrPiattoClient.Resources.adapter
     {
         public TextView name, cuisine, rating;
         public Button reservation;
+        public ImageView image;
         public RecyclerViewMainHolder(View itemView) : base(itemView)
         {
             reservation = itemView.FindViewById<Button>(Resource.Id.btnBookATableMain);
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewMainName);
             cuisine = itemView.FindViewById<TextView>(Resource.Id.cardviewMainCuisine);
             rating = itemView.FindViewById<TextView>(Resource.Id.cardviewMainRating);
+            image = itemView.FindViewById<ImageView>(Resource.Id.cardviewMainImage);
         }
     }
 
@@ -48,9 +50,11 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.name.Text = restaurants[position].Name;
             viewHolder.cuisine.Text = restaurants[position].Categories;
             viewHolder.rating.Text = restaurants[position].Rating.ToString();
+            viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(restaurants[position].UrlMainFoto));
             viewHolder.reservation.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(RestaurantActivity));
+                intent.PutExtra("idRestaurant", restaurants[position].IDRestaurant);
                 context.StartActivity(intent);
             };
         }

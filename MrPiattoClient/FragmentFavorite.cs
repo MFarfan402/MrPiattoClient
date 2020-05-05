@@ -26,7 +26,6 @@ namespace MrPiattoClient
         List<Restaurant> restaurants = new List<Restaurant>();
         RecyclerView recycler;
         RecyclerViewFavoriteAdapter adapter;
-        int idUser = 3;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -42,6 +41,7 @@ namespace MrPiattoClient
 
         private void GetRestaurants()
         {
+
             List<CompleteRestaurant> favorites = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
                 (Preferences.Get("JSONFavorite", null));
 

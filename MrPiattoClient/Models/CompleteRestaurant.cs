@@ -16,6 +16,13 @@ namespace MrPiattoClient.Models
     {
         public int idcategory { get; set; }
         public string category { get; set; }
+        public string urlPhoto { get; set; }
+        public IdcategoriesNavigation(int id, string category)
+        {
+            idcategory = id;
+            this.category = category;
+            urlPhoto = $"http://192.168.100.207/images/categories/{id}/categorie.jpg";
+        }
     }
 
     public class IdpaymentNavigation
@@ -43,6 +50,7 @@ namespace MrPiattoClient.Models
         public float lat { get; set; }
         public int idcategories { get; set; }
         public int idpayment { get; set; }
+        public string UrlMainFoto { get; set; }
         public IdcategoriesNavigation idcategoriesNavigation { get; set; }
         public IdpaymentNavigation idpaymentNavigation { get; set; }
     }

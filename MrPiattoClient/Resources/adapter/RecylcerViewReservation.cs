@@ -10,39 +10,26 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
+using MrPiattoClient.Models;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Resources.adapter
 {
-    class Reservation
-    {
-        public string Date { get; set; }
-        public string Hour { get; set; }
-        public string Quantity { get; set; }
-        public string RestaurantName { get; set; }
-        //public string ImageString { get; set; }
-        public Reservation(string Date, string Hour, string Quantity, string RestaurantName)
-        {
-            this.Date = Date;
-            this.Hour = Hour;
-            this.Quantity = Quantity;
-            this.RestaurantName = RestaurantName;
-        }
-    }
-
-
+    
     class RecyclerViewReservationHolder : RecyclerView.ViewHolder
     {
         public TextView date, hour, quantity, restaurantName;
-        public Button buttonModify;
-        //public ImageView image;
+        public Button buttonModify, buttonKnowMore;
+        public ImageView image;
         public RecyclerViewReservationHolder(View itemView) : base(itemView)
         {
             date = itemView.FindViewById<TextView>(Resource.Id.cardviewDay);
             hour = itemView.FindViewById<TextView>(Resource.Id.cardviewHour);
             quantity = itemView.FindViewById<TextView>(Resource.Id.cardviewQuantity);
             restaurantName = itemView.FindViewById<TextView>(Resource.Id.cardviewReservationsName);
-            //image = itemView.FindViewById<ImageView>(Resource.Id.cardviewRestaurantImage);
+            image = itemView.FindViewById<ImageView>(Resource.Id.cardviewRestaurantImage);
             buttonModify = itemView.FindViewById<Button>(Resource.Id.buttonModifyMyReservation);
+            buttonKnowMore = itemView.FindViewById<Button>(Resource.Id.buttonInfoMyReservation);
         }
     }
 
@@ -65,15 +52,24 @@ namespace MrPiattoClient.Resources.adapter
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewReservationHolder viewHolder = holder as RecyclerViewReservationHolder;
-            viewHolder.date.Text = reservations[position].Date;
-            viewHolder.hour.Text = reservations[position].Hour;
-            viewHolder.quantity.Text = reservations[position].Quantity;
-            viewHolder.restaurantName.Text = reservations[position].RestaurantName;
-            //viewHolder.image.SetImageResource(reservations.R);
+            viewHolder.date.Text = reservations[position].date.Date.ToString("dd-MM-yyyy");
+            viewHolder.hour.Text = reservations[position].date.ToString("hh:mm:ss");
+            viewHolder.quantity.Text = $"{reservations[position].amountOfPeople.ToString()} persona(s)";
+            viewHolder.restaurantName.Text = reservations[position].idtableNavigation.idrestaurantNavigation.name;
+            viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(
+                $"http://192.168.100.207/images/{reservations[position].idtableNavigation.idrestaurant}/main.jpg"));
             viewHolder.buttonModify.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(ModifyActivity));
                 context.StartActivity(intent);
+            };
+            viewHolder.buttonKnowMore.Click += (sender, e) =>
+            {
+                Dialog dialog = new Dialog(context);
+                dialog.SetContentView(Resource.Layout.fragment_qr);
+                dialog.Window.SetSoftInputMode(SoftInput.AdjustResize);
+                dialog.Show();
+
             };
 
         }

@@ -11,7 +11,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
-
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -20,9 +20,11 @@ namespace MrPiattoClient.Resources.adapter
         public TextView name, location, cuisine;
         public RatingBar ratingBar;
         public Button buttonRateMe, buttonComplaint;
+        public ImageView image;
         public RecyclerViewVisitedHolder(View itemView) : base(itemView)
         {
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantName);
+            image = itemView.FindViewById<ImageView>(Resource.Id.cardviewVisitedImage);
             location = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedLocation);
             cuisine = itemView.FindViewById<TextView>(Resource.Id.cardviewVisitedRestaurantCuisine);
             ratingBar = itemView.FindViewById<RatingBar>(Resource.Id.cardviewVisitedRatingBar);
@@ -53,6 +55,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.location.Text = visitedRestaurant[position].Address;
             viewHolder.cuisine.Text = visitedRestaurant[position].Categories;
             viewHolder.ratingBar.Rating = (float)visitedRestaurant[position].Rating;
+            viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(visitedRestaurant[position].UrlMainFoto));
             viewHolder.buttonRateMe.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(SurveyActivity));

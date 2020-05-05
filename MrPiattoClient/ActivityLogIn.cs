@@ -27,8 +27,8 @@ namespace MrPiattoClient
             SetContentView(Resource.Layout.activity_logIn);
             editTextEmail = FindViewById<EditText>(Resource.Id.editTextEmail);
             editTextPassword = FindViewById<EditText>(Resource.Id.editTextPassword);
-            CheckForPreferences();
             InitListeners();
+            Preferences.Set("idUser", 3);
         }
         /*
         private void CheckForPreferences()

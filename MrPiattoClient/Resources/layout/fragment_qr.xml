@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+
+	<ImageView
+		android:id="@+id/qrImage"
+		android:layout_width="200dp"
+		android:layout_height="200dp"
+		android:src="@drawable/qr"
+	/>
+
+	<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnShareReservation"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="COMPARTIR"
+			android:layout_margin="8dp"
+			style="@style/OutlinedButton"
+			android:layout_below="@id/qrImage"
+			app:strokeColor="@color/colorPrimary"
+		/>
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/btnNFC"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="ACTIVAR NFC"
+			android:layout_margin="8dp"
+			android:layout_alignParentRight="true"
+			style="@style/OutlinedButton"
+			app:strokeColor="@color/colorPrimary"
+			android:layout_below="@id/btnShareReservation"
+		/>
+
+</RelativeLayout>

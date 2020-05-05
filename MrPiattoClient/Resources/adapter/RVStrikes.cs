@@ -42,9 +42,9 @@ namespace MrPiattoClient.Resources.adapter
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RVStrikesHolder viewHolder = holder as RVStrikesHolder;
-            viewHolder.name.Text = strikes[position].RestaurantName;
-            viewHolder.date.Text = strikes[position].StrikeDate;
-            viewHolder.reason.Text = strikes[position].Reason;
+            viewHolder.name.Text = (position + 1).ToString();
+            viewHolder.date.Text = strikes[position].date.Date.ToString("dd-MM-yyyy");
+            viewHolder.reason.Text = strikes[position].reason;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
