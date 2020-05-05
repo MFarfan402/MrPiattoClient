@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 	<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -157,7 +157,7 @@
             <TextView
                 android:id="@+id/questionF"
 		        style="@style/bookingText"
-                android:text="¿Cuál es el nombre del mesero que lo atendió?"
+                android:text="Escribe una breve reseña."
                 android:layout_below="@id/SpinnerE"/>
 
             <com.google.android.material.textfield.TextInputLayout

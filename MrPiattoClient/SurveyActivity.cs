@@ -12,6 +12,9 @@ using Android.Widget;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Support.Design.Widget;
+using MrPiattoClient.Resources.utilities;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace MrPiattoClient
 {
@@ -19,7 +22,10 @@ namespace MrPiattoClient
     public class SurveyActivity : AppCompatActivity
     {
         Spinner spinnerA, spinnerB, spinnerC, spinnerD, spinnerE;
+        EditText userComment;
+        APICaller API = new APICaller();
         List<Spinner> spinners = new List<Spinner>();
+        Button button;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,6 +33,30 @@ namespace MrPiattoClient
 
             InitToolbar();
             InitSpinners();
+            InitListeners();
+        }
+
+        private void InitListeners()
+        {
+            button = FindViewById<Button>(Resource.Id.buttonSurveyComplete);
+            userComment = FindViewById<EditText>(Resource.Id.editTextComment);
+            button.Click += (sender, e) =>
+            {
+                if (userComment.Text.Length == 0)
+                    Toast.MakeText(this, "Por favor, escribe un comentario.", ToastLength.Long).Show();
+
+                List<float> scores = new List<float>();
+                scores.Add(int.Parse(spinnerA.SelectedItem.ToString()) / 2);
+                scores.Add(int.Parse(spinnerB.SelectedItem.ToString()) / 2);
+                scores.Add(int.Parse(spinnerC.SelectedItem.ToString()) / 2);
+                scores.Add(int.Parse(spinnerD.SelectedItem.ToString()) / 2);
+                scores.Add(scores.Average());
+
+                var msg = API.PostSurvey(2, scores, userComment.Text.ToString(), Intent.GetIntExtra("idRestaurant", 0));
+                Toast.MakeText(this, "Comentario publicado.", ToastLength.Long).Show();
+                Task.Delay(250);
+                Finish();
+            };
         }
 
         private void InitSpinners()

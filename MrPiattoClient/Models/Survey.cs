@@ -36,6 +36,7 @@ namespace MrPiattoClient.Models
         public double serviceRating { get; set; }
         public double generalScore { get; set; }
         public int idcomment { get; set; }
+        public DateTime dateStatistics { get; set; }
         public IdcommentNavigation idcommentNavigation { get; set; }
         public object idrestaurantNavigation { get; set; }
         public object iduserNavigation { get; set; }

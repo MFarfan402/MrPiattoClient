@@ -25,7 +25,7 @@ namespace MrPiattoClient
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_bottomNavigation);
-            idUser = Intent.GetIntExtra("idUser", 0);
+            idUser = Preferences.Get("idUser", 0);
 
             if (!Preferences.Get("boolFavorite", false))
             {

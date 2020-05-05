@@ -36,8 +36,8 @@ namespace MrPiattoClient
             NeedToLoadFavorite();
             NeedToLoadReservations();
             Preferences.Set("JSONRes", API.GetMainRestaurantsJSON());
+            Preferences.Set("idUser", idUser);
             Intent intent = new Intent(Application.Context, typeof(ActivityHome));
-            intent.PutExtra("idUser", idUser);
             StartActivity(intent);
         }
 

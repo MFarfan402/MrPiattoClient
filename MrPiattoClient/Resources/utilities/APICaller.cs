@@ -261,6 +261,77 @@ namespace MrPiattoClient.Resources.utilities
             var response = client.PostAsync("Reservations", byteContent).Result;
             return await response.Content.ReadAsStringAsync();
         }
+        public async Task<string> JoinMrPiatto(string name, string address, string phone, string mail)
+        {
+            CompleteRestaurant restaurant = new CompleteRestaurant();
+            restaurant.name = name;
+            restaurant.address = address;
+            restaurant.phone = phone;
+            restaurant.mail = mail;
+            restaurant.confirmation = false;
+
+            HttpClient client = new HttpClient();
+            client = BaseClient(client);
+
+            var content = JsonConvert.SerializeObject(restaurant);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("Restaurants", byteContent).Result;
+            return await response.Content.ReadAsStringAsync();
+        }
+        public async Task<string> PostSurvey(int idWaiter, List<float> score, string comment, int idRes)
+        {
+            /*
+             * 1. Insert into Comments
+             * 2. Insert into Surveys
+             * 3. Insert into Waiters // Not constructed yet...
+             */
+
+            PostComment newComment = new PostComment();
+            newComment.idrestaurant = idRes;
+            newComment.comment = comment;
+            newComment.status = "Active";
+            newComment.iduser = Preferences.Get("idUser", 0);
+            newComment.date = DateTime.Now;
+
+            HttpClient client = new HttpClient();
+            client = BaseClient(client);
+
+            var content = JsonConvert.SerializeObject(newComment);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("Comments", byteContent).Result;
+            newComment = JsonConvert.DeserializeObject<PostComment>(await response.Content.ReadAsStringAsync());
+
+            Survey survey = new Survey();
+            survey.idrestaurant = idRes;
+            survey.iduser = newComment.iduser;
+            survey.idwaiter = 2; // Waiter score is storage at score[0]
+            survey.foodRating = score[1];
+            survey.comfortRating = score[2];
+            survey.serviceRating = score[3];
+            survey.generalScore = score[4];
+            survey.idcomment = newComment.idcomment;
+            survey.dateStatistics = DateTime.Now;
+
+            var content2 = JsonConvert.SerializeObject(survey); ;
+            var byteContent2 = new ByteArrayContent(Encoding.UTF8.GetBytes(content2));
+            byteContent2.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var sResponse = client.PostAsync("Surveys", byteContent).Result;
+            return await sResponse.Content.ReadAsStringAsync();
+        }
+        public int CreateUser(User user)
+        {
+            HttpClient client = new HttpClient();
+            client = BaseClient(client);
+
+            var content = JsonConvert.SerializeObject(user);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("Users", byteContent).Result;
+            
+            return int.Parse(response.Content.ToString());
+        }
 
         public string GetReservationsJSON(int idUser)
         {
@@ -281,7 +352,6 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-
         public List<Strike> GetStrikes(int idUser)
         {
             List<Strike> strikes;

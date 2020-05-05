@@ -38,17 +38,9 @@ namespace MrPiattoClient
             List<CompleteRestaurant> favorites = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
                 (Preferences.Get("JSONFavorite", null));
 
-            foreach (var f in favorites)
-            {
-                fav.Add(new Restaurant(f.idrestaurant, f.score, f.name, f.address, f.idcategoriesNavigation.category));
-            }
 
             List<CompleteRestaurant> mainR = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
                 (Preferences.Get("JSONRes", null));
-            foreach (var r in mainR)
-            {
-                main.Add(new Restaurant(r.idrestaurant, r.score, r.name, r.address, r.idcategoriesNavigation.category));
-            }
 
             List<IdcategoriesNavigation> categories = API.GetCategories();
 
@@ -66,8 +58,8 @@ namespace MrPiattoClient
             recyclerCuisine.SetLayoutManager(new LinearLayoutManager(rootView.Context, LinearLayoutManager.Horizontal, false));
             recyclerCuisine.SetItemAnimator(new DefaultItemAnimator());
 
-            adapter = new RecyclerViewMainAdapter(fav, rootView.Context);
-            adapterNear = new RecyclerViewMainAdapter(main, rootView.Context);
+            adapter = new RecyclerViewMainAdapter(favorites, rootView.Context);
+            adapterNear = new RecyclerViewMainAdapter(mainR, rootView.Context);
             adapterCuisine = new RecyclerViewCuisineAdapter(categories);
             recycler.SetAdapter(adapter);
             recyclerNear.SetAdapter(adapterNear);

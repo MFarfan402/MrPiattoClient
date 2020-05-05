@@ -12,6 +12,7 @@ using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
 using MrPiattoClient.Resources.utilities;
+using Newtonsoft.Json;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -32,9 +33,9 @@ namespace MrPiattoClient.Resources.adapter
 
     class RecyclerViewMainAdapter : RecyclerView.Adapter
     {
-        private List<Restaurant> restaurants;
+        private List<CompleteRestaurant> restaurants;
         private Context context;
-        public RecyclerViewMainAdapter(List<Restaurant> restaurants, Context context)
+        public RecyclerViewMainAdapter(List<CompleteRestaurant> restaurants, Context context)
         {
             this.restaurants = restaurants;
             this.context = context;
@@ -47,14 +48,14 @@ namespace MrPiattoClient.Resources.adapter
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             RecyclerViewMainHolder viewHolder = holder as RecyclerViewMainHolder;
-            viewHolder.name.Text = restaurants[position].Name;
-            viewHolder.cuisine.Text = restaurants[position].Categories;
-            viewHolder.rating.Text = restaurants[position].Rating.ToString();
+            viewHolder.name.Text = restaurants[position].name;
+            viewHolder.cuisine.Text = restaurants[position].idcategoriesNavigation.category;
+            viewHolder.rating.Text = restaurants[position].score.ToString();
             viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(restaurants[position].UrlMainFoto));
             viewHolder.reservation.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(RestaurantActivity));
-                intent.PutExtra("idRestaurant", restaurants[position].IDRestaurant);
+                intent.PutExtra("mainInfo", JsonConvert.SerializeObject(restaurants[position]));
                 context.StartActivity(intent);
             };
         }

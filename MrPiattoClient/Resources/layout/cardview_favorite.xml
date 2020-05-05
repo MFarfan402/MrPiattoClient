@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 >
@@ -62,6 +63,18 @@
 				style="@style/RatingBarSmall"
 				android:layout_toRightOf="@id/cardviewFavoriteRestaurantCuisine"
 				android:layout_below="@id/cardviewFavoriteLocation"/>
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/buttonKnowMoreRes"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="VER MÁS"
+				android:layout_margin="8dp"
+				style="@style/OutlinedButton"
+				android:layout_below="@id/cardviewFavoriteLocation"
+				android:layout_toRightOf="@id/cardviewFavoriteRatingBar"
+				app:strokeColor="@color/colorPrimary"
+			/>
 
 		</RelativeLayout>
 

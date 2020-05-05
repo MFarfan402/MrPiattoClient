@@ -29,5 +29,6 @@ namespace MrPiattoClient.Models
             Mail = mail;
             Password = password;
         }
+        public User() { }
     }
 }

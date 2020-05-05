@@ -23,7 +23,6 @@ namespace MrPiattoClient
     public class FragmentFavorite : Fragment
     {
         APICaller API = new APICaller();
-        List<Restaurant> restaurants = new List<Restaurant>();
         RecyclerView recycler;
         RecyclerViewFavoriteAdapter adapter;
         public override void OnCreate(Bundle savedInstanceState)
@@ -34,31 +33,20 @@ namespace MrPiattoClient
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View view = inflater.Inflate(Resource.Layout.fragment_favorite, container, false);
-            GetRestaurants();
+            
             PutFavoriteRestaurants(view);
             return view;
         }
 
-        private void GetRestaurants()
-        {
-
-            List<CompleteRestaurant> favorites = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
-                (Preferences.Get("JSONFavorite", null));
-
-            foreach (var f in favorites)
-            {
-                restaurants.Add(new Restaurant(f.idrestaurant, f.score, f.name, f.address, f.idcategoriesNavigation.category));
-            }
-            
-
-        }
-
         private void PutFavoriteRestaurants(View view)
         {
+            List<CompleteRestaurant> restaurants = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
+                (Preferences.Get("JSONFavorite", null));
+
             recycler = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewFavorite);
             recycler.SetLayoutManager(new LinearLayoutManager(view.Context));
             recycler.SetItemAnimator(new DefaultItemAnimator());
-            adapter = new RecyclerViewFavoriteAdapter(restaurants);
+            adapter = new RecyclerViewFavoriteAdapter(restaurants, view.Context);
             recycler.SetAdapter(adapter);
         }
         public static FragmentFavorite NewInstance()

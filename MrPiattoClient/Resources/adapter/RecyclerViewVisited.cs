@@ -59,6 +59,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.buttonRateMe.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(SurveyActivity));
+                intent.PutExtra("idRestaurant", visitedRestaurant[position].IDRestaurant);
                 context.StartActivity(intent);
             };
             viewHolder.buttonComplaint.Click += (sender, e) =>

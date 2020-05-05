@@ -12,6 +12,7 @@ using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
 using MrPiattoClient.Resources.utilities;
+using Newtonsoft.Json;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -61,6 +62,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.buttonModify.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(ModifyActivity));
+                intent.PutExtra("JSONReservation", JsonConvert.SerializeObject(reservations[position]));
                 context.StartActivity(intent);
             };
             viewHolder.buttonKnowMore.Click += (sender, e) =>

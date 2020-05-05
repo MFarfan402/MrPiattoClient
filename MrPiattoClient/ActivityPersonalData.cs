@@ -9,12 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MrPiattoClient.Models;
+using MrPiattoClient.Resources.utilities;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient
 {
     [Activity(Label = "ActivityPersonalData")]
     public class ActivityPersonalData : Activity
     {
+        APICaller API = new APICaller();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,9 +39,17 @@ namespace MrPiattoClient
                     Toast.MakeText(this, "Favor de llenar todos los campos", ToastLength.Long).Show();
                 else
                 {
-                    string email = Intent.GetStringExtra("email");
-                    string password = Intent.GetStringExtra("password");
-                    Intent intent = new Intent(this, typeof(ActivityHome));
+                    User user = new User();
+                    user.FirstName = name.Text;
+                    user.LastName = lastName.Text;
+                    user.Phone = phone.Text;
+                    user.Mail = Intent.GetStringExtra("email");
+                    user.Password = Intent.GetStringExtra("password");
+                    user.UserType = "client";
+
+                    Preferences.Set("idUser", API.CreateUser(user));
+
+                    Intent intent = new Intent(this, typeof(ActivityLoading));
                     intent.SetFlags(ActivityFlags.ClearTask);
                     StartActivity(intent);
                     Finish();
