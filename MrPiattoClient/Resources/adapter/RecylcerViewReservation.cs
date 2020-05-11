@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -13,6 +15,9 @@ using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
 using MrPiattoClient.Resources.utilities;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -20,17 +25,17 @@ namespace MrPiattoClient.Resources.adapter
     class RecyclerViewReservationHolder : RecyclerView.ViewHolder
     {
         public TextView date, hour, quantity, restaurantName;
-        public Button buttonModify, buttonKnowMore;
+        public Android.Widget.Button buttonModify, buttonKnowMore;
         public ImageView image;
-        public RecyclerViewReservationHolder(View itemView) : base(itemView)
+        public RecyclerViewReservationHolder(Android.Views.View itemView) : base(itemView)
         {
             date = itemView.FindViewById<TextView>(Resource.Id.cardviewDay);
             hour = itemView.FindViewById<TextView>(Resource.Id.cardviewHour);
             quantity = itemView.FindViewById<TextView>(Resource.Id.cardviewQuantity);
             restaurantName = itemView.FindViewById<TextView>(Resource.Id.cardviewReservationsName);
             image = itemView.FindViewById<ImageView>(Resource.Id.cardviewRestaurantImage);
-            buttonModify = itemView.FindViewById<Button>(Resource.Id.buttonModifyMyReservation);
-            buttonKnowMore = itemView.FindViewById<Button>(Resource.Id.buttonInfoMyReservation);
+            buttonModify = itemView.FindViewById<Android.Widget.Button>(Resource.Id.buttonModifyMyReservation);
+            buttonKnowMore = itemView.FindViewById<Android.Widget.Button>(Resource.Id.buttonInfoMyReservation);
         }
     }
 
@@ -75,6 +80,28 @@ namespace MrPiattoClient.Resources.adapter
                 ImageView qr = dialog.FindViewById<ImageView>(Resource.Id.qrImage);
                 qr.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(reservations[position].url));
 
+                Android.Widget.Button share = dialog.FindViewById<Android.Widget.Button>(Resource.Id.btnShareReservation);
+                share.Click += async (sender, e) =>
+                {
+                    string share = $"Restaurante: {reservations[position].idtableNavigation.idrestaurantNavigation.name}\n" +
+                        $"Fecha: {reservations[position].date.Date.ToString("dd-MM-yyyy")}\n" +
+                        $"Hora: {reservations[position].date.ToString("hh:mm")}\n" +
+                        $"Personas: {reservations[position].amountOfPeople}\n" +
+                        $"Link QR: {reservations[position].url}";
+                    await Share.RequestAsync(new ShareTextRequest
+                    {
+                        Text = share,
+                        Title = "Compartir información"
+                    });
+
+                };
+
+                Android.Widget.Button NFC = dialog.FindViewById<Android.Widget.Button>(Resource.Id.btnNFC);
+                NFC.Click += (sender, e) =>
+                {
+                    Toast.MakeText(context, "NFC Activado", ToastLength.Short).Show();
+                };
+
             };
 
         }
@@ -82,7 +109,7 @@ namespace MrPiattoClient.Resources.adapter
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             LayoutInflater inflater = LayoutInflater.From(parent.Context);
-            View itemView = inflater.Inflate(Resource.Layout.cardview_myReservation, parent, false);
+            Android.Views.View itemView = inflater.Inflate(Resource.Layout.cardview_myReservation, parent, false);
             return new RecyclerViewReservationHolder(itemView);
         }
     }

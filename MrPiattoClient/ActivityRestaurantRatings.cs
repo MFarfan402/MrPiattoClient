@@ -83,7 +83,7 @@ namespace MrPiattoClient
             recyclerView.SetLayoutManager(new LinearLayoutManager(this));
             recyclerView.SetItemAnimator(new DefaultItemAnimator());
 
-            adapter = new RecyclerViewRatingCommentAdapter(comments);
+            adapter = new RecyclerViewRatingCommentAdapter(comments, this);
             recyclerView.SetAdapter(adapter);
         }
         public override bool OnOptionsItemSelected(IMenuItem item)

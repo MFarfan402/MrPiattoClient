@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -33,10 +34,13 @@ namespace MrPiattoClient.Resources.adapter
 
     class RecyclerViewRatingCommentAdapter : RecyclerView.Adapter
     {
+        APICaller API = new APICaller();
         private List<Comment> comments;
-        public RecyclerViewRatingCommentAdapter(List<Comment> comments)
+        private Context context;
+        public RecyclerViewRatingCommentAdapter(List<Comment> comments, Context context)
         {
             this.comments = comments;
+            this.context = context;
         }
 
         public override int ItemCount
@@ -53,7 +57,10 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.rating.Rating = (float)comments[position].rating;
             viewHolder.buttonReport.Click += delegate
             {
-                Console.WriteLine(position);
+                API.ReportComment(comments[position].idcomment);
+                Toast.MakeText(context, "El mensaje ha sido reportado", ToastLength.Long);
+                comments.RemoveAt(position);
+                NotifyItemRangeRemoved(position, comments.Count() + 1);
             };
         }
 

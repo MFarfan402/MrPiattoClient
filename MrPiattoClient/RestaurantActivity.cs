@@ -145,15 +145,11 @@ namespace MrPiattoClient
         }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
-            ToastLength.Short).Show();
-            
             switch(item.ItemId)
             {
-                case Resource.Id.shareRestaurant:
-                    return true;
-
                 case Resource.Id.addToFavorite:
+                    API.AddToFavoriteAsync(idRestaurant);
+                    Toast.MakeText(this, "Restaurante añadido a favoritos", ToastLength.Short).Show();
                     return true;
 
                 default:

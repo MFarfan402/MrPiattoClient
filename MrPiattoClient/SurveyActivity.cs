@@ -26,6 +26,7 @@ namespace MrPiattoClient
         APICaller API = new APICaller();
         List<Spinner> spinners = new List<Spinner>();
         Button button;
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -43,19 +44,50 @@ namespace MrPiattoClient
             button.Click += async (sender, e) =>
             {
                 if (userComment.Text.Length == 0)
-                    Toast.MakeText(this, "Por favor, escribe un comentario.", ToastLength.Long).Show();
+                {
+                    Toast.MakeText(this, "Por favor, agrega un comentario", ToastLength.Long).Show();
+                }
+                else
+                {
+                    if(CheckBadWords(userComment.Text))
+                    {
+                        List<float> scores = new List<float>();
+                        scores.Add(int.Parse(spinnerB.SelectedItem.ToString()) / 2);
+                        scores.Add(int.Parse(spinnerC.SelectedItem.ToString()) / 2);
+                        scores.Add(int.Parse(spinnerD.SelectedItem.ToString()) / 2);
+                        scores.Add(int.Parse(spinnerE.SelectedItem.ToString()) / 2);
+                        scores.Add(scores.Average());
 
-                List<float> scores = new List<float>();
-                scores.Add(int.Parse(spinnerB.SelectedItem.ToString()) / 2);
-                scores.Add(int.Parse(spinnerC.SelectedItem.ToString()) / 2);
-                scores.Add(int.Parse(spinnerD.SelectedItem.ToString()) / 2);
-                scores.Add(int.Parse(spinnerE.SelectedItem.ToString()) / 2);
-                scores.Add(scores.Average());
-
-                var msg = await API.PostSurvey(2, scores, userComment.Text.ToString(), Intent.GetIntExtra("idRestaurant", 0));
-                Toast.MakeText(this, msg, ToastLength.Long).Show();
-                Finish();
+                        var msg = await API.PostSurvey(2, scores, userComment.Text.ToString(), Intent.GetIntExtra("idRestaurant", 0));
+                        Toast.MakeText(this, msg, ToastLength.Long).Show();
+                        Finish();
+                    }
+                    else
+                        Toast.MakeText(this, "No debes incluir groserías o spam en tu comentario.", ToastLength.Long).Show();
+                }
             };
+        }
+
+        private bool CheckBadWords(string comment)
+        {
+            List<string> badWords = new List<string>()
+            {
+                "puto", "pendejo", "zorro", "joto", "golfa", "verga", "baboso", "pinche", "estupido", "meco",
+                "www", ".com", "http"
+            };
+            string pattern = @$"\b(1)(s?)\b";
+            string patternAux = @$"\b(1)(s?)\b";
+            RegexOptions options = RegexOptions.Multiline | RegexOptions.IgnoreCase;
+            Regex regex;
+            foreach(var badWord in badWords)
+            {
+                pattern = pattern.Replace("1", badWord);
+                regex = new Regex(pattern, options);
+                if (regex.IsMatch(comment))
+                    return false;
+                pattern = patternAux;
+            }
+            return true;
         }
 
         private void InitSpinners()

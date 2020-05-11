@@ -66,7 +66,6 @@ namespace MrPiattoClient.Resources.adapter
                 API.NotBadComment(comments[position].idcomment);
                 comments.RemoveAt(position);
                 NotifyItemRangeRemoved(position, comments.Count() + 1);
-                
             };
         }
 

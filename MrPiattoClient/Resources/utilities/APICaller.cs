@@ -498,6 +498,41 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
+        public bool ReportComment(int idComment)
+        {
+            bool ok;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Comments/Report/{idComment}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    ok = JsonConvert.DeserializeObject<bool>(reader.ReadToEnd());
+                }
+                return ok;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public async Task<string> AddToFavoriteAsync(int idRes)
+        {
+            UserRestaurant user = new UserRestaurant();
+            user.idrestaurant = idRes;
+            user.iduser = Preferences.Get("idUser", 0);
+            user.favorite = true;
+
+            HttpClient client = new HttpClient();
+            client = BaseClient(client);
+
+            var content = JsonConvert.SerializeObject(user);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("UserRestaurants", byteContent).Result;
+            return await response.Content.ReadAsStringAsync();
+        }
 
         /*
         public bool LogInUser(string mail, string password)
