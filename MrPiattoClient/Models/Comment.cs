@@ -14,12 +14,14 @@ namespace MrPiattoClient.Models
 {
     public class Comment
     {
+        public int idcomment { get; set; }
         public double rating { get; set; }
         public string name { get; set; }
         public string date { get; set; }
         public string comment { get; set; }
-        public Comment(double rating, string name, string date, string comment)
+        public Comment(int idcomment, double rating, string name, string date, string comment)
         {
+            this.idcomment = idcomment;
             this.rating = rating;
             this.name = name;
             this.date = date;

@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -33,6 +34,7 @@ namespace MrPiattoClient.Resources.adapter
 
     class RecyclerViewCommentVerifierAdapter : RecyclerView.Adapter
     {
+        APICaller API = new APICaller();
         private List<Comment> comments;
         private Context context;
         public RecyclerViewCommentVerifierAdapter(List<Comment> comments, Context context)
@@ -50,6 +52,22 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.date.Text = comments[position].date;
             viewHolder.comment.Text = comments[position].comment;
             viewHolder.ratingBar.Rating = (float)comments[position].rating;
+
+            viewHolder.delete.Click += (sender, e) =>
+            {
+                API.DeleteComment(comments[position].idcomment);
+                comments.RemoveAt(position);
+                NotifyItemRangeRemoved(position, comments.Count() + 1);
+
+            };
+
+            viewHolder.noProblem.Click += (sender, e) =>
+            {
+                API.NotBadComment(comments[position].idcomment);
+                comments.RemoveAt(position);
+                NotifyItemRangeRemoved(position, comments.Count() + 1);
+                
+            };
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)

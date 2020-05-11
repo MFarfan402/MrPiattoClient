@@ -22,12 +22,9 @@ namespace MrPiattoClient.Resources.utilities
     {
         //private static readonly string url = "http://200.23.157.109/api/";
         private static readonly string url = "http://192.168.100.207/api/";
-        private static readonly string urlPhotos = "http://192.168.100.207/images/";
+        public static readonly string urlPhotos = "http://192.168.100.207/images/";
         public APICaller() { }
-        
-        /*
-         * CALLBACKS FOR THE VERIFIER
-         */
+
         public HttpClient BaseClient(HttpClient client)
         {
             client.BaseAddress = new Uri($"{url}");
@@ -36,6 +33,11 @@ namespace MrPiattoClient.Resources.utilities
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             return client;
         }
+
+        /*
+         * CALLBACKS FOR THE VERIFIER
+         */
+
         public List<Comment> GetCommentsVerifier()
         {
             List<Comment> comments;
@@ -56,14 +58,117 @@ namespace MrPiattoClient.Resources.utilities
             {
                 return null;
             }
+        }
+        public List<NewRestaurant> GetNewRestaurants()
+        {
+            List<NewRestaurant> restaurants;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Restaurants");
 
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    restaurants = JsonConvert.DeserializeObject<List<NewRestaurant>>(json);
+                }
+                return restaurants;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public bool DenyRestaurant(int id)
+        {
+            bool deny;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Restaurants/Deny/{id}");
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    deny = JsonConvert.DeserializeObject<bool>(json);
+                }
+                return deny;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public string AcceptRestaurant(int id)
+        {
+            string password;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Restaurants/Accept/{id}");
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    password = JsonConvert.DeserializeObject<string>(json);
+                }
+                return password;
+            }
+            catch (Exception)
+            {
+                return "Error. Favor de intentar nuevamente.";
+            }
+        }
+        public bool DeleteComment(int id)
+        {
+            bool delete;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Comments/Delete/{id}");
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    delete = JsonConvert.DeserializeObject<bool>(json);
+                }
+                return delete;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool NotBadComment(int id)
+        {
+            bool notBad;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Comments/NotBad/{id}");
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    notBad = JsonConvert.DeserializeObject<bool>(json);
+                }
+                return notBad;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /*
          * CALLBACKS FOR USER
          */
 
-        //RestaurantActivity
         public CompleteRestaurant GetRestaurantMainInfo(int idRestaurant)
         {
             CompleteRestaurant restaurant;
@@ -181,7 +286,6 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-
         public List<IdcategoriesNavigation> GetCategories()
         {
             List<IdcategoriesNavigation> categories;
@@ -242,7 +346,11 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-
+        public async Task FireAndForgetQRAsync(int id)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Reservations/QR/{id}");
+            await request.GetResponseAsync();
+        }
         public async Task<string> NewReservation(int idRestaurant, int idUser, DateTime date, int amount)
         {
             Reservation reservation = new Reservation();
@@ -250,7 +358,7 @@ namespace MrPiattoClient.Resources.utilities
             reservation.idtable = idRestaurant;
             reservation.date = date;
             reservation.amountOfPeople = amount;
-            reservation.url = "..";
+            reservation.url = ".";
 
             HttpClient client = new HttpClient();
             client = BaseClient(client);
@@ -317,10 +425,11 @@ namespace MrPiattoClient.Resources.utilities
             var content2 = JsonConvert.SerializeObject(survey); ;
             var byteContent2 = new ByteArrayContent(Encoding.UTF8.GetBytes(content2));
             byteContent2.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-            var sResponse = client.PostAsync("Surveys", byteContent).Result;
+            var sResponse = client.PostAsync("Surveys", byteContent2).Result;
             return await sResponse.Content.ReadAsStringAsync();
+
         }
-        public int CreateUser(User user)
+        public async Task<int> CreateUserAsync(User user)
         {
             HttpClient client = new HttpClient();
             client = BaseClient(client);
@@ -330,9 +439,8 @@ namespace MrPiattoClient.Resources.utilities
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var response = client.PostAsync("Users", byteContent).Result;
             
-            return int.Parse(response.Content.ToString());
+            return int.Parse(await response.Content.ReadAsStringAsync());
         }
-
         public string GetReservationsJSON(int idUser)
         {
             string reservation;

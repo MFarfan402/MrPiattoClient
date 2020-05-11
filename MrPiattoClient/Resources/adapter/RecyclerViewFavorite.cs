@@ -21,7 +21,7 @@ namespace MrPiattoClient.Resources.adapter
         public TextView name, location, cuisine;
         public RatingBar ratingBar;
         public ImageView image;
-        public Button button;;
+        public Button button;
         public RecyclerViewFavoriteHolder(View itemView) : base(itemView)
         {
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewFavoriteRestaurantName);
@@ -39,6 +39,7 @@ namespace MrPiattoClient.Resources.adapter
         public RecyclerViewFavoriteAdapter(List<CompleteRestaurant> favoriteRestaurant, Context context)
         {
             this.favoriteRestaurant = favoriteRestaurant;
+            this.context = context;
         }
 
         public override int ItemCount

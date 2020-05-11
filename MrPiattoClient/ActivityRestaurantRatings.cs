@@ -44,7 +44,7 @@ namespace MrPiattoClient
             List<Survey> surveys = API.GetRatingAndComments(Intent.GetIntExtra("idRestaurant", 0));
             foreach(var s in surveys)
             {
-                comments.Add(new Comment(s.generalScore, "Usuario", s.idcommentNavigation.date.ToString(), s.idcommentNavigation.comment));
+                comments.Add(new Comment(s.idcomment, s.generalScore, "Usuario", s.idcommentNavigation.date.ToString(), s.idcommentNavigation.comment));
             }
         }
 

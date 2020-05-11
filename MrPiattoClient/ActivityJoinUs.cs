@@ -48,6 +48,7 @@ namespace MrPiattoClient
             {
                 var msg = await API.JoinMrPiatto(name.Text, address.Text, phone.Text, mail.Text);
                 Toast.MakeText(this, msg, ToastLength.Long).Show();
+                Finish();
             }
         }
 

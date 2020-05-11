@@ -90,6 +90,7 @@
     <Compile Include="FragmentHome.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CompleteRestaurant.cs" />
+    <Compile Include="Models\NewRestaurant.cs" />
     <Compile Include="Models\Policies.cs" />
     <Compile Include="Models\PostComment.cs" />
     <Compile Include="Models\Reservation.cs" />

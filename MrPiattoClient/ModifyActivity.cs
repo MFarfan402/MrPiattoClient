@@ -125,7 +125,7 @@ namespace MrPiattoClient
             spinnerQuantity.Adapter = adapterQuantity;
 
             spinnerQuantity.SetSelection(reservation.amountOfPeople - 1);
-            spinner.SetSelection(reservation.date.Hour);
+            spinner.SetSelection(reservation.date.Hour - 1);
         }
     }
 }

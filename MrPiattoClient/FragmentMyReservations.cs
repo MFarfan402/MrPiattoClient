@@ -15,6 +15,7 @@ using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient
 {
@@ -23,7 +24,7 @@ namespace MrPiattoClient
     {
         RecyclerView recycler;
         RecyclerViewReservationAdapter adapter;
-        
+        APICaller API = new APICaller();
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -38,7 +39,11 @@ namespace MrPiattoClient
 
         private void ReservationsOnScreen(View view)
         {
-
+            if(!Preferences.Get("boolReservation", false))
+            {
+                Preferences.Set("boolReservation", true);
+                Preferences.Set("JSONReservation", API.GetReservationsJSON(Preferences.Get("idUser", 0)));
+            }
             List<Reservation> reservations = JsonConvert.DeserializeObject<List<Reservation>>
                 (Preferences.Get("JSONReservation", null));
             

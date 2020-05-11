@@ -33,7 +33,7 @@ namespace MrPiattoClient
             EditText lastName = FindViewById<EditText>(Resource.Id.editTextPersonalLastName);
             EditText phone = FindViewById<EditText>(Resource.Id.editTextPersonalPhone);
             Button endSignUp = FindViewById<Button>(Resource.Id.btnEndSign);
-            endSignUp.Click += delegate
+            endSignUp.Click += async delegate
             {
                 if (name.Text.Length == 0|| lastName.Text.Length == 0 || phone.Text.Length == 0)
                     Toast.MakeText(this, "Favor de llenar todos los campos", ToastLength.Long).Show();
@@ -45,17 +45,15 @@ namespace MrPiattoClient
                     user.Phone = phone.Text;
                     user.Mail = Intent.GetStringExtra("email");
                     user.Password = Intent.GetStringExtra("password");
-                    user.UserType = "client";
+                    user.UserType = "user";
 
-                    Preferences.Set("idUser", API.CreateUser(user));
+                    Preferences.Set("idUser", await API.CreateUserAsync(user));
 
                     Intent intent = new Intent(this, typeof(ActivityLoading));
                     intent.SetFlags(ActivityFlags.ClearTask);
                     StartActivity(intent);
                     Finish();
-                }
-                // Llamada a la base de datos para insertar usuario.
-                
+                }                
             };
         }
     }

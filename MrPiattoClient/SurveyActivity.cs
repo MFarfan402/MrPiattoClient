@@ -40,21 +40,20 @@ namespace MrPiattoClient
         {
             button = FindViewById<Button>(Resource.Id.buttonSurveyComplete);
             userComment = FindViewById<EditText>(Resource.Id.editTextComment);
-            button.Click += (sender, e) =>
+            button.Click += async (sender, e) =>
             {
                 if (userComment.Text.Length == 0)
                     Toast.MakeText(this, "Por favor, escribe un comentario.", ToastLength.Long).Show();
 
                 List<float> scores = new List<float>();
-                scores.Add(int.Parse(spinnerA.SelectedItem.ToString()) / 2);
                 scores.Add(int.Parse(spinnerB.SelectedItem.ToString()) / 2);
                 scores.Add(int.Parse(spinnerC.SelectedItem.ToString()) / 2);
                 scores.Add(int.Parse(spinnerD.SelectedItem.ToString()) / 2);
+                scores.Add(int.Parse(spinnerE.SelectedItem.ToString()) / 2);
                 scores.Add(scores.Average());
 
-                var msg = API.PostSurvey(2, scores, userComment.Text.ToString(), Intent.GetIntExtra("idRestaurant", 0));
-                Toast.MakeText(this, "Comentario publicado.", ToastLength.Long).Show();
-                Task.Delay(250);
+                var msg = await API.PostSurvey(2, scores, userComment.Text.ToString(), Intent.GetIntExtra("idRestaurant", 0));
+                Toast.MakeText(this, msg, ToastLength.Long).Show();
                 Finish();
             };
         }

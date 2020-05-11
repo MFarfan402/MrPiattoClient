@@ -72,7 +72,7 @@
 				android:layout_margin="8dp"
 				style="@style/OutlinedButton"
 				android:layout_below="@id/cardviewFavoriteLocation"
-				android:layout_toRightOf="@id/cardviewFavoriteRatingBar"
+				android:layout_alignParentRight="true"
 				app:strokeColor="@color/colorPrimary"
 			/>
 

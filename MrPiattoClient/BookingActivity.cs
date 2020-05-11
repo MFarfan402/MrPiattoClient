@@ -76,7 +76,11 @@ namespace MrPiattoClient
                 Match match = Regex.Match(textQuantity.Text, "([0-9][0-9])");
                 
                 var response = await API.NewReservation(idRestaurant, Preferences.Get("idUser", 0), dateTime, int.Parse(match.Value));
+                
                 Toast.MakeText(this, response, ToastLength.Long).Show();
+                await API.FireAndForgetQRAsync(Preferences.Get("idUser", 0));
+                Preferences.Set("boolReservation", false);
+                Finish();
             };
 
 

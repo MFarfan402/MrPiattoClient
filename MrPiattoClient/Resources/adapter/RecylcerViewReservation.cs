@@ -58,7 +58,7 @@ namespace MrPiattoClient.Resources.adapter
             viewHolder.quantity.Text = $"{reservations[position].amountOfPeople.ToString()} persona(s)";
             viewHolder.restaurantName.Text = reservations[position].idtableNavigation.idrestaurantNavigation.name;
             viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(
-                $"http://192.168.100.207/images/{reservations[position].idtableNavigation.idrestaurant}/main.jpg"));
+                $"{APICaller.urlPhotos}{reservations[position].idtableNavigation.idrestaurant}/main.jpg"));
             viewHolder.buttonModify.Click += (sender, e) =>
             {
                 Intent intent = new Intent(context, typeof(ModifyActivity));
@@ -71,6 +71,9 @@ namespace MrPiattoClient.Resources.adapter
                 dialog.SetContentView(Resource.Layout.fragment_qr);
                 dialog.Window.SetSoftInputMode(SoftInput.AdjustResize);
                 dialog.Show();
+
+                ImageView qr = dialog.FindViewById<ImageView>(Resource.Id.qrImage);
+                qr.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(reservations[position].url));
 
             };
 
