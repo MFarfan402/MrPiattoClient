@@ -16,6 +16,8 @@ using MrPiattoClient.Resources.utilities;
 using MrPiattoClient.Models;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Android.Gms.Maps.Model;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient
 {
@@ -25,7 +27,7 @@ namespace MrPiattoClient
         APICaller API = new APICaller();
         private MapView mapView;
         int idRestaurant;
-        
+        CompleteRestaurant restaurant;
         List<int> bars;
         List<float> ratings;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -41,7 +43,7 @@ namespace MrPiattoClient
 
         private void InflateMainData()
         {
-            CompleteRestaurant restaurant = JsonConvert.DeserializeObject<CompleteRestaurant>(
+            restaurant = JsonConvert.DeserializeObject<CompleteRestaurant>(
                 Intent.GetStringExtra("mainInfo"));
             idRestaurant = restaurant.idrestaurant;
 
@@ -149,6 +151,7 @@ namespace MrPiattoClient
             {
                 case Resource.Id.addToFavorite:
                     API.AddToFavoriteAsync(idRestaurant);
+                    Preferences.Set("boolFavorite", false);
                     Toast.MakeText(this, "Restaurante añadido a favoritos", ToastLength.Short).Show();
                     return true;
 
@@ -159,7 +162,17 @@ namespace MrPiattoClient
         
         public void OnMapReady(GoogleMap googleMap)
         {
-            googleMap.AddMarker(new Android.Gms.Maps.Model.MarkerOptions().SetPosition(new Android.Gms.Maps.Model.LatLng(0, 0)));
+            LatLng loc = new LatLng(restaurant.lat, restaurant.@long);
+            googleMap.AddMarker(new MarkerOptions().
+                SetPosition(loc));
+            CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
+            builder.Target(loc);
+            builder.Zoom(18);
+            builder.Tilt(65);
+
+            CameraPosition cameraPosition = builder.Build();
+            CameraUpdate cameraUpdate = CameraUpdateFactory.NewCameraPosition(cameraPosition);
+            googleMap.MoveCamera(cameraUpdate);
         }
 
         public void InitListeners()

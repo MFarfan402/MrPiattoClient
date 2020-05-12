@@ -46,8 +46,8 @@ namespace MrPiattoClient.Models
         public float price { get; set; }
         public float score { get; set; }
         public int severityLevel { get; set; }
-        public float @long { get; set; }
-        public float lat { get; set; }
+        public double @long { get; set; }
+        public double lat { get; set; }
         public int idcategories { get; set; }
         public int idpayment { get; set; }
         public string UrlMainFoto { get; set; }

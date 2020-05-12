@@ -43,7 +43,7 @@ namespace MrPiattoClient.Resources.adapter
             this.context = context;
         }
 
-        public override int ItemCount => comments.Count;
+        public override int ItemCount => comments.Count();
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
@@ -57,15 +57,14 @@ namespace MrPiattoClient.Resources.adapter
             {
                 API.DeleteComment(comments[position].idcomment);
                 comments.RemoveAt(position);
-                NotifyItemRangeRemoved(position, comments.Count() + 1);
-
+                NotifyDataSetChanged();
             };
 
             viewHolder.noProblem.Click += (sender, e) =>
             {
                 API.NotBadComment(comments[position].idcomment);
                 comments.RemoveAt(position);
-                NotifyItemRangeRemoved(position, comments.Count() + 1);
+                NotifyDataSetChanged();
             };
         }
 

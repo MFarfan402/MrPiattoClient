@@ -43,7 +43,7 @@ namespace MrPiattoClient.Resources.adapter
 
         public override int ItemCount
         {
-            get { return restaurants.Count; }
+            get { return restaurants.Count(); }
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)

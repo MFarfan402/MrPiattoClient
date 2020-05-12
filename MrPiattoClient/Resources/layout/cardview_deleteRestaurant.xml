@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	style="@style/CardStyle"
+>
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<ImageView
+			android:id="@+id/cardviewDeleteRestaurant"
+			android:layout_width="match_parent"
+			android:layout_height="150dp"
+			android:scaleType="centerCrop"		
+			/>
+
+		<TextView
+			android:id="@+id/cardviewDeleteName"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="#000"
+			android:textStyle="bold"
+			android:textSize="24sp"
+			android:layout_margin="12dp"
+			android:layout_below="@id/cardviewDeleteRestaurant"
+			/>
+		<TextView
+            android:id="@+id/cardviewDeleteConnection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/locationText"
+            android:textSize="14sp"
+            android:paddingLeft="12dp"
+            android:layout_below="@id/cardviewDeleteName"/>
+		<TextView
+            android:id="@+id/cardviewVerifierPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/locationText"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            android:paddingTop="8dp"
+			android:paddingHorizontal="12dp"
+            android:layout_below="@id/cardviewDeleteConnection"/>
+        
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/buttonDeleteSystem"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="ELIMINAR DE MR. PIATTO"
+			android:layout_margin="8dp"
+			style="@style/OutlinedButton"
+			app:strokeColor="@color/colorPrimary"
+			android:layout_alignParentRight="true"
+			android:layout_below="@id/cardviewDeleteConnection"/>
+
+	</RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -40,6 +40,11 @@ namespace MrPiattoClient
 
         private void PutFavoriteRestaurants(View view)
         {
+            if(!Preferences.Get("boolFavorite", false))
+            {
+                Preferences.Set("JSONFavorite", API.GetFavoritesJSON(Preferences.Get("idUser", 0)));
+                Preferences.Set("boolFavorite", true);
+            }
             List<CompleteRestaurant> restaurants = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
                 (Preferences.Get("JSONFavorite", null));
 

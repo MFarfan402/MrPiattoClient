@@ -164,6 +164,48 @@ namespace MrPiattoClient.Resources.utilities
                 return false;
             }
         }
+        public List<WarningRestaurant> GetInactiveRestaurants()
+        {
+            List<WarningRestaurant> restaurants;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}//AUN NO SE SABE");
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    restaurants = JsonConvert.DeserializeObject<List<WarningRestaurant>>(json);
+                }
+                return restaurants;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public string DeleteRestaurant(int id)
+        {
+            string responseMessage;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}//AUN NO SE SABE/{id}");
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    var json = reader.ReadToEnd();
+                    responseMessage = JsonConvert.DeserializeObject<string>(json);
+                }
+                return responseMessage;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
         /*
          * CALLBACKS FOR USER
@@ -377,6 +419,14 @@ namespace MrPiattoClient.Resources.utilities
             restaurant.phone = phone;
             restaurant.mail = mail;
             restaurant.confirmation = false;
+
+            var locations = await Geocoding.GetLocationsAsync(address);
+            var loc = locations?.FirstOrDefault();
+            if (loc != null)
+            {
+                restaurant.@long = loc.Longitude;
+                restaurant.lat = loc.Latitude;
+            }
 
             HttpClient client = new HttpClient();
             client = BaseClient(client);

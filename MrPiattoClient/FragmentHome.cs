@@ -35,6 +35,11 @@ namespace MrPiattoClient
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            if (!Preferences.Get("boolFavorite", false))
+            {
+                Preferences.Set("JSONFavorite", API.GetFavoritesJSON(Preferences.Get("idUser", 0)));
+                Preferences.Set("boolFavorite", true);
+            }
             List<CompleteRestaurant> favorites = JsonConvert.DeserializeObject<List<CompleteRestaurant>>
                 (Preferences.Get("JSONFavorite", null));
 

@@ -99,10 +99,12 @@
     <Compile Include="Models\Survey.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRestaurant.cs" />
+    <Compile Include="Models\WarningRestaurant.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCommentVerifier.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
     <Compile Include="Resources\adapter\RecyclerViewMain.cs" />
     <Compile Include="Resources\adapter\RecyclerViewNewRestaurant.cs" />
+    <Compile Include="Resources\adapter\RVInactive.cs" />
     <Compile Include="Resources\adapter\RVStrikes.cs" />
     <Compile Include="Resources\utilities\APICaller.cs" />
     <Compile Include="RestaurantActivity.cs" />
@@ -558,6 +560,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\QR.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cardview_deleteRestaurant.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
