@@ -154,7 +154,19 @@ namespace MrPiattoClient
                     Preferences.Set("boolFavorite", false);
                     Toast.MakeText(this, "Restaurante añadido a favoritos", ToastLength.Short).Show();
                     return true;
+                case Resource.Id.shareRestaurant:
 
+                    string share = $"Restaurante: {restaurant.name}\n" +
+                    $"Ubicación: {restaurant.address}\n" +
+                    $"Cocina: {restaurant.idcategoriesNavigation.category}\n" +
+                    $"Calificación de Mr.Piatto: {restaurant.score}\n" +
+                    $"Contacto: {restaurant.phone}";
+                        Share.RequestAsync(new ShareTextRequest
+                        {
+                            Text = share,
+                            Title = "Compartir información"
+                        });
+                    return true;
                 default:
                     return base.OnOptionsItemSelected(item);
             }

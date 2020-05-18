@@ -9,4 +9,8 @@
       android:icon="@drawable/icon_heart"
       android:showAsAction="always"
       android:title="Agregar a favoritos"/>
+ <item
+      android:id="@+id/shareRestaurant"
+      android:enabled="true"
+      android:title="Compartir"/>
 </menu>
