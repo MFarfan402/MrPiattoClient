@@ -18,20 +18,22 @@ using Android.Util;
 using Android.Graphics;
 using System.Net;
 using System.IO;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Login;
+using Plugin.LocalNotifications;
 
 namespace MrPiattoClient
 {
     [Activity(MainLauncher = true)]
-    public class ActivityLogIn : Activity, GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener
+    public class ActivityLogIn : Activity, GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener, IFacebookCallback
     {
         GoogleApiClient mGoogleApiClient;
+        private ICallbackManager fbCallbackManager;
         private ConnectionResult mConnectionResult;
-        SignInButton mGsignBtn;
         TextView TxtName, TxtGender;
         ImageView ImgProfile;
         private bool mIntentInProgress;
         private bool mSignInClicked;
-        private bool mInfoPopulated;
 
         APICaller API = new APICaller();
         ImageView facebook, google;
@@ -56,6 +58,21 @@ namespace MrPiattoClient
             builder.AddScope(PlusClass.ScopePlusProfile);
             builder.AddScope(PlusClass.ScopePlusLogin);
             mGoogleApiClient = builder.Build();
+
+            FacebookSdk.SdkInitialize(this.ApplicationContext);
+            fbCallbackManager = CallbackManagerFactory.Create();
+            LoginManager.Instance.RegisterCallback(fbCallbackManager, this);
+            InitFacebookListener();
+
+        }
+
+        private void InitFacebookListener()
+        {
+            facebook = FindViewById<ImageView>(Resource.Id.facebookLogIn);
+            facebook.Click += delegate
+            {
+                LoginManager.Instance.LogInWithReadPermissions(this, new List<string> { "public_profile" });
+            };
         }
 
         protected override void OnStart()
@@ -106,7 +123,7 @@ namespace MrPiattoClient
                 }
             }
         }
-        private Bitmap GetImageBitmapFromUrl(String url)
+        private Bitmap GetImageBitmapFromUrl(System.String url)
         {
             Bitmap imageBitmap = null;
             try
@@ -127,7 +144,6 @@ namespace MrPiattoClient
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            Log.Debug(TAG, "onActivityResult:" + requestCode + ":" + resultCode + ":" + data);
             if (requestCode == 0)
             {
                 if (resultCode != Result.Ok)
@@ -170,7 +186,7 @@ private void CheckForPreferences()
 */
         private void InitListeners()
         {
-            facebook = FindViewById<ImageView>(Resource.Id.facebookLogIn);
+            
             google = FindViewById<ImageView>(Resource.Id.googleLogIn);
             signIn = FindViewById<Button>(Resource.Id.btnLogIn);
             
@@ -216,7 +232,6 @@ private void CheckForPreferences()
                     Toast.MakeText(this, "Favor de verificar los datos.", ToastLength.Long).Show();
                 */
                 Intent intent = new Intent(this, typeof(ActivityLoading));
-                intent.SetFlags(ActivityFlags.ClearTask);
                 StartActivity(intent);
                 Finish();
 
@@ -231,5 +246,9 @@ private void CheckForPreferences()
 
 
         }
+
+        void IFacebookCallback.OnCancel() { }
+        void IFacebookCallback.OnError(FacebookException error) { }
+        void IFacebookCallback.OnSuccess(Java.Lang.Object result) { }
     }
 }

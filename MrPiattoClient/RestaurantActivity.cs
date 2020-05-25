@@ -167,6 +167,11 @@ namespace MrPiattoClient
                             Title = "Compartir información"
                         });
                     return true;
+
+                case Resource.Id.mailSubscriptions:
+                    var msg = API.MailSubscription(Preferences.Get("idUser", 0), idRestaurant);
+                    Toast.MakeText(this, msg, ToastLength.Short).Show();
+                    return true;
                 default:
                     return base.OnOptionsItemSelected(item);
             }

@@ -249,6 +249,41 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
+        public string NewPassword(string mail)
+        {
+            string msg;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Users/Password/{mail}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                    msg = reader.ReadToEnd();
+                return msg;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public string MailSubscription(int idUser, int idRestaurant)
+        {
+            string msg;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}UserRestaurants/Mail/{idUser}/{idRestaurant}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                    msg = reader.ReadToEnd();
+                return msg;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public List<int> GetBars(int idRestaurant)
         {
             List<int> bar;
@@ -552,6 +587,25 @@ namespace MrPiattoClient.Resources.utilities
         {
             bool ok;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Comments/Report/{idComment}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    ok = JsonConvert.DeserializeObject<bool>(reader.ReadToEnd());
+                }
+                return ok;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool DisableMail(int idUser)
+        {
+            bool ok;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}UserRestaurants/DisableMail/{idUser}");
             try
             {
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())

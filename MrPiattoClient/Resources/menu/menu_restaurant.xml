@@ -13,4 +13,8 @@
       android:id="@+id/shareRestaurant"
       android:enabled="true"
       android:title="Compartir"/>
+  <item
+      android:id="@+id/mailSubscriptions"
+      android:enabled="true"
+      android:title="Suscribirte al boletín"/>
 </menu>

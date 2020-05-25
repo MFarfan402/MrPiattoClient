@@ -25,20 +25,30 @@ namespace MrPiattoClient
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_loading);
+            SimulateStartupAsync();
         }
         protected override void OnResume()
         {
             base.OnResume();
-            SimulateStartupAsync();
         }
         private void SimulateStartupAsync()
         {
             NeedToLoadFavorite();
             NeedToLoadReservations();
+            NotificationsPreferences();
             Preferences.Set("JSONRes", API.GetMainRestaurantsJSON());
             Preferences.Set("idUser", idUser);
             Intent intent = new Intent(Application.Context, typeof(ActivityHome));
             StartActivity(intent);
+        }
+
+        private void NotificationsPreferences()
+        {
+            if (!Preferences.ContainsKey("boolNFPush"))
+            {
+                Preferences.Set("boolNFPush", true);
+                Preferences.Set("boolNFMail", true);
+            }
         }
 
         private void NeedToLoadReservations()

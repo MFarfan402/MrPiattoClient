@@ -15,6 +15,7 @@ using MrPiattoClient.Resources.utilities;
 using MrPiattoClient.Models;
 using System.Text.RegularExpressions;
 using Xamarin.Essentials;
+using Plugin.LocalNotifications;
 
 namespace MrPiattoClient
 {
@@ -77,9 +78,20 @@ namespace MrPiattoClient
                 
                 var response = await API.NewReservation(idRestaurant, Preferences.Get("idUser", 0), dateTime, int.Parse(match.Value));
                 
+                if (response == "1")
+                {
+                    await API.FireAndForgetQRAsync(Preferences.Get("idUser", 0));
+                    Preferences.Set("boolReservation", false);
+                    if (Preferences.Get("boolNFPush", true))
+                    {
+                        CrossLocalNotifications.Current.Show("Reservación próxima",
+                        $"Queremos recordarte de tu reservación a las {textHour}.", 0, dateTime - new TimeSpan(4,0,0));
+                        CrossLocalNotifications.Current.Show("Reservación para mañana",
+                        $"Queremos recordarte de tu reservación para mañana a las {textHour}.", 0, dateTime - new TimeSpan(1,0,0,0));
+                    }
+                    response = "Tu reservación se ha generado con éxito.";
+                }
                 Toast.MakeText(this, response, ToastLength.Long).Show();
-                await API.FireAndForgetQRAsync(Preferences.Get("idUser", 0));
-                Preferences.Set("boolReservation", false);
                 Finish();
             };
 

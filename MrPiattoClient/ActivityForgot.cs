@@ -9,12 +9,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient
 {
     [Activity(Label = "ActivityForgot")]
     public class ActivityForgot : Activity
     {
+        APICaller API = new APICaller();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,12 +34,11 @@ namespace MrPiattoClient
                     Toast.MakeText(this, "Favor de llenar el campo.", ToastLength.Long).Show();
                 else
                 {
-                    Toast.MakeText(this, "Se ha enviado un correo para restablecer la contraseña.", ToastLength.Long).Show();
+                    string msg = API.NewPassword(emailText.Text);
+                    Toast.MakeText(this, msg, ToastLength.Long).Show();
                     Finish();
                 }
             };
-            
-            
         }
     }
 }
