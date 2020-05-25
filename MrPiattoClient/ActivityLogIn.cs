@@ -239,7 +239,6 @@ private void CheckForPreferences()
             signIn.LongClick += delegate
             {
                 Intent intent = new Intent(this, typeof(ActivityVerifierMain));
-                intent.SetFlags(ActivityFlags.ClearTask);
                 StartActivity(intent);
                 Finish();
             };

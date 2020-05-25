@@ -48,15 +48,15 @@ namespace MrPiattoClient.Resources.adapter
         {
             RVInactiveHolder viewHolder = holder as RVInactiveHolder;
             viewHolder.name.Text = restaurants[position].name;
-            viewHolder.lastConnection.Text = restaurants[position].lastLogin.ToString("dd-MM-yyyy");
-            viewHolder.phone.Text = restaurants[position].phone;
+            viewHolder.lastConnection.Text = $"Última conexión: {restaurants[position].lastLogin.ToString("dd-MM-yyyy")}";
+            viewHolder.phone.Text = $"Teléfono: {restaurants[position].phone}";
             viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(restaurants[position].UrlMainFoto));
             viewHolder.button.Click += delegate
             {
-                var msg = API.DeleteRestaurant(restaurants[position].idrestaurant);
+                API.DeleteRestaurant(restaurants[position].idrestaurant);
                 restaurants.RemoveAt(position);
                 NotifyDataSetChanged();
-                Toast.MakeText(context, msg, ToastLength.Long).Show();
+                Toast.MakeText(context, "El restaurante ha sido eliminado.", ToastLength.Long).Show();
             };
         }
 

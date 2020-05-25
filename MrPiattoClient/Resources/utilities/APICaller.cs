@@ -167,7 +167,7 @@ namespace MrPiattoClient.Resources.utilities
         public List<WarningRestaurant> GetInactiveRestaurants()
         {
             List<WarningRestaurant> restaurants;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}//AUN NO SE SABE");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Restaurants/Inactive");
 
             try
             {
@@ -185,10 +185,10 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-        public string DeleteRestaurant(int id)
+        public bool DeleteRestaurant(int id)
         {
-            string responseMessage;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}//AUN NO SE SABE/{id}");
+            bool responseMessage;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Restaurants/DeleteInactive/{id}");
 
             try
             {
@@ -197,13 +197,13 @@ namespace MrPiattoClient.Resources.utilities
                 using (StreamReader reader = new StreamReader(stream))
                 {
                     var json = reader.ReadToEnd();
-                    responseMessage = JsonConvert.DeserializeObject<string>(json);
+                    responseMessage = JsonConvert.DeserializeObject<bool>(json);
                 }
                 return responseMessage;
             }
             catch (Exception)
             {
-                return null;
+                return false;
             }
         }
 
@@ -499,13 +499,15 @@ namespace MrPiattoClient.Resources.utilities
             Survey survey = new Survey();
             survey.idrestaurant = idRes;
             survey.iduser = newComment.iduser;
-            survey.idwaiter = 2; // Waiter score is storage at score[0]
+            survey.idwaiter = idWaiter; // Waiter score is storage at score[0]
             survey.foodRating = score[1];
             survey.comfortRating = score[2];
             survey.serviceRating = score[3];
             survey.generalScore = score[4];
             survey.idcomment = newComment.idcomment;
             survey.dateStatistics = DateTime.Now;
+
+            await InsertWaiterScoreAsync(idWaiter, score[0]);
 
             var content2 = JsonConvert.SerializeObject(survey); ;
             var byteContent2 = new ByteArrayContent(Encoding.UTF8.GetBytes(content2));
@@ -514,6 +516,13 @@ namespace MrPiattoClient.Resources.utilities
             return await sResponse.Content.ReadAsStringAsync();
 
         }
+
+        private async Task InsertWaiterScoreAsync(int id, float rating)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Categories/WaitersStatistics/{id}/{rating}");
+            await request.GetResponseAsync();
+        }
+
         public async Task<int> CreateUserAsync(User user)
         {
             HttpClient client = new HttpClient();
@@ -558,6 +567,25 @@ namespace MrPiattoClient.Resources.utilities
                     strikes = JsonConvert.DeserializeObject<List<Strike>>(reader.ReadToEnd());
                 }
                 return strikes;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<Waiter> GetWaiters(int idRestaurant)
+        {
+            List<Waiter> waiters;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Categories/Waiters/{idRestaurant}");
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    waiters = JsonConvert.DeserializeObject<List<Waiter>>(reader.ReadToEnd());
+                }
+                return waiters;
             }
             catch (Exception)
             {

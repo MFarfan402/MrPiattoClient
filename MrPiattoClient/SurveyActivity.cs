@@ -15,6 +15,7 @@ using Android.Support.Design.Widget;
 using MrPiattoClient.Resources.utilities;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MrPiattoClient.Models;
 
 namespace MrPiattoClient
 {
@@ -26,12 +27,13 @@ namespace MrPiattoClient
         APICaller API = new APICaller();
         List<Spinner> spinners = new List<Spinner>();
         Button button;
+        int idRestaurant;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_survey);
-
+            idRestaurant = Intent.GetIntExtra("idRestaurant", 0);
             InitToolbar();
             InitSpinners();
             InitListeners();
@@ -52,13 +54,14 @@ namespace MrPiattoClient
                     if(CheckBadWords(userComment.Text))
                     {
                         List<float> scores = new List<float>();
+                        int idWaiter = GetIDWaiter(spinnerA.SelectedItem.ToString());
                         scores.Add(int.Parse(spinnerB.SelectedItem.ToString()) / 2);
                         scores.Add(int.Parse(spinnerC.SelectedItem.ToString()) / 2);
                         scores.Add(int.Parse(spinnerD.SelectedItem.ToString()) / 2);
                         scores.Add(int.Parse(spinnerE.SelectedItem.ToString()) / 2);
                         scores.Add(scores.Average());
 
-                        var msg = await API.PostSurvey(2, scores, userComment.Text.ToString(), Intent.GetIntExtra("idRestaurant", 0));
+                        var msg = await API.PostSurvey(idWaiter, scores, userComment.Text.ToString(), idRestaurant);
                         Toast.MakeText(this, msg, ToastLength.Long).Show();
                         Finish();
                     }
@@ -66,6 +69,12 @@ namespace MrPiattoClient
                         Toast.MakeText(this, "No debes incluir groserías o spam en tu comentario.", ToastLength.Long).Show();
                 }
             };
+        }
+
+        private int GetIDWaiter(string waiter)
+        {
+            Regex regex = new Regex(@"\b\w+(?=\.)");
+            return int.Parse(regex.Match(waiter).ToString());
         }
 
         private bool CheckBadWords(string comment)
@@ -110,7 +119,12 @@ namespace MrPiattoClient
                 spinner.Adapter = adapter;
             }
 
-            var adapterName = ArrayAdapter.CreateFromResource(this, Resource.Array.WaitersName, Android.Resource.Layout.SimpleListItem1);
+            List<Waiter> waiters = API.GetWaiters(idRestaurant);
+            List<string> stringWaiters = new List<string>();
+            foreach (var w in waiters)
+                stringWaiters.Add(w.ToString());
+
+            var adapterName = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, stringWaiters);
             adapterName.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinnerA.Adapter = adapterName;
         }

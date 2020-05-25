@@ -35,7 +35,6 @@ namespace MrPiattoClient
             recycler = rootView.FindViewById<RecyclerView>(Resource.Id.recyclerAddRestaurant);
             recycler.SetLayoutManager(new LinearLayoutManager(rootView.Context));
             recycler.SetItemAnimator(new DefaultItemAnimator());
-
             adapter = new RecyclerViewNewAdapter(API.GetNewRestaurants(), rootView.Context);
             recycler.SetAdapter(adapter);
             return rootView;

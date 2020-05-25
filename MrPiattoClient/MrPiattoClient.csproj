@@ -99,6 +99,7 @@
     <Compile Include="Models\Survey.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRestaurant.cs" />
+    <Compile Include="Models\Waiter.cs" />
     <Compile Include="Models\WarningRestaurant.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCommentVerifier.cs" />
     <Compile Include="Resources\adapter\RecyclerViewCuisine.cs" />
