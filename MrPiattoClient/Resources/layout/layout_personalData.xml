@@ -113,7 +113,7 @@
 
         <TextView
 		    android:id="@+id/tagGender"
-            android:text="Teléfono"
+            android:text="Género"
             style="@style/personalData"
 		    android:layout_below="@id/inputPhone"/>
         <Spinner

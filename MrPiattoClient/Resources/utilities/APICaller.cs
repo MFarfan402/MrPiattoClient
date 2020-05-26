@@ -675,6 +675,7 @@ namespace MrPiattoClient.Resources.utilities
                     Preferences.Set("boolUser", true);
                     Preferences.Set("userName", user.FirstName);
                     Preferences.Set("idUser", user.Iduser);
+                    Preferences.Set("userInfo", JsonConvert.SerializeObject(user));
                     return 1;
                 }
                 else

@@ -23,8 +23,6 @@ namespace MrPiattoClient
     {
         public Context contextFragment;
         APICaller API = new APICaller();
-        List<Restaurant> main = new List<Restaurant>();
-        List<Restaurant> fav = new List<Restaurant>();
         RecyclerView recycler, recyclerNear, recyclerCuisine;
         RecyclerViewMainAdapter adapter, adapterNear;
         RecyclerViewCuisineAdapter adapterCuisine;
@@ -35,6 +33,7 @@ namespace MrPiattoClient
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            
             if (!Preferences.Get("boolFavorite", false))
             {
                 Preferences.Set("JSONFavorite", API.GetFavoritesJSON(Preferences.Get("idUser", 0)));
@@ -50,6 +49,9 @@ namespace MrPiattoClient
             List<IdcategoriesNavigation> categories = API.GetCategories();
 
             View rootView = inflater.Inflate(Resource.Layout.fragment_main, container, false);
+
+            TextView name = rootView.FindViewById<TextView>(Resource.Id.helloText);
+            name.Text = $"Saludos {Preferences.Get("userName", "")}";
 
             recycler = rootView.FindViewById<RecyclerView>(Resource.Id.recyclerViewMainFavorite);
             recycler.SetLayoutManager(new LinearLayoutManager(rootView.Context, LinearLayoutManager.Horizontal, false));

@@ -11,6 +11,9 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
+using MrPiattoClient.Models;
+using Xamarin.Essentials;
+using Newtonsoft.Json;
 
 namespace MrPiattoClient
 {
@@ -18,6 +21,8 @@ namespace MrPiattoClient
     public class ActivityMyProfile : AppCompatActivity
     {
         Spinner spinnerGender;
+        EditText name, lastName, mail, phone;
+        User user;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -25,7 +30,25 @@ namespace MrPiattoClient
             InitToolbar();
             InitSpinners();
             InitListeners();
+            PutInfo();
 
+        }
+
+        private void PutInfo()
+        {
+            user = JsonConvert.DeserializeObject<User>(Preferences.Get("userInfo", null));
+
+            name = FindViewById<EditText>(Resource.Id.editInputName);
+            name.Text = user.FirstName;
+
+            lastName = FindViewById<EditText>(Resource.Id.editInputLastName);
+            lastName.Text = user.LastName;
+
+            mail = FindViewById<EditText>(Resource.Id.editInputEmail);
+            mail.Text = user.Mail;
+
+            phone = FindViewById<EditText>(Resource.Id.editInputPhone);
+            phone.Text = user.Phone;
         }
 
         private void InitListeners()

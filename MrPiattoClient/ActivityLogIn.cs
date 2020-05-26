@@ -221,6 +221,9 @@ namespace MrPiattoClient
 
             signIn.Click += delegate
             {
+                Preferences.Set("boolUser", false);
+                Preferences.Set("boolReservation", false);
+                Preferences.Set("boolFavorite", false);
                 int result = API.LogInUser(editTextEmail.Text.ToString(), editTextPassword.Text.ToString());
                 switch (result)
                 {
