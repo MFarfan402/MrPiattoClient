@@ -39,14 +39,17 @@ namespace MrPiattoClient
 
         private void ReservationsOnScreen(View view)
         {
-            if(!Preferences.Get("boolReservation", false))
+            List<Reservation> reservations = new List<Reservation>();
+            if (!Preferences.Get("boolReservation", false))
             {
                 Preferences.Set("boolReservation", true);
                 Preferences.Set("JSONReservation", API.GetReservationsJSON(Preferences.Get("idUser", 0)));
             }
-            List<Reservation> reservations = JsonConvert.DeserializeObject<List<Reservation>>
+            if(Preferences.Get("JSONReservation", null) != null)
+            {
+                reservations = JsonConvert.DeserializeObject<List<Reservation>>
                 (Preferences.Get("JSONReservation", null));
-            
+            }
 
             recycler = view.FindViewById<RecyclerView>(Resource.Id.recyclerViewMyReservations);
             recycler.SetLayoutManager(new LinearLayoutManager(view.Context));

@@ -22,13 +22,5 @@ namespace MrPiattoClient.Models
         public string Phone { get; set; }
         public string Gender { get; set; }
         public string UserType { get; set; }
-        public DateTime UnlockedDay { get; set; }
-
-        public User(string mail, string password)
-        {
-            Mail = mail;
-            Password = password;
-        }
-        public User() { }
     }
 }

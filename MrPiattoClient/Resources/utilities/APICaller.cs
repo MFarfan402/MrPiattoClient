@@ -474,12 +474,6 @@ namespace MrPiattoClient.Resources.utilities
         }
         public async Task<string> PostSurvey(int idWaiter, List<float> score, string comment, int idRes)
         {
-            /*
-             * 1. Insert into Comments
-             * 2. Insert into Surveys
-             * 3. Insert into Waiters // Not constructed yet...
-             */
-
             PostComment newComment = new PostComment();
             newComment.idrestaurant = idRes;
             newComment.comment = comment;
@@ -516,13 +510,11 @@ namespace MrPiattoClient.Resources.utilities
             return await sResponse.Content.ReadAsStringAsync();
 
         }
-
         private async Task InsertWaiterScoreAsync(int id, float rating)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Categories/WaitersStatistics/{id}/{rating}");
             await request.GetResponseAsync();
         }
-
         public async Task<int> CreateUserAsync(User user)
         {
             HttpClient client = new HttpClient();
@@ -666,28 +658,32 @@ namespace MrPiattoClient.Resources.utilities
             return await response.Content.ReadAsStringAsync();
         }
 
-        /*
-        public bool LogInUser(string mail, string password)
+        public int LogInUser(string mail, string password)
         {
-            User user = new User(mail, password);
-            HttpClient client = new HttpClient();
-            client = BaseClient(client);
-
-            var content = JsonConvert.SerializeObject(user);
-            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
-            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-            var response = client.PostAsync("Users", byteContent).Result;
-
-            user = JsonConvert.DeserializeObject<User>(response.Content.ToString());
-            if (user.Mail == mail)
+            User user = new User();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Users/LogIn/{mail}/{password}");
+            try
             {
-                Preferences.Set("boolUser", true);
-                Preferences.Set("JSONUser", JsonConvert.SerializeObject(user));
-                return true;
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    user = JsonConvert.DeserializeObject<User>(reader.ReadToEnd());
+                }
+                if (user.UserType == "user")
+                {
+                    Preferences.Set("boolUser", true);
+                    Preferences.Set("userName", user.FirstName);
+                    Preferences.Set("idUser", user.Iduser);
+                    return 1;
+                }
+                else
+                    return 2;
             }
-            else
-                return false;
+            catch (Exception)
+            {
+                return -1;
+            }
         }
-        */
     }
 }

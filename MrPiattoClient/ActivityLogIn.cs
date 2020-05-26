@@ -45,11 +45,11 @@ namespace MrPiattoClient
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            NeedToLoadUser();
             SetContentView(Resource.Layout.activity_logIn);
             editTextEmail = FindViewById<EditText>(Resource.Id.editTextEmail);
             editTextPassword = FindViewById<EditText>(Resource.Id.editTextPassword);
             InitListeners();
-            Preferences.Set("idUser", 3);
 
             GoogleApiClient.Builder builder = new GoogleApiClient.Builder(this);
             builder.AddConnectionCallbacks(this);
@@ -64,6 +64,19 @@ namespace MrPiattoClient
             LoginManager.Instance.RegisterCallback(fbCallbackManager, this);
             InitFacebookListener();
 
+        }
+
+        private void NeedToLoadUser()
+        {
+            if (Preferences.ContainsKey("boolUser"))
+            {
+                if (Preferences.Get("boolUser", false))
+                {
+                    Intent intent = new Intent(this, typeof(ActivityLoading));
+                    StartActivity(intent);
+                    Finish();
+                }
+            }
         }
 
         private void InitFacebookListener()
@@ -171,19 +184,6 @@ namespace MrPiattoClient
         }
         public void OnConnectionSuspended(int cause) { }
 
-        /*
-private void CheckForPreferences()
-{
-   if(Preferences.ContainsKey("boolUser"))
-       if (Preferences.Get("boolUser", false))
-       {
-           editTextPassword.Text = 1;
-       }
-
-   else
-       Preferences.Set("boolUser", false);
-}
-*/
         private void InitListeners()
         {
             
@@ -221,20 +221,24 @@ private void CheckForPreferences()
 
             signIn.Click += delegate
             {
-                /*
-                 * Método temporal xd.
-                 
-                if(API.LogInUser(editTextEmail.ToString(), editTextPassword.ToString()))
+                int result = API.LogInUser(editTextEmail.Text.ToString(), editTextPassword.Text.ToString());
+                switch (result)
                 {
-                    
+                    case 1:
+                        Intent intent = new Intent(this, typeof(ActivityLoading));
+                        StartActivity(intent);
+                        Finish();
+                        break;
+                    case 2:
+                        Intent intent2 = new Intent(this, typeof(ActivityVerifierMain));
+                        StartActivity(intent2);
+                        Finish();
+                        break;
+                    case -1:
+                    default:
+                        Toast.MakeText(this, "Favor de verificar los datos.", ToastLength.Long).Show();
+                        break;
                 }
-                else
-                    Toast.MakeText(this, "Favor de verificar los datos.", ToastLength.Long).Show();
-                */
-                Intent intent = new Intent(this, typeof(ActivityLoading));
-                StartActivity(intent);
-                Finish();
-
             };
             signIn.LongClick += delegate
             {
@@ -242,8 +246,6 @@ private void CheckForPreferences()
                 StartActivity(intent);
                 Finish();
             };
-
-
         }
 
         void IFacebookCallback.OnCancel() { }

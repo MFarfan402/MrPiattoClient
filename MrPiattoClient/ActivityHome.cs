@@ -79,6 +79,17 @@ namespace MrPiattoClient
                     intent = new Intent(this, typeof(ActivityJoinUs));
                     StartActivity(intent);
                     break;
+                case Resource.Id.itemLogOut:
+                    Preferences.Set("boolUser", false);
+                    Preferences.Set("boolReservation", false);
+                    Preferences.Set("boolFavorite", false);
+                    Preferences.Set("boolNFPush", true);
+                    Preferences.Set("boolNFMail", true);
+                    intent = new Intent(this, typeof(ActivityLogIn));
+                    StartActivity(intent);
+                    Finish();
+                    break;
+                    
 
             }
         }

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+      android:id="@+id/filterCalHigh"
+      android:enabled="true"
+      android:title="Filtar: Calificación alta"/>
+  <item
+      android:id="@+id/filterCalLow"
+      android:enabled="true"
+      android:title="Filtar: Calificación baja"/>
+  <item
+      android:id="@+id/filterDateMax"
+      android:enabled="true"
+      android:title="Filtar: Fecha reciente"/>
+  <item
+      android:id="@+id/filterDateMin"
+      android:enabled="true"
+      android:title="Filtar: Fecha menos reciente"/>
+
+</menu>

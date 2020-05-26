@@ -44,7 +44,7 @@ namespace MrPiattoClient
             List<Survey> surveys = API.GetRatingAndComments(Intent.GetIntExtra("idRestaurant", 0));
             foreach(var s in surveys)
             {
-                comments.Add(new Comment(s.idcomment, s.generalScore, "Usuario", s.idcommentNavigation.date.ToString(), s.idcommentNavigation.comment));
+                comments.Add(new Comment(s.idcomment, s.generalScore, "Usuario", s.idcommentNavigation.date.ToString("dd-MM-yyyy"), s.idcommentNavigation.comment));
             }
         }
 
@@ -86,12 +86,30 @@ namespace MrPiattoClient
             adapter = new RecyclerViewRatingCommentAdapter(comments, this);
             recyclerView.SetAdapter(adapter);
         }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_rating, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
                     Finish();
+                    return true;
+
+                case Resource.Id.filterCalHigh:
+                    return true;
+
+                case Resource.Id.filterCalLow:
+                    return true;
+
+                case Resource.Id.filterDateMax:
+                    return true;
+
+                case Resource.Id.filterDateMin:
                     return true;
 
                 default:
