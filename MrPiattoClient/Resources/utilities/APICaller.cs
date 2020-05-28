@@ -20,9 +20,11 @@ namespace MrPiattoClient.Resources.utilities
 {
     public class APICaller
     {
-        //private static readonly string url = "http://200.23.157.109/api/";
-        private static readonly string url = "http://192.168.100.207/api/";
-        public static readonly string urlPhotos = "http://192.168.100.207/images/";
+        private static readonly string url = "http://200.23.157.109/api/";
+        public static readonly string urlPhotos = "http://200.23.157.109/images/";
+
+        ///private static readonly string url = "http://192.168.100.207/api/";
+        //public static readonly string urlPhotos = "http://192.168.100.207/images/";
         public APICaller() { }
 
         public HttpClient BaseClient(HttpClient client)
@@ -266,7 +268,6 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-
         public string MailSubscription(int idUser, int idRestaurant)
         {
             string msg;
@@ -384,7 +385,6 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-
         public string GetFavoritesJSON(int idUser)
         {
             string favorites;
@@ -423,10 +423,26 @@ namespace MrPiattoClient.Resources.utilities
                 return null;
             }
         }
-        public async Task FireAndForgetQRAsync(int id)
+        public bool FireAndForgetQRAsync(int id)
         {
+            bool ok;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{url}Reservations/QR/{id}");
-            await request.GetResponseAsync();
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    ok = JsonConvert.DeserializeObject<bool>(reader.ReadToEnd());
+                }
+                return ok;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+
         }
         public async Task<string> NewReservation(int idRestaurant, int idUser, DateTime date, int amount)
         {
@@ -444,6 +460,25 @@ namespace MrPiattoClient.Resources.utilities
             var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
             byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var response = client.PostAsync("Reservations", byteContent).Result;
+            return await response.Content.ReadAsStringAsync();
+        }
+        public async Task<string> UpdateReservation(int idReservation, DateTime date, int amount, int idTable)
+        {
+            Reservation reservation = new Reservation();
+            reservation.idreservation = idReservation;
+            reservation.iduser = Preferences.Get("idUser", 0);
+            reservation.idtable = idTable;
+            reservation.date = date;
+            reservation.amountOfPeople = amount;
+            reservation.url = ".";
+
+            HttpClient client = new HttpClient();
+            client = BaseClient(client);
+
+            var content = JsonConvert.SerializeObject(reservation);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("Reservations/Update", byteContent).Result;
             return await response.Content.ReadAsStringAsync();
         }
         public async Task<string> JoinMrPiatto(string name, string address, string phone, string mail)
@@ -657,7 +692,6 @@ namespace MrPiattoClient.Resources.utilities
             var response = client.PostAsync("UserRestaurants", byteContent).Result;
             return await response.Content.ReadAsStringAsync();
         }
-
         public int LogInUser(string mail, string password)
         {
             User user = new User();
@@ -685,6 +719,18 @@ namespace MrPiattoClient.Resources.utilities
             {
                 return -1;
             }
+        }
+        public async Task<bool> UpdateUserInfo(User user)
+        {
+            HttpClient client = new HttpClient();
+            client = BaseClient(client);
+
+            var content = JsonConvert.SerializeObject(user);
+            var byteContent = new ByteArrayContent(Encoding.UTF8.GetBytes(content));
+            byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = client.PostAsync("Users/Update", byteContent).Result;
+
+            return bool.Parse(await response.Content.ReadAsStringAsync());
         }
     }
 }

@@ -14,6 +14,8 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 using MrPiattoClient.Models;
 using Newtonsoft.Json;
 using MrPiattoClient.Resources.utilities;
+using System.Text.RegularExpressions;
+using Xamarin.Essentials;
 
 namespace MrPiattoClient
 {
@@ -41,11 +43,20 @@ namespace MrPiattoClient
             politicsButton.Click += PopupPolitics;
 
             Button buttonSearch = FindViewById<Button>(Resource.Id.buttonModify);
-            //buttonSearch.Click += PopupConfirmation;
+            buttonSearch.Click += async delegate
+            {
+                DateTime dateTime = Convert.ToDateTime($"{editTextDate.Text} {spinner.SelectedItem.ToString()}:00");
+                Match match = Regex.Match(spinnerQuantity.SelectedItem.ToString(), "([0-9][0-9])");
+
+                var msg = await API.UpdateReservation(reservation.idreservation, dateTime, int.Parse(match.Value), reservation.idtable);
+                Toast.MakeText(this, msg, ToastLength.Long).Show();
+                Preferences.Set("boolReservation", false);
+            };
         }
 
+
         private void PopupPolitics(object sender, EventArgs e)
-        {
+        {  
             
             popupDialog = new Dialog(this);
             popupDialog.SetContentView(Resource.Layout.fragment_politics);

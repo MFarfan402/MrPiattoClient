@@ -26,6 +26,16 @@ namespace MrPiattoClient
             View view = inflater.Inflate(Resource.Layout.fragment_search, container, false);
             SearchView searchView = view.FindViewById<SearchView>(Resource.Id.searchView);
             searchView.QueryHint = "Busca tu restaurante...";
+
+            string search = Arguments.GetString("search");
+            if (search != null)
+            {
+                searchView.SetQuery(search, true);
+                Toast.MakeText(view.Context, search, ToastLength.Long).Show();
+            }
+
+            
+
             return view;
         }
         public static FragmentSearch NewInstance()

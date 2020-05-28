@@ -12,6 +12,7 @@ using Android.Widget;
 using AndroidX.RecyclerView.Widget;
 using MrPiattoClient.Models;
 using MrPiattoClient.Resources.utilities;
+using Android.Support.V4.App;
 
 namespace MrPiattoClient.Resources.adapter
 {
@@ -19,8 +20,10 @@ namespace MrPiattoClient.Resources.adapter
     {
         public TextView name;
         public ImageView image;
+        public View Item;
         public RecyclerViewCuisineHolder(View itemView) : base(itemView)
         {
+            Item = itemView;
             name = itemView.FindViewById<TextView>(Resource.Id.cardviewCuisineName);
             image = itemView.FindViewById<ImageView>(Resource.Id.cardviewCuisineImage);
         }
@@ -29,10 +32,16 @@ namespace MrPiattoClient.Resources.adapter
     class RecyclerViewCuisineAdapter : RecyclerView.Adapter
     {
         private List<IdcategoriesNavigation> cuisines;
+        private Context context;
+        private RecyclerView recycler;
+        private FragmentActivity activity;
 
-        public RecyclerViewCuisineAdapter(List<IdcategoriesNavigation> cuisines)
+        public RecyclerViewCuisineAdapter(List<IdcategoriesNavigation> cuisines, Context context, RecyclerView recycler, FragmentActivity activity)
         {
             this.cuisines = cuisines;
+            this.context = context;
+            this.recycler = recycler;
+            this.activity = activity;
         }
 
         public override int ItemCount
@@ -45,6 +54,21 @@ namespace MrPiattoClient.Resources.adapter
             RecyclerViewCuisineHolder viewHolder = holder as RecyclerViewCuisineHolder;
             viewHolder.name.Text = cuisines[position].category;
             viewHolder.image.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(cuisines[position].urlPhoto));
+            viewHolder.Item.Click -= MakeToast;
+            viewHolder.Item.Click += MakeToast;
+        }
+
+        private void MakeToast(object sender, EventArgs e)
+        {
+            int position = recycler.GetChildAdapterPosition((View)sender);
+
+            Android.Support.V4.App.Fragment fragment = FragmentSearch.NewInstance();
+            Bundle args = new Bundle();
+            args.PutString("search", cuisines[position].category);
+            fragment.Arguments = args;
+            activity.SupportFragmentManager.BeginTransaction()
+                .Replace(Resource.Id.frameMainContent, fragment)
+                .Commit();
 
         }
 

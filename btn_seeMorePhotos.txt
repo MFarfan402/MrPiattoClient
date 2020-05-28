@@ -1,0 +1,7 @@
+<Button
+                        android:id="@+id/buttonSeeMorePhotos"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+                        android:text="VER TODAS LAS FOTOS"
+                        style="@style/SeeMoreButton"
+                        android:layout_below="@id/restaurantPhotoSection1"/>

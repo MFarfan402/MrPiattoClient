@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -175,13 +175,7 @@
                           android:layout_below="@id/restaurantPhotoSection2"
                           android:layout_toRightOf="@id/restaurantPhotoSection4"/>
     
-                    <Button
-                        android:id="@+id/buttonSeeMorePhotos"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-                        android:text="VER TODAS LAS FOTOS"
-                        style="@style/SeeMoreButton"
-                        android:layout_below="@id/restaurantPhotoSection1"/>
+                    
 
                 </RelativeLayout>
 

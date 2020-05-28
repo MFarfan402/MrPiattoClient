@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using MrPiattoClient.Models;
 using MrPiattoClient.Resources.utilities;
+using Newtonsoft.Json;
 using Xamarin.Essentials;
 
 namespace MrPiattoClient
@@ -48,9 +49,13 @@ namespace MrPiattoClient
                     user.UserType = "user";
 
                     Preferences.Set("idUser", await API.CreateUserAsync(user));
+                    Preferences.Set("boolUser", true);
+                    Preferences.Set("userName", user.FirstName);
+                    Preferences.Set("userInfo", JsonConvert.SerializeObject(user));
+                    Preferences.Set("boolReservation", false);
+                    Preferences.Set("boolFavorite", false);
 
                     Intent intent = new Intent(this, typeof(ActivityLoading));
-                    intent.SetFlags(ActivityFlags.ClearTask);
                     StartActivity(intent);
                     Finish();
                 }                

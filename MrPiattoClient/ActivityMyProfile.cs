@@ -14,6 +14,7 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 using MrPiattoClient.Models;
 using Xamarin.Essentials;
 using Newtonsoft.Json;
+using MrPiattoClient.Resources.utilities;
 
 namespace MrPiattoClient
 {
@@ -23,6 +24,7 @@ namespace MrPiattoClient
         Spinner spinnerGender;
         EditText name, lastName, mail, phone;
         User user;
+        APICaller API = new APICaller();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -49,13 +51,41 @@ namespace MrPiattoClient
 
             phone = FindViewById<EditText>(Resource.Id.editInputPhone);
             phone.Text = user.Phone;
+
+            switch (user.Gender)
+            {
+                case "Hombre":
+                    spinnerGender.SetSelection(0);
+                    break;
+                case "Mujer":
+                    spinnerGender.SetSelection(1);
+                    break;
+                case "Otro":
+                    spinnerGender.SetSelection(2);
+                    break;
+                default:
+                    spinnerGender.SetSelection(2);
+                    break;
+            }
+            
         }
 
         private void InitListeners()
         {
             Button save = FindViewById<Button>(Resource.Id.btnSavePersonalData);
-            save.Click += delegate
+            save.Click += async delegate
             {
+                if(name.Text == "" || lastName.Text == "" || phone.Text == "")
+                    Toast.MakeText(this, "Favor de llenar todos los campos", ToastLength.Short).Show();
+                else
+                {
+                    user.FirstName = name.Text;
+                    user.LastName = lastName.Text;
+                    user.Phone = phone.Text;
+                    user.Gender = spinnerGender.SelectedItem.ToString();
+                    await API.UpdateUserInfo(user);
+                    Preferences.Set("userInfo", JsonConvert.SerializeObject(user));
+                }
                 Finish();
             };
         }

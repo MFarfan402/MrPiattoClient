@@ -78,9 +78,9 @@ namespace MrPiattoClient
                 
                 var response = await API.NewReservation(idRestaurant, Preferences.Get("idUser", 0), dateTime, int.Parse(match.Value));
                 
-                if (response == "1")
+                if (response == "\"1\"")
                 {
-                    await API.FireAndForgetQRAsync(Preferences.Get("idUser", 0));
+                    API.FireAndForgetQRAsync(Preferences.Get("idUser", 0));
                     Preferences.Set("boolReservation", false);
                     if (Preferences.Get("boolNFPush", true))
                     {

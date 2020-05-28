@@ -29,7 +29,8 @@ namespace MrPiattoClient.Models
             Name = name;
             Address = address;
             Categories = categorie;
-            UrlMainFoto = $"http://192.168.100.207/images/{IDRestaurant}/main.jpg";
+            //UrlMainFoto = $"http://192.168.100.207/images/{IDRestaurant}/main.jpg";
+            UrlMainFoto = $"http://200.23.157.109/images/{IDRestaurant}/main.jpg";
         }
     }
 }

@@ -21,7 +21,8 @@ namespace MrPiattoClient.Models
         {
             idcategory = id;
             this.category = category;
-            urlPhoto = $"http://192.168.100.207/images/categories/{id}/categorie.jpg";
+            urlPhoto = $"http://200.23.157.109/images/categories/{id}/categorie.jpg";
+            //urlPhoto = $"http://192.168.100.207/images/categories/{id}/categorie.jpg";
         }
     }
 

@@ -26,7 +26,8 @@ namespace MrPiattoClient.Models
             this.lastLogin = lastLogin;
             this.name = name;
             this.phone = phone;
-            UrlMainFoto = $"http://192.168.100.207/images/{idrestaurant}/main.jpg";
+            //UrlMainFoto = $"http://192.168.100.207/images/{idrestaurant}/main.jpg";
+            UrlMainFoto = $"http://200.23.157.109/images/{idrestaurant}/main.jpg";
         }
     }
 }

@@ -67,7 +67,7 @@ namespace MrPiattoClient
 
             adapter = new RecyclerViewMainAdapter(favorites, rootView.Context);
             adapterNear = new RecyclerViewMainAdapter(mainR, rootView.Context);
-            adapterCuisine = new RecyclerViewCuisineAdapter(categories);
+            adapterCuisine = new RecyclerViewCuisineAdapter(categories, rootView.Context, recycler, this.Activity);
             recycler.SetAdapter(adapter);
             recyclerNear.SetAdapter(adapterNear);
             recyclerCuisine.SetAdapter(adapterCuisine);

@@ -39,6 +39,22 @@ namespace MrPiattoClient
             InitListeners();
             InitMap(savedInstanceState);
             InflateMainData();
+            PutPhotosAsync();
+        }
+
+        private void PutPhotosAsync()
+        {
+            ImageView image1 = FindViewById<ImageView>(Resource.Id.restaurantPhotoSection1);
+            ImageView image2 = FindViewById<ImageView>(Resource.Id.restaurantPhotoSection2);
+            ImageView image3 = FindViewById<ImageView>(Resource.Id.restaurantPhotoSection3);
+            ImageView image4 = FindViewById<ImageView>(Resource.Id.restaurantPhotoSection4);
+            ImageView image5 = FindViewById<ImageView>(Resource.Id.restaurantPhotoSection5);
+
+            image1.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl($"http://200.23.157.109/images/{idRestaurant}/1.jpg"));
+            image2.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl($"http://200.23.157.109/images/{idRestaurant}/2.jpg"));
+            image3.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl($"http://200.23.157.109/images/{idRestaurant}/3.jpg"));
+            image4.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl($"http://200.23.157.109/images/{idRestaurant}/4.jpg"));
+            image5.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl($"http://200.23.157.109/images/{idRestaurant}/5.jpg"));
         }
 
         private void InflateMainData()
@@ -46,6 +62,10 @@ namespace MrPiattoClient
             restaurant = JsonConvert.DeserializeObject<CompleteRestaurant>(
                 Intent.GetStringExtra("mainInfo"));
             idRestaurant = restaurant.idrestaurant;
+
+            ImageView main = FindViewById<ImageView>(Resource.Id.toolbarImage);
+            main.SetImageBitmap(ImageHelper.GetImageBitmapFromUrl(restaurant.UrlMainFoto));
+
 
             TextView restaurantName = FindViewById<TextView>(Resource.Id.restaurantName);
             TextView restaurantLocation = FindViewById<TextView>(Resource.Id.restaurantLocation);
@@ -194,12 +214,14 @@ namespace MrPiattoClient
 
         public void InitListeners()
         {
+            /*
             Button buttonSeeMorePhotos = FindViewById<Button>(Resource.Id.buttonSeeMorePhotos);
             buttonSeeMorePhotos.Click += delegate
             {
                 Intent intent = new Intent(this, typeof(RestaurantPhotosActivity));
                 StartActivity(intent);
             };
+            */
             Button buttonSeeMoreRatings = FindViewById<Button>(Resource.Id.buttonSeeMoreRatings);
             buttonSeeMoreRatings.Click += delegate
             {
